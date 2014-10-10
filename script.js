@@ -105,7 +105,7 @@ $(document).ready(function() {
 
     startButton.click(function() {
       if (!$(this).hasClass('disabled')) {
-        $('#cats > img').remove();
+        $('#cats > div').remove();
         catCounter(counter.getValue(), 2000, $(this));
         fade($(this));
       }
