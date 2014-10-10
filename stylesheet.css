@@ -6,6 +6,15 @@ em {
   font-weight: bold;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: blue;
+}
+
 .cat {
   display: inline-block;
   margin-left: 5px;
