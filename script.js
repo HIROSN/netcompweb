@@ -28,7 +28,6 @@ $(document).ready(function() {
       Counter(int c, Element e);
       void increment();
       int getValue();
-      void reset();
     private:
       void update();
     private:
@@ -38,7 +37,7 @@ $(document).ready(function() {
 
     Counter counter(5, counterButton);
     */
-    counter = function(count, element) {
+    counter = function(count, max, element) {
       var update = function() {
         element.text(count + ' cats');
       };
@@ -49,26 +48,17 @@ $(document).ready(function() {
         counter.increment();
       });
 
-      element.dblclick(function() {
-        counter.reset();
-      });
-
       return {
         increment: function() {
-          ++count;
+          count = ++count % (max + 1);
           update();
         },
 
         getValue: function() {
           return count;
-        },
-
-        reset: function() {
-          count = 0;
-          update();
         }
       };
-    }(5, counterButton);
+    }(5, 10, counterButton);
 
     /*
     setInterval callback function has access to idTimer for free. Lifetime of

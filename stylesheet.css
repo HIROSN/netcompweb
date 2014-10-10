@@ -12,11 +12,11 @@ em {
   margin-top: 10px;
   margin-bottom: 10px;
   border-radius: 100%;
-  height: 100px;
-  width: 100px;
+  height: 5em;
+  width: 5em;
   border: solid 1px lightgray;
-  background: url('http://images2.fanpop.com/images/photos/8400000/cute-cats-cats-8477446-600-600.jpg');
-  background-size: 100px 100px;
+  background: url('http://www.catpichub.com/wp-content/uploads/2014/08/cute-cat-wallpaper-14001050-53f173c8980de-500x500.png');
+  background-size: 5em 5em;
 }
 
 .button {
