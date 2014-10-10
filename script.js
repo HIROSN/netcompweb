@@ -19,9 +19,6 @@ $(document).ready(function() {
     var catCounter;
     var fade;
 
-    var catUrl = 'http://images2.fanpop.com/images/photos/8400000/' +
-      'cute-cats-cats-8477446-600-600.jpg';
-
     startButton = $('#start');
     counterButton = $('#counter');
 
@@ -84,7 +81,7 @@ $(document).ready(function() {
       if (count < maxCats) {
         idTimer = setInterval(function() {
           if (count++ < maxCats) {
-            $('#cats').append('<img src="' + catUrl + '" class="cat"></div>');
+            $('#cats').append('<div class="cat"></div>');
           }
 
           if (count >= maxCats) {
