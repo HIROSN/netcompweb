@@ -118,7 +118,7 @@ $(document).ready(function() {
     });
   }());
 
-  // Private vs. public
+  // Public vs. private
   (function() {
     var counter = function(element) {
       var instance = {
