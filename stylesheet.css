@@ -15,6 +15,12 @@ a:hover {
   color: blue;
 }
 
+textarea.code {
+  font-family: Monaco, Consolas;
+  font-size: 9pt;
+  overflow: auto;
+}
+
 .cat {
   display: inline-block;
   margin-left: 5px;
@@ -35,7 +41,7 @@ a:hover {
   margin-bottom: 10px;
   border-radius: 5px;
   height: 2em;
-  width: 100px;
+  width: 120px;
   border: solid 1px darkgray;
   text-align: center;
   padding-top: 1em;

@@ -111,4 +111,40 @@ $(document).ready(function() {
       }
     });
   }());
+
+  // Private vs. public
+  (function() {
+    var counter = function(element) {
+      var count = 0;
+
+      var update = function(unit) {
+        element.text(count + ' ' + unit);
+      };
+
+      return {
+        unit: '',
+
+        increment: function() {
+          ++count;
+          update(this.unit);
+        }
+      };
+    };
+
+    var catButton = $('#catButton');
+    var dogButton = $('#dogButton');
+    var catCounter = counter(catButton);
+    var dogCounter = counter(dogButton);
+    catCounter.unit = 'cats';
+    dogCounter.unit = 'dogs';
+
+    catButton.click(function() {
+      catCounter.increment();
+    });
+
+    dogButton.click(function() {
+      dogCounter.increment();
+    });
+  }());
+
 });
