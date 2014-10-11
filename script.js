@@ -28,19 +28,31 @@ $(document).ready(function() {
     /*
     class Counter {
     public:
-      Counter(int c, Element e);
+      Counter(int c, int m, Element e);
       void increment();
       int getValue();
     private:
       void update();
     private:
       int count;
+      int max;
       Element element;
     };
 
-    Counter counter(5, counterButton);
+    Counter counter(5, 10, counterButton);
     */
     counter = function(count, max, element) {
+      var instance = {
+        increment: function() {
+          count = ++count % (max + 1);
+          update();
+        },
+
+        getValue: function() {
+          return count;
+        }
+      };
+
       var update = function() {
         element.text(count + ' cats');
       };
@@ -51,16 +63,7 @@ $(document).ready(function() {
         counter.increment();
       });
 
-      return {
-        increment: function() {
-          count = ++count % (max + 1);
-          update();
-        },
-
-        getValue: function() {
-          return count;
-        }
-      };
+      return instance;
     }(5, 10, counterButton);
 
     /*
@@ -118,20 +121,26 @@ $(document).ready(function() {
   // Private vs. public
   (function() {
     var counter = function(element) {
-      var count = 0;
-
-      var update = function(unit) {
-        element.text(count + ' ' + unit);
-      };
-
-      return {
+      var instance = {
+        // Public property
         unit: '',
 
+        // Public method
         increment: function() {
           ++count;
-          update(this.unit);
+          update();
         }
       };
+
+      // Private property
+      var count = 0;
+
+      // Private method
+      var update = function() {
+        element.text(count + ' ' + instance.unit);
+      };
+
+      return instance;
     };
 
     var catButton = $('#catButton');

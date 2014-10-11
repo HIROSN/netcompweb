@@ -10,7 +10,7 @@
   </head>
   <body>
 
-    <h2>Closure and Module</h2>
+    <h3>Closure and Module</h3>
     <p>The function has access to the context in which it was created.
       This is called <em>closure</em>.</p>
     <p>Functions and closure can make modules. A <em>module</em> is a function
@@ -20,34 +20,37 @@
     <div id="counter" class="button"></div>
     <div id="cats"></div>
 
-    <h2>Private and public members</h2>
+    <h3>Private and public members</h3>
     <p>
-      <textarea class="code" readonly=true cols=41 rows=17>
+      <textarea class="code" readonly=true cols=41 rows=20>
   var counter = function(element) {
-    var count = 0;
-
-    var update = function(unit) {
-      element.text(count + ' ' + unit);
-    };
-
-    return {
+    var instance = {
       unit: '',
 
       increment: function() {
         ++count;
-        update(this.unit);
+        update();
       }
     };
+
+    var count = 0;
+
+    var update = function() {
+      element.text(
+        count + ' ' + instance.unit);
+    };
+
+    return instance;
   };
       </textarea>
     </p>
-    <p>count, element and update() are private properties and method.</p>
     <p>unit and increment() are public property and method.</p>
+    <p>count, element and update() are private properties and method.</p>
     <p>'counter' starts with a lower case letter, which indicates that an instance of this object is created without using the new operator.</p>
     <div id="catButton" class="button">Cat counter</div>
     <div id="dogButton" class="button">Dog counter</div>
 
-    <h2><a href="ie8/">Internet Explorer 8</a></h2>
+    <h3><a href="ie8/">Internet Explorer 8</a></h3>
     <p>Most browsers except IE8 treat whitespace between elements (such as
       spaces or carriage returns) as a text node.</p>
 
