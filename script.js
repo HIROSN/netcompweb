@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+  // Timestamp
+  $('#timestamp').text(document.lastModified);
+
   // All buttons
   $('.button').mouseenter(function() {
     if (!$(this).hasClass('disabled')) {
