@@ -14,6 +14,24 @@ $(document).ready(function() {
     $(this).removeClass('active');
   });
 
+  // Objects by reference
+  (function() {
+    var log;
+    var isBobSmiling = false;
+
+    var bob = {
+      smiling: false
+    };
+
+    (function smile(smiling, person) {
+      smiling = true;
+      person.smiling = true;
+    }(isBobSmiling, bob));
+
+    log = '\n' + isBobSmiling + ' Object {smiling: ' + bob.smiling + '}';
+    $('#bob').text($('#bob').text() + log);
+  }());
+
   // Cat Counter
   (function() {
     var startButton;

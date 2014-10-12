@@ -10,6 +10,24 @@
   </head>
   <body>
 
+    <h3>Objects by reference</h3>
+    <p>Arguments in primitive data types are passed to a function <em>by value</em>. Objects are passed <em>by reference</em>. This is one possible cause of side effects.</p>
+    <p>
+      <textarea id="bob" class="code" readonly=true cols=41 rows=14>
+  var isBobSmiling = false;
+
+  var bob = {
+    smiling: false
+  };
+
+  (function smile(smiling, person) {
+    smiling = true;
+    person.smiling = true;
+  }(isBobSmiling, bob));
+
+> console.log(isBobSmiling, bob);</textarea>
+    </p>
+
     <h3>Closure and Module</h3>
     <p>The function has access to the context in which it was created.
       This is called <em>closure</em>.</p>
@@ -41,8 +59,7 @@
     };
 
     return instance;
-  };
-      </textarea>
+  };</textarea>
     </p>
     <p>unit and increment() are public property and method.</p>
     <p>count, element and update() are private properties and method.</p>
