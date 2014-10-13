@@ -4,8 +4,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../listener.js"></script>
     <script src="script.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+    <link rel="stylesheet" type="text/css" href="../listener.css"/>
     <link rel="shortcut icon" href="../favicon.ico" />
     <title>Internet Explorer 8</title>
   </head>
@@ -24,6 +26,15 @@
       <div id="nodes"></div>
     </div>
 
-    <small><i>Changes last made on <span id="timestamp"></span></i></small>
+    <h3>Event listeners and handlers</h3>
+    <p>IE8 had a different event model and did not support addEventListener().
+      Instead, it used a method called attachEvent().</p>
+    <div id="click1" class="listener clickable">click<br>(jQuery)</div>
+    <div id="click2" class="listener clickable">click<br>(DOM Listener)</div>
+    <div id="click3" class="listener clickable">onclick<br>(DOM Handler)</div>
+
+    <p>
+      <small><i>Changes last made on <span id="timestamp"></span></i></small>
+    </p>
   </body>
 </html>

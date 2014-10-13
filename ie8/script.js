@@ -3,6 +3,7 @@ $(document).ready(function() {
   // Timestamp
   $('#timestamp').text(document.lastModified);
 
+  // Whitespace nodes in children of ul element
   (function() {
     var parent = document.getElementById('list');
     var child = parent.firstChild;
@@ -26,4 +27,15 @@ $(document).ready(function() {
     $('#page').append('<p>' + navigator.userAgent + '</p');
   }());
 
+  // Event listeners and handlers
+  (function() {
+    listener($('#click1')).jQueryEvent(
+      'click', '#click1');
+
+    listener($('#click2')).domEventListener(
+      'click', document.getElementById('click2'));
+
+    listener($('#click3')).domEventHandler(
+      'click', document.getElementById('click3'));
+  }());
 });

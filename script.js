@@ -14,6 +14,18 @@ $(document).ready(function() {
     $(this).removeClass('active');
   });
 
+  // Event listeners and handlers
+  (function() {
+    listener($('#click1')).jQueryEvent(
+      'click', '#click1');
+
+    listener($('#click2')).domEventListener(
+      'click', document.getElementById('click2'));
+
+    listener($('#click3')).domEventHandler(
+      'click', document.getElementById('click3'));
+  }());
+
   // Objects by reference
   (function() {
     var log;
@@ -38,7 +50,6 @@ $(document).ready(function() {
     var counterButton;
     var counter;
     var catCounter;
-    var fade;
 
     startButton = $('#start');
     counterButton = $('#counter');
@@ -109,29 +120,11 @@ $(document).ready(function() {
       }
     };
 
-    fade = function(element) {
-      var level = 1;
-      var step = function() {
-        var hex = level.toString(16);
-        element.css('background-color', '#' + hex + hex + 'FFFF');
-
-        if (level < 15) {
-          level += 1;
-          setTimeout(step, 100);
-        }
-        else {
-          element.removeAttr('style');
-        }
-      };
-
-      setTimeout(step, 100);
-    };
-
     startButton.click(function() {
       if (!$(this).hasClass('disabled')) {
         $('#cats > div').remove();
         catCounter(counter.getValue(), 2000, $(this));
-        fade($(this));
+        fade($(this), [true, false, false], 1500);
       }
     });
   }());
