@@ -13,6 +13,7 @@ li {
   width: 230px;
   padding-left: 1em;
   padding-top: 10px;
+  cursor: pointer;
 }
 
 .hot {

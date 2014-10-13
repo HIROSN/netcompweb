@@ -1,13 +1,17 @@
 $(document).ready(function() {
+  var showNodes;
+  var getTarget;
+  var showId;
 
   // Timestamp
   $('#timestamp').text(document.lastModified);
 
   // Whitespace nodes in children of ul element
-  (function() {
+  showNodes = function() {
     var parent = document.getElementById('list');
     var child = parent.firstChild;
     var name;
+    $('#nodes > div').remove();
 
     while (child) {
       name = child.tagName || child.nodeName;
@@ -23,9 +27,10 @@ $(document).ready(function() {
 
       child = child.nextSibling;
     }
+  };
 
-    $('#page').append('<p>' + navigator.userAgent + '</p');
-  }());
+  showNodes();
+  $('#page').append('<p>' + navigator.userAgent + '</p');
 
   // Event listeners and handlers
   (function() {
@@ -59,7 +64,17 @@ $(document).ready(function() {
 
         if (grocery) {
           $('#list').append('<li>' + grocery + '</li>');
+          showNodes();
         }
+      }
+    });
+
+    $('#list').click(function(event) {
+      var target = getTarget(event);
+
+      if (target.tagName === 'LI') {
+        target.parentNode.removeChild(target);
+        showNodes();
       }
     });
 
@@ -76,13 +91,19 @@ $(document).ready(function() {
     mouseover3.domEventHandler(
       'mouseover', document.getElementById('howTo'));
 
-    var showId = function(element, event) {
+    getTarget = function(event) {
       var target;
       event = event || window.event;
 
       if (event) {
         target = event.target || event.srcElement;
       }
+
+      return target;
+    };
+
+    showId = function(element, event) {
+      var target = getTarget(event);
 
       if (target) {
         element.html(
