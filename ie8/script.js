@@ -29,6 +29,8 @@ $(document).ready(function() {
 
   // Event listeners and handlers
   (function() {
+    var grocery;
+
     listener($('#click1')).jQueryEvent(
       'click', '#click1');
 
@@ -37,5 +39,25 @@ $(document).ready(function() {
 
     listener($('#click3')).domEventHandler(
       'click', document.getElementById('click3'));
+
+    listener($('#input1')).jQueryEvent(
+      'input', '#grocery');
+
+    listener($('#input2')).domEventListener(
+      'input', document.getElementById('grocery'));
+
+    listener($('#input3')).domEventHandler(
+      'input', document.getElementById('grocery'));
+
+    $('#grocery').on('keyup', function(event) {
+      if (event.which == 13) {
+        grocery = $(this).val();
+        $(this).val('');
+
+        if (grocery) {
+          $('#list').append('<li>' + grocery + '</li>');
+        }
+      }
+    });
   }());
 });

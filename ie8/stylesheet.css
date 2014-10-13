@@ -19,6 +19,10 @@ li {
   padding-top: 10px;
 }
 
+input {
+  font-size: 12pt;
+}
+
 .hot {
   background-color: #d7666b;
   color: #fff;

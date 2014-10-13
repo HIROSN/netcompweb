@@ -88,8 +88,8 @@ $(document).ready(function() {
 
       update();
 
-      element.click(function() {
-        counter.increment();
+      element.click(function(event) {
+        instance.increment();
       });
 
       return instance;
