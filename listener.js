@@ -32,6 +32,12 @@ var fade = function(element, rgb, msec) {
 
 var listener = function(element) {
   var instance = {
+    callback: function(event) {},
+
+    getElement: function() {
+      return element;
+    },
+
     jQueryEvent: function(name, source) {
       $(document).on(name, source, blink);
     },
@@ -49,8 +55,10 @@ var listener = function(element) {
     }
   };
 
-  var blink = function() {
-    fade(element, [false, false, true]);
+  var blink = function(event) {
+    if (!instance.callback(event)) {
+      fade(element, [false, false, true]);
+    }
   };
 
   return instance;

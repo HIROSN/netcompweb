@@ -21,6 +21,10 @@ textarea.code {
   overflow: auto;
 }
 
+input {
+  font-size: 12pt;
+}
+
 .cat {
   display: inline-block;
   margin-left: 5px;

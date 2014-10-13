@@ -6,6 +6,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="../listener.js"></script>
     <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="../stylesheet.css"/>
     <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
     <link rel="stylesheet" type="text/css" href="../listener.css"/>
     <link rel="shortcut icon" href="../favicon.ico" />
@@ -37,6 +38,20 @@
     <div id="input1" class="listener">input<br>(jQuery)</div>
     <div id="input2" class="listener">input<br>(DOM Listener)</div>
     <div id="input3" class="listener">oninput<br>(DOM Handler)</div>
+    <p>Event object is not passed automatically to event handler functions
+      in IE8. It is available as a child of the window object.</p>
+    <p>
+      <textarea id="howTo" class="code" readonly=true cols=41 rows=7>
+  function(e) {
+    var target;
+    e = e || window.event;
+    target = e.target || e.srcElement;
+    console.log(target.id);
+  }</textarea>
+    </p>
+    <div id="mouseover1" class="listener">mouseover<br>(jQuery)</div>
+    <div id="mouseover2" class="listener">mouseover<br>(DOM Listener)</div>
+    <div id="mouseover3" class="listener">onmouseover<br>(DOM Handler)</div>
 
     <p>
       <small><i>Changes last made on <span id="timestamp"></span></i></small>
