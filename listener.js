@@ -40,18 +40,21 @@ var listener = function(element) {
 
     jQueryEvent: function(name, source) {
       $(document).on(name, source, blink);
+      return this;
     },
 
     domEventListener: function(name, source) {
       if (source.addEventListener) {
         source.addEventListener(name, blink, false);
       }
+      return this;
     },
 
     domEventHandler: function(name, source) {
       if (source.attachEvent) {
         source.attachEvent('on' + name, blink);
       }
+      return this;
     }
   };
 

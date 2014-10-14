@@ -12,7 +12,20 @@
   </head>
   <body>
 
+    <h3>Cascade</h3>
+    <p>Cascading enables calling many methods on the same object in sequence
+      in a single statement.</p>
+    <p>
+      <textarea class="code" readonly=true cols=41 rows=6>
+  listener($('#mouseover1')).
+    jQueryEvent('mouseover', '#howTo').
+    callback = function(event) {
+      showId(this.getElement(), event);
+    };</textarea>
+    </p>
+
     <h3>How to check if a class exists</h3>
+    <p>if (Class) {} is a reference error.</p>
     <p>
       <textarea class="code" readonly=true cols=41 rows=12>
   if (typeof Class === 'function') {
@@ -143,8 +156,8 @@
       });
   }</textarea>
     </p>
-    <p><a href="ie8/">This page</a> demonstrates some of the differences in
-      IE8 when it is loaded in Internet Explorer.</p>
+    <p>Here is a <a href="ie8/">link to a page</a> which demonstrates some of
+      the differences in IE8 when it is loaded in Internet Explorer.</p>
 
     <p>
       <small><i>Changes last made on <span id="timestamp"></span></i></small>

@@ -86,21 +86,7 @@ $(document).ready(function() {
 
   // Event object
   (function() {
-    var mouseover1 = listener($('#mouseover1'));
-    var mouseover2 = listener($('#mouseover2'));
-    var mouseover3 = listener($('#mouseover3'));
-    var showId;
-
-    mouseover1.jQueryEvent(
-      'mouseover', '#howTo');
-
-    mouseover2.domEventListener(
-      'mouseover', document.getElementById('howTo'));
-
-    mouseover3.domEventHandler(
-      'mouseover', document.getElementById('howTo'));
-
-    showId = function(element, event) {
+    var showId = function(element, event) {
       var target = getTarget(event);
 
       if (target) {
@@ -109,38 +95,28 @@ $(document).ready(function() {
       }
     };
 
-    mouseover1.callback = function(event) {
-      showId(this.getElement(), event);
-    };
+    listener($('#mouseover1')).
+      jQueryEvent('mouseover', '#howTo').
+      callback = function(event) {
+        showId(this.getElement(), event);
+      };
 
-    mouseover2.callback = function(event) {
-      showId(this.getElement(), event);
-    };
+    listener($('#mouseover2')).
+      domEventListener('mouseover', document.getElementById('howTo')).
+      callback = function(event) {
+        showId(this.getElement(), event);
+      };
 
-    mouseover3.callback = function(event) {
-      showId(this.getElement(), event);
-    };
+    listener($('#mouseover3')).
+      domEventHandler('mouseover', document.getElementById('howTo')).
+      callback = function(event) {
+        showId(this.getElement(), event);
+      };
   }());
 
   // Changing default behavior
   (function() {
-    var click4 = listener($('#click4'));
-    var click5 = listener($('#click5'));
-    var click6 = listener($('#click6'));
-    var blockLink;
-    var followLink;
-    var ie;
-
-    click4.jQueryEvent(
-      'click', '#noLinks');
-
-    click5.domEventListener(
-      'click', document.getElementById('noLinks'));
-
-    click6.domEventHandler(
-      'click', document.getElementById('noLinks'));
-
-    blockLink = function(event) {
+    var blockLink = function(event) {
       if (event.preventDefault) {
         event.preventDefault();
       } else {
@@ -148,19 +124,7 @@ $(document).ready(function() {
       }
     };
 
-    click4.callback = function(event) {
-      blockLink(event);
-    };
-
-    click5.callback = function(event) {
-      blockLink(event);
-    };
-
-    click6.callback = function(event) {
-      blockLink(event);
-    };
-
-    followLink = function(event) {
+    var followLink = function(event) {
       if (event.stopPropagation) {
         event.stopPropagation();
       } else {
@@ -168,7 +132,25 @@ $(document).ready(function() {
       }
     };
 
-    ie = document.getElementById('IE');
+    var ie = document.getElementById('IE');
+
+    listener($('#click4')).
+      jQueryEvent('click', '#noLinks').
+      callback = function(event) {
+        blockLink(event);
+      };
+
+    listener($('#click5')).
+      domEventListener('click', document.getElementById('noLinks')).
+      callback = function(event) {
+        blockLink(event);
+      };
+
+    listener($('#click6')).
+      domEventHandler('click', document.getElementById('noLinks')).
+      callback = function(event) {
+        blockLink(event);
+      };
 
     if (ie.addEventListener) {
       ie.addEventListener('click', function(event) {
