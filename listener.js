@@ -81,7 +81,7 @@ var observer = function(element) {
     }
   };
 
-  if (MutationObserver) {
+  if (typeof MutationObserver === 'function') {
     mutationObserver = new MutationObserver(function(mutations) {
       if (!instance.callback(mutations)) {
         fade(element, [false, false, true]);
