@@ -12,6 +12,31 @@
   </head>
   <body>
 
+    <h3>Memoization in Closure</h3>
+    <p>Fibonacci( <input id="fibn" type="text" size=5 maxlength=4></input> ) =
+      <span id="fibans">?</span></p>
+    <p>
+      <textarea class="code" readonly=true cols=41 rows=19>
+  var fibonacci = function() {
+    var cache = [0, 1];
+
+    return function fib(n) {
+      var r;
+
+      if (n >= 0) {
+        r = cache[n];
+
+        if (typeof r !== 'number') {
+          r = fib(n - 1) + fib(n - 2);
+          cache[n] = r;
+        }
+      }
+
+      return r;
+    };
+  }();</textarea>
+    </p>
+
     <h3>Cascade</h3>
     <p>Cascading enables calling many methods on the same object in sequence
       in a single statement.</p>
