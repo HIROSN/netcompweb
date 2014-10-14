@@ -14,10 +14,17 @@
 
     <h3>How to check if a class exists</h3>
     <p>
-      <textarea class="code" readonly=true cols=41 rows=5>
-  if (typeof Class === 'function')
-  {
+      <textarea class="code" readonly=true cols=41 rows=12>
+  if (typeof Class === 'function') {
     var obj = new Class();
+
+    if (obj.hasOwnProperty('property')) {
+      var p = obj.property;
+    }
+
+    if (obj.method) {
+      obj.method();
+    }
   }</textarea>
     </p>
 
