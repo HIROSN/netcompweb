@@ -42,7 +42,10 @@ $(document).ready(function() {
       this.getElement().html(added + ' added<br>' + removed + ' removed');
     };
 
-    catObserver.observe(document.getElementById('cats'));
+    if (!catObserver.observe(document.getElementById('cats')))
+    {
+      $('#ua').text(navigator.userAgent);
+    }
   }());
 
   // Cat Counter

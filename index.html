@@ -12,6 +12,15 @@
   </head>
   <body>
 
+    <h3>How to check if a class exists</h3>
+    <p>
+      <textarea class="code" readonly=true cols=41 rows=5>
+  if (typeof Class === 'function')
+  {
+    var obj = new Class();
+  }</textarea>
+    </p>
+
     <h3>Event listeners and handlers</h3>
     <p>Traditional DOM event handler attachEvent method only works in
       <a href="#ie8">Internet Explorer</a> and Opera. DOM level 2 event
@@ -45,6 +54,7 @@
   });</textarea>
     </p>
     <div id="catObserver" class="listener">Cat<br>observer</div>
+    <div id="ua"></div>
 
     <h3>Closure and Module</h3>
     <p>The function has access to the context in which it was created.

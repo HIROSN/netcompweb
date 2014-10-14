@@ -76,8 +76,11 @@ var observer = function(element) {
 
     observe: function(source) {
       if (mutationObserver) {
-        mutationObserver.observe(source, { childList: true });
+        mutationObserver.observe(source, {childList: true});
+        return true;
       }
+
+      return false;
     }
   };
 
@@ -87,6 +90,9 @@ var observer = function(element) {
         fade(element, [false, false, true]);
       }
     });
+  }
+  else {
+    element.addClass('disabled');
   }
 
   return instance;

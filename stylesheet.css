@@ -27,6 +27,14 @@ input {
   font-size: 12pt;
 }
 
+ul {
+  padding-left: 1.5em;
+}
+
+ol {
+  padding-left: 1.5em;
+}
+
 .cat {
   display: inline-block;
   margin-left: 5px;
