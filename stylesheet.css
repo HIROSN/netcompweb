@@ -19,6 +19,8 @@ textarea.code {
   font-family: Monaco, Consolas;
   font-size: 9pt;
   overflow: auto;
+  color: lightgray;
+  background-color: black;
 }
 
 input {

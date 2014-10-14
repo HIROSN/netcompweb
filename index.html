@@ -22,27 +22,29 @@
     <div id="click2" class="listener clickable">click<br>(DOM Listener)</div>
     <div id="click3" class="listener clickable">onclick<br>(DOM Handler)</div>
 
-    <h3>Objects by reference</h3>
-    <p>Arguments in primitive data types are passed to a function <em>by
-      value</em>. Objects are passed <em>by reference</em>. This is one
-      possible cause of
-      <a href="http://en.wikipedia.org/wiki/Side_effect_(computer_science)"
-        target="_blank">side effects</a>.</p>
+    <h3>Mutation Observers</h3>
+    <p>Mutation observers are designed to wait until a script has finished
+      its task before reacting, then report the changes as a batch.</p>
     <p>
-      <textarea id="bob" class="code" readonly=true cols=41 rows=14>
-  var isBobSmiling = false;
+      <textarea class="code" readonly=true cols=41 rows=17>
+  var observer = new MutationObserver(
+    function(mutations) {
+      mutations.forEach(function(m) {
+        for (var i = 0;
+          i < m.addedNodes.length;
+          i++)
+        {
+          console.log(m.addedNodes[i]);
+        }
+      });
+    }
+  );
 
-  var bob = {
-    smiling: false
-  };
-
-  (function smile(smiling, person) {
-    smiling = true;
-    person.smiling = true;
-  }(isBobSmiling, bob));
-
-> console.log(isBobSmiling, bob);</textarea>
+  observer.observe(element, {
+    childList: true
+  });</textarea>
     </p>
+    <div id="catObserver" class="listener">Cat<br>observer</div>
 
     <h3>Closure and Module</h3>
     <p>The function has access to the context in which it was created.
@@ -82,6 +84,28 @@
     <p>'counter' starts with a lower case letter, which indicates that an instance of this object is created without using the new operator.</p>
     <div id="catButton" class="button">Cat counter</div>
     <div id="dogButton" class="button">Dog counter</div>
+
+    <h3>Objects by reference</h3>
+    <p>Arguments in primitive data types are passed to a function <em>by
+      value</em>. Objects are passed <em>by reference</em>. This is one
+      possible cause of
+      <a href="http://en.wikipedia.org/wiki/Side_effect_(computer_science)"
+        target="_blank">side effects</a>.</p>
+    <p>
+      <textarea id="bob" class="code" readonly=true cols=41 rows=14>
+  var isBobSmiling = false;
+
+  var bob = {
+    smiling: false
+  };
+
+  (function smile(smiling, person) {
+    smiling = true;
+    person.smiling = true;
+  }(isBobSmiling, bob));
+
+> console.log(isBobSmiling, bob);</textarea>
+    </p>
 
     <a id="ie8"/><h3><a href="ie8/">Internet Explorer 8</a></h3>
     <p>Most browsers except IE8 treat whitespace between elements (such as

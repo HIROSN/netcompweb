@@ -26,22 +26,23 @@ $(document).ready(function() {
       'click', document.getElementById('click3'));
   }());
 
-  // Objects by reference
+  // Mutation Observers
   (function() {
-    var log;
-    var isBobSmiling = false;
+    var catObserver = observer($('#catObserver'));
 
-    var bob = {
-      smiling: false
+    catObserver.callback = function(mutations) {
+      var added = 0;
+      var removed = 0;
+
+      mutations.forEach(function(mutation) {
+        added += mutation.addedNodes.length;
+        removed += mutation.removedNodes.length;
+      });
+
+      this.getElement().html(added + ' added<br>' + removed + ' removed');
     };
 
-    (function smile(smiling, person) {
-      smiling = true;
-      person.smiling = true;
-    }(isBobSmiling, bob));
-
-    log = '\n' + isBobSmiling + ' Object {smiling: ' + bob.smiling + '}';
-    $('#bob').text($('#bob').text() + log);
+    catObserver.observe(document.getElementById('cats'));
   }());
 
   // Cat Counter
@@ -168,6 +169,24 @@ $(document).ready(function() {
     dogButton.click(function() {
       dogCounter.increment();
     });
+  }());
+
+  // Objects by reference
+  (function() {
+    var log;
+    var isBobSmiling = false;
+
+    var bob = {
+      smiling: false
+    };
+
+    (function smile(smiling, person) {
+      smiling = true;
+      person.smiling = true;
+    }(isBobSmiling, bob));
+
+    log = '\n' + isBobSmiling + ' Object {smiling: ' + bob.smiling + '}';
+    $('#bob').text($('#bob').text() + log);
   }());
 
 });

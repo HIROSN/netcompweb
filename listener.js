@@ -63,3 +63,31 @@ var listener = function(element) {
 
   return instance;
 };
+
+var observer = function(element) {
+  var mutationObserver;
+
+  var instance = {
+    callback: function(mutations) {},
+
+    getElement: function() {
+      return element;
+    },
+
+    observe: function(source) {
+      if (mutationObserver) {
+        mutationObserver.observe(source, { childList: true });
+      }
+    }
+  };
+
+  if (MutationObserver) {
+    mutationObserver = new MutationObserver(function(mutations) {
+      if (!instance.callback(mutations)) {
+        fade(element, [false, false, true]);
+      }
+    });
+  }
+
+  return instance;
+};
