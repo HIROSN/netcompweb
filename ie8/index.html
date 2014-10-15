@@ -59,6 +59,7 @@
     <p>preventDefault() is used to prevent the default behavior of links
       below. IE8 had an equivalent property called returnValue which can be
       set to false.</p>
+    <p>
       <textarea class="code" readonly=true cols=41 rows=8>
   function(e) {
     if (e.preventDefault) {
@@ -67,6 +68,7 @@
       e.returnValue = false;
     }
   }</textarea>
+    </p>
     <ul id="noLinks">
       <li><a target="_blank"
         href="http://www.google.com/chrome/">Google Chrome</a></li>
@@ -84,6 +86,7 @@
     <div id="click6" class="listener">onclick<br>(DOM Handler)</div>
     <p>stopPropagation() is used to stop an event bubbling up. The equivalent
       in IE8 is the cancelBubble property.</p>
+    <p>
       <textarea class="code" readonly=true cols=41 rows=8>
   function(e) {
     if (e.stopPropagation) {
@@ -92,6 +95,7 @@
       e.cancelBubble = true;
     }
   }</textarea>
+    </p>
 
     <p>
       <small><i>Changes last made on <span id="timestamp"></span></i></small>

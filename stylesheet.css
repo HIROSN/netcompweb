@@ -70,3 +70,18 @@ ol {
   color: lightgray;
   cursor: not-allowed;
 }
+
+#catImages {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#catImages > li {
+  display: inline-block;
+  margin: 1px;
+}
+
+#catImages > li > img {
+  border-radius: 20px;
+  cursor: pointer;
+}
