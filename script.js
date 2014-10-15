@@ -16,30 +16,11 @@ $(document).ready(function() {
 
   // Computed style
   (function() {
-    var resizeCatImages = function() {
-      var list = document.getElementById('catImages');
-      var images = $('#catImages > li > img');
-      var numberOfCats = images.length;
-      var width = parseInt(getComputedStyle(list, null).width);
-      var height;
+    var marginLeft = parseInt(
+      getComputedStyle(document.body, null).marginLeft);
 
-      width -= 2 * numberOfCats;
-      width = Math.floor(width / numberOfCats);
-      height = Math.floor(width * 0.8);
-      images.width(width).height(height);
-    };
-
-    resizeCatImages();
-
-    $(window).on('resize', function() {
-      resizeCatImages();
-    });
-
-    $('#catImages > li > img').click(function(event) {
-      var item = $(event.target).parent();
-      var list = $(item).parent();
-      list.append(item);
-    });
+    $('#marginLeft').text($('#marginLeft').text() +
+      '\n' + marginLeft + 'px');
   }());
 
   // Memoization in Closure
