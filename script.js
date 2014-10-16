@@ -1,9 +1,5 @@
-$(document).ready(function() {
-
-  // Timestamp
-  $('#timestamp').text(document.lastModified);
-
-  // All buttons
+// All buttons
+$(function() {
   $('.button').mouseenter(function() {
     if (!$(this).hasClass('disabled')) {
       $(this).addClass('active');
@@ -13,244 +9,248 @@ $(document).ready(function() {
   $('.button').mouseleave(function() {
     $(this).removeClass('active');
   });
+});
 
-  // Computed style
-  (function() {
-    var marginLeft = parseInt(
-      getComputedStyle(document.body, null).marginLeft);
+// Computed style
+$(function() {
+  var marginLeft = parseInt(
+    getComputedStyle(document.body, null).marginLeft);
 
-    $('#marginLeft').text($('#marginLeft').text() +
-      '\n' + marginLeft + 'px');
-  }());
+  $('#marginLeft').text($('#marginLeft').text() +
+    '\n' + marginLeft + 'px');
+});
 
-  // Memoization in Closure
-  (function() {
-    var fibonacci = function() {
-      var cache = [0, 1];
+// Memoization in Closure
+$(function() {
+  var fibonacci = function() {
+    var cache = [0, 1];
 
-      return function fib(n) {
-        var r;
+    return function fib(n) {
+      var r;
 
-        if (n >= 0) {
-          r = cache[n];
+      if (n >= 0) {
+        r = cache[n];
 
-          if (typeof r !== 'number') {
-            r = fib(n - 1) + fib(n - 2);
-            cache[n] = r;
-          }
+        if (typeof r !== 'number') {
+          r = fib(n - 1) + fib(n - 2);
+          cache[n] = r;
         }
-
-        return r;
-      };
-    }();
-
-    var showAnswer = function(n) {
-      var answer;
-
-      if (typeof n === 'number') {
-        answer = fibonacci(n);
       }
 
-      if (typeof answer !== 'number') {
-        answer = '?';
-      }
-
-      $('#fibans').text(answer);
+      return r;
     };
+  }();
 
-    $('#fibn').on('focus', function() {
-      $(this).val('');
-      showAnswer();
-    });
+  var showAnswer = function(n) {
+    var answer;
 
-    $('#fibn').on('blur', function() {
-      showAnswer(+$(this).val());
-    });
-
-    $('#fibn').on('keyup', function(event) {
-      if (event.which == 13) {
-        showAnswer(+$(this).val());
-        $(this).blur();
-      }
-    });
-  }());
-
-  // Event listeners and handlers
-  (function() {
-    listener($('#click1')).jQueryEvent(
-      'click', '#click1');
-
-    listener($('#click2')).domEventListener(
-      'click', document.getElementById('click2'));
-
-    listener($('#click3')).domEventHandler(
-      'click', document.getElementById('click3'));
-  }());
-
-  // Mutation Observers
-  (function() {
-    var catObserver = observer($('#catObserver'));
-
-    catObserver.callback = function(mutations) {
-      var added = 0;
-      var removed = 0;
-
-      mutations.forEach(function(mutation) {
-        added += mutation.addedNodes.length;
-        removed += mutation.removedNodes.length;
-      });
-
-      this.getElement().html(added + ' added<br>' + removed + ' removed');
-    };
-
-    if (!catObserver.observe(document.getElementById('cats')))
-    {
-      $('#ua').text(navigator.userAgent);
+    if (typeof n === 'number') {
+      answer = fibonacci(n);
     }
-  }());
 
-  // Cat Counter
-  (function() {
-    var startButton;
-    var counterButton;
-    var counter;
-    var catCounter;
+    if (typeof answer !== 'number') {
+      answer = '?';
+    }
 
-    startButton = $('#start');
-    counterButton = $('#counter');
+    $('#fibans').text(answer);
+  };
 
-    /*
-    class Counter {
-    public:
-      Counter(int c, int m, Element e);
-      void increment();
-      int getValue();
-    private:
-      void update();
-    private:
-      int count;
-      int max;
-      Element element;
-    };
+  $('#fibn').on('focus', function() {
+    $(this).val('');
+    showAnswer();
+  });
 
-    Counter counter(5, 10, counterButton);
-    */
-    counter = function(count, max, element) {
-      var instance = {
-        increment: function() {
-          count = ++count % (max + 1);
-          update();
-        },
+  $('#fibn').on('blur', function() {
+    showAnswer(+$(this).val());
+  });
 
-        getValue: function() {
-          return count;
-        }
-      };
+  $('#fibn').on('keyup', function(event) {
+    if (event.which == 13) {
+      showAnswer(+$(this).val());
+      $(this).blur();
+    }
+  });
+});
 
-      var update = function() {
-        element.text(count + ' cats');
-      };
+// Event listeners and handlers
+$(function() {
+  listener($('#click1')).jQueryEvent(
+    'click', '#click1');
 
-      update();
+  listener($('#click2')).domEventListener(
+    'click', document.getElementById('click2'));
 
-      element.click(function(event) {
-        instance.increment();
-      });
+  listener($('#click3')).domEventHandler(
+    'click', document.getElementById('click3'));
+});
 
-      return instance;
-    }(5, 10, counterButton);
+// Mutation Observers
+$(function() {
+  var catObserver = observer($('#catObserver'));
 
-    /*
-    setInterval callback function has access to idTimer for free. Lifetime of
-    idTimer is until it is cleared and even after this function returns.
-    */
-    catCounter = function(maxCats, msec, element) {
-      var count = 0;
-      var idTimer;
+  catObserver.callback = function(mutations) {
+    var added = 0;
+    var removed = 0;
 
-      if (count < maxCats) {
-        idTimer = setInterval(function() {
-          if (count++ < maxCats) {
-            $('#cats').append('<div class="cat"></div>');
-          }
+    mutations.forEach(function(mutation) {
+      added += mutation.addedNodes.length;
+      removed += mutation.removedNodes.length;
+    });
 
-          if (count >= maxCats) {
-            clearInterval(idTimer);
-            element.removeClass('disabled');
-          }
-        }, msec);
+    this.getElement().html(added + ' added<br>' + removed + ' removed');
+  };
 
-        element.removeClass('active');
-        element.addClass('disabled');
+  if (!catObserver.observe(document.getElementById('cats')))
+  {
+    $('#ua').text(navigator.userAgent);
+  }
+});
+
+// Cat Counter
+$(function() {
+  var startButton;
+  var counterButton;
+  var counter;
+  var catCounter;
+
+  startButton = $('#start');
+  counterButton = $('#counter');
+
+  /*
+  class Counter {
+  public:
+    Counter(int c, int m, Element e);
+    void increment();
+    int getValue();
+  private:
+    void update();
+  private:
+    int count;
+    int max;
+    Element element;
+  };
+
+  Counter counter(5, 10, counterButton);
+  */
+  counter = function(count, max, element) {
+    var instance = {
+      increment: function() {
+        count = ++count % (max + 1);
+        update();
+      },
+
+      getValue: function() {
+        return count;
       }
     };
 
-    startButton.click(function() {
-      if (!$(this).hasClass('disabled')) {
-        $('#cats > div').remove();
-        catCounter(counter.getValue(), 2000, $(this));
-        fade($(this), [true, false, false], 1500);
-      }
+    var update = function() {
+      element.text(count + ' cats');
+    };
+
+    update();
+
+    element.click(function(event) {
+      instance.increment();
     });
-  }());
 
-  // Public vs. private
-  (function() {
-    var counter = function(element) {
-      var instance = {
-        // Public property
-        unit: '',
+    return instance;
+  }(5, 10, counterButton);
 
-        // Public method
-        increment: function() {
-          ++count;
-          update();
+  /*
+  setInterval callback function has access to idTimer for free. Lifetime of
+  idTimer is until it is cleared and even after this function returns.
+  */
+  catCounter = function(maxCats, msec, element) {
+    var count = 0;
+    var idTimer;
+
+    if (count < maxCats) {
+      idTimer = setInterval(function() {
+        if (count++ < maxCats) {
+          $('#cats').append('<div class="cat"></div>');
         }
-      };
 
-      // Private property
-      var count = 0;
+        if (count >= maxCats) {
+          clearInterval(idTimer);
+          element.removeClass('disabled');
+        }
+      }, msec);
 
-      // Private method
-      var update = function() {
-        element.text(count + ' ' + instance.unit);
-      };
+      element.removeClass('active');
+      element.addClass('disabled');
+    }
+  };
 
-      return instance;
+  startButton.click(function() {
+    if (!$(this).hasClass('disabled')) {
+      $('#cats > div').remove();
+      catCounter(counter.getValue(), 2000, $(this));
+      fade($(this), [true, false, false], 1500);
+    }
+  });
+});
+
+// Public vs. private
+$(function() {
+  var counter = function(element) {
+    var instance = {
+      // Public property
+      unit: '',
+
+      // Public method
+      increment: function() {
+        ++count;
+        update();
+      }
     };
 
-    var catButton = $('#catButton');
-    var dogButton = $('#dogButton');
-    var catCounter = counter(catButton);
-    var dogCounter = counter(dogButton);
-    catCounter.unit = 'cats';
-    dogCounter.unit = 'dogs';
+    // Private property
+    var count = 0;
 
-    catButton.click(function() {
-      catCounter.increment();
-    });
-
-    dogButton.click(function() {
-      dogCounter.increment();
-    });
-  }());
-
-  // Objects by reference
-  (function() {
-    var log;
-    var isBobSmiling = false;
-
-    var bob = {
-      smiling: false
+    // Private method
+    var update = function() {
+      element.text(count + ' ' + instance.unit);
     };
 
-    (function smile(smiling, person) {
-      smiling = true;
-      person.smiling = true;
-    }(isBobSmiling, bob));
+    return instance;
+  };
 
-    log = '\n' + isBobSmiling + ' Object {smiling: ' + bob.smiling + '}';
-    $('#bob').text($('#bob').text() + log);
-  }());
+  var catButton = $('#catButton');
+  var dogButton = $('#dogButton');
+  var catCounter = counter(catButton);
+  var dogCounter = counter(dogButton);
+  catCounter.unit = 'cats';
+  dogCounter.unit = 'dogs';
 
+  catButton.click(function() {
+    catCounter.increment();
+  });
+
+  dogButton.click(function() {
+    dogCounter.increment();
+  });
+});
+
+// Objects by reference
+$(function() {
+  var log;
+  var isBobSmiling = false;
+
+  var bob = {
+    smiling: false
+  };
+
+  (function smile(smiling, person) {
+    smiling = true;
+    person.smiling = true;
+  }(isBobSmiling, bob));
+
+  log = '\n' + isBobSmiling + ' Object {smiling: ' + bob.smiling + '}';
+  $('#bob').text($('#bob').text() + log);
+});
+
+// Timestamp
+$(function() {
+  $('#timestamp').text(document.lastModified);
 });
