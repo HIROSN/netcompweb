@@ -196,6 +196,7 @@ $(document).ready(function() {
     $('#catImages > li > img').click(function(event) {
       var item = $(event.target).parent();
       var list = $(item).parent();
+      item.detach();
       list.append(item);
     });
   }());
