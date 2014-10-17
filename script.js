@@ -14,7 +14,7 @@ $(function() {
 // DOM element in jQuery object
 $(function() {
   $('#domElem').text($('#domElem').text() +
-    '\n' + $('#jsLinks li').first()[0].innerText);
+    '\n' + $('#jsLinks li').first()[0].textContent);
 });
 
 // Computed style
