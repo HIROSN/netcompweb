@@ -7,12 +7,25 @@
     <link rel="stylesheet" type="text/css" href="listener.css"/>
     <link rel="stylesheet" type="text/css" href="flexbox.css" />
     <link rel="shortcut icon" href="favicon.ico" />
-    <title>Notes on foundations of JavaScript</title>
+    <title>Notes on Foundations of JavaScript</title>
   </head>
   <body>
     <div class="wrapper">
-      <header class="header"></header>
-      <article class="main">
+      <header class="header"><h3>Notes on Foundations of JavaScript</h3></header>
+      <aside class="aside aside-1">
+
+        <h3>Pages</h3>
+        <ul>
+          <li><a target="_self" href=
+            "#article"
+            >Home</a></li>
+          <li><a target="_self" href=
+            "ie8/"
+            >IE8</a></li>
+        </ul>
+
+      </aside>
+      <article class="main"><a id="article"></a>
 
         <h3>Computed style</h3>
         <p>To read the actual property after CSS and styles are applied, the
@@ -206,17 +219,59 @@
           some of the differences in IE8 when it is loaded in Internet
           Explorer.</p>
 
-        <p>
-          <small><i>Changes last made on <span
-            id="timestamp"></span></i></small>
-        </p>
       </article>
-      <aside class="aside aside-1"></aside>
-      <aside class="aside aside-2"></aside>
-      <footer class="footer"></footer>
+      <aside class="aside aside-2">
+
+        <h3>JavaScript links</h3>
+        <ul>
+          <li><a target="_blank" href=
+            "http://eloquentjavascript.net/"
+            >Eloquent JavaScript</a></li>
+          <li><a target="_blank" href=
+            "https://developer.mozilla.org/en-US/docs/web/javascript"
+            >Mozilla Developer Network</a></li>
+          <li><a target="_blank" href=
+            "https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml"
+            >Google JavaScript Style Guide</a></li>
+          <li><a target="_blank" href=
+            "http://jsfiddle.net/"
+            >JS Fiddle</a></li>
+          <li><a target="_blank" href=
+            "http://www.javascriptkit.com/"
+            >JavaScript Kit</a></li>
+          <li><a target="_blank" href=
+            "http://www.scripterlative.com/"
+            >Scripterlative</a></li>
+          <li><a target="_blank" href=
+            "http://www.smashingmagazine.com/2009/02/08/50-extremely-useful-javascript-tools/"
+            >50 Useful JavaScript Tools</a></li>
+        </ul>
+
+        <h3>jQuery links</h3>
+        <ul>
+          <li><a target="_blank" href=
+            "http://code.jquery.com/"
+            >jQuery CDN</a></li>
+          <li><a target="_blank" href=
+            "https://developers.google.com/speed/libraries/devguide"
+            >Google Hosted Libraries</a> (<a target="_blank" href=
+            "https://developers.google.com/speed/libraries/devguide#jquery"
+            >jQuery</a>)</li>
+          <li><a target="_blank" href=
+            "http://api.jquery.com/"
+            >jQuery API</a></li>
+          <li><a target="_blank" href=
+            "http://oscarotero.com/jquery/"
+            >jQuery Quick API Reference</a></li>
+        </ul>
+
+      </aside>
+      <footer class="footer">
+        <p><small>Changes last made on <span id="timestamp"></span></small></p>
+      </footer>
     </div>
     <script
-      src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
+      src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
     </script>
     <script async src="listener.js"></script>
     <script async src="script.js"></script>
