@@ -86,11 +86,11 @@ $(document).ready(function() {
 
   // Event object
   (function() {
-    var showId = function(element, event) {
+    var showId = function($element, event) {
       var target = getTarget(event);
 
       if (target) {
-        element.html(
+        $element.html(
           event.type + '<br>[id: ' + target.id + ']');
       }
     };
@@ -169,8 +169,8 @@ $(document).ready(function() {
   (function() {
     var resizeCatImages = function() {
       var list = document.getElementById('catImages');
-      var images = $('#catImages > li > img');
-      var numberOfCats = images.length;
+      var $images = $('#catImages > li > img');
+      var numberOfCats = $images.length;
       var width;
       var height;
 
@@ -184,7 +184,7 @@ $(document).ready(function() {
       width -= 2 * numberOfCats;
       width = Math.floor(width / numberOfCats);
       height = Math.floor(width * 0.8);
-      images.width(width).height(height);
+      $images.width(width).height(height);
     };
 
     resizeCatImages();
@@ -194,10 +194,10 @@ $(document).ready(function() {
     });
 
     $('#catImages > li > img').click(function(event) {
-      var item = $(event.target).parent();
-      var list = $(item).parent();
-      item.detach();
-      list.append(item);
+      var $item = $(event.target).parent();
+      var $list = $($item).parent();
+      $item.detach();
+      $list.append($item);
     });
   }());
 });

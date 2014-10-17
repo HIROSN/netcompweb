@@ -108,13 +108,13 @@ $(function() {
 
 // Cat Counter
 $(function() {
-  var startButton;
-  var counterButton;
+  var $startButton;
+  var $counterButton;
   var counter;
   var catCounter;
 
-  startButton = $('#start');
-  counterButton = $('#counter');
+  $startButton = $('#start');
+  $counterButton = $('#counter');
 
   /*
   class Counter {
@@ -132,7 +132,7 @@ $(function() {
 
   Counter counter(5, 10, counterButton);
   */
-  counter = function(count, max, element) {
+  counter = function(count, max, $element) {
     var instance = {
       increment: function() {
         count = ++count % (max + 1);
@@ -145,23 +145,23 @@ $(function() {
     };
 
     var update = function() {
-      element.text(count + ' cats');
+      $element.text(count + ' cats');
     };
 
     update();
 
-    element.click(function(event) {
+    $element.click(function(event) {
       instance.increment();
     });
 
     return instance;
-  }(5, 10, counterButton);
+  }(5, 10, $counterButton);
 
   /*
   setInterval callback function has access to idTimer for free. Lifetime of
   idTimer is until it is cleared and even after this function returns.
   */
-  catCounter = function(maxCats, msec, element) {
+  catCounter = function(maxCats, msec, $element) {
     var count = 0;
     var idTimer;
 
@@ -173,16 +173,16 @@ $(function() {
 
         if (count >= maxCats) {
           clearInterval(idTimer);
-          element.removeClass('disabled');
+          $element.removeClass('disabled');
         }
       }, msec);
 
-      element.removeClass('active');
-      element.addClass('disabled');
+      $element.removeClass('active');
+      $element.addClass('disabled');
     }
   };
 
-  startButton.click(function() {
+  $startButton.click(function() {
     if (!$(this).hasClass('disabled')) {
       $('#cats > div').remove();
       catCounter(counter.getValue(), 2000, $(this));
@@ -193,7 +193,7 @@ $(function() {
 
 // Public vs. private
 $(function() {
-  var counter = function(element) {
+  var counter = function($element) {
     var instance = {
       // Public property
       unit: '',
@@ -210,24 +210,24 @@ $(function() {
 
     // Private method
     var update = function() {
-      element.text(count + ' ' + instance.unit);
+      $element.text(count + ' ' + instance.unit);
     };
 
     return instance;
   };
 
-  var catButton = $('#catButton');
-  var dogButton = $('#dogButton');
-  var catCounter = counter(catButton);
-  var dogCounter = counter(dogButton);
+  var $catButton = $('#catButton');
+  var $dogButton = $('#dogButton');
+  var catCounter = counter($catButton);
+  var dogCounter = counter($dogButton);
   catCounter.unit = 'cats';
   dogCounter.unit = 'dogs';
 
-  catButton.click(function() {
+  $catButton.click(function() {
     catCounter.increment();
   });
 
-  dogButton.click(function() {
+  $dogButton.click(function() {
     dogCounter.increment();
   });
 });

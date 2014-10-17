@@ -1,4 +1,4 @@
-var fade = function(element, rgb, msec) {
+var fade = function($element, rgb, msec) {
   var level = 1;
   var step;
   msec = (msec || 400) / 16;
@@ -17,25 +17,25 @@ var fade = function(element, rgb, msec) {
       }
     }
 
-    element.css('background-color', color);
+    $element.css('background-color', color);
 
     if (level++ < 15) {
       setTimeout(step, msec);
     }
     else {
-      element.removeAttr('style');
+      $element.removeAttr('style');
     }
   };
 
   setTimeout(step, msec);
 };
 
-var listener = function(element) {
+var listener = function($element) {
   var instance = {
     callback: function(event) {},
 
     getElement: function() {
-      return element;
+      return $element;
     },
 
     jQueryEvent: function(name, source) {
@@ -60,21 +60,21 @@ var listener = function(element) {
 
   var blink = function(event) {
     if (!instance.callback(event)) {
-      fade(element, [false, false, true]);
+      fade($element, [false, false, true]);
     }
   };
 
   return instance;
 };
 
-var observer = function(element) {
+var observer = function($element) {
   var mutationObserver;
 
   var instance = {
     callback: function(mutations) {},
 
     getElement: function() {
-      return element;
+      return $element;
     },
 
     observe: function(source) {
@@ -90,12 +90,12 @@ var observer = function(element) {
   if (typeof MutationObserver === 'function') {
     mutationObserver = new MutationObserver(function(mutations) {
       if (!instance.callback(mutations)) {
-        fade(element, [false, false, true]);
+        fade($element, [false, false, true]);
       }
     });
   }
   else {
-    element.addClass('disabled');
+    $element.addClass('disabled');
   }
 
   return instance;
