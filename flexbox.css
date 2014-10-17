@@ -29,11 +29,11 @@
   background: #EEEEFF;
 }
 
-@media all and (min-width: 600px) {
+@media all and (min-width: 300px) {
   .aside { flex: 1 auto; }
 }
 
-@media all and (min-width: 800px) {
+@media all and (min-width: 1000px) {
   .main    { flex: 3 0px; }
   .aside-1 { order: 1; }
   .main    { order: 2; }

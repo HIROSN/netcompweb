@@ -11,6 +11,12 @@ $(function() {
   });
 });
 
+// DOM element in jQuery object
+$(function() {
+  $('#domElem').text($('#domElem').text() +
+    '\n' + $('#jsLinks li').first()[0].innerText);
+});
+
 // Computed style
 $(function() {
   var marginLeft = parseInt(

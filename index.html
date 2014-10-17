@@ -15,7 +15,7 @@
       <aside class="aside aside-1">
 
         <h3>Pages</h3>
-        <ul>
+        <ul id="pageList">
           <li><a target="_self" href=
             "#article"
             >Home</a></li>
@@ -27,11 +27,36 @@
       </aside>
       <article class="main"><a id="article"></a>
 
+        <h3>$variables</h3>
+        <p>Convention to prepend variables that hold jQuery objects with a
+          <span class="code">$</span>.</p>
+        <p><span class="code">$lis = $('li');</span></p>
+
+        <h3>DOM element in jQuery object</h3>
+        <p><span class="code">$('#id')[0]</span> returns a reference to the
+          actual DOM element.</p>
+        <p>
+          <textarea id="domElem" class="code" readonly=true cols=41 rows=5>
+  var $obj = $('#jsLinks li').first();
+
+> console.log($obj[0].innerText);</textarea>
+        </p>
+
+        <h3>Differences between remove and detach jQuery methods</h3>
+        <p><span class="code">$(element).remove()</span> removes the matched
+          elements from the DOM completely including events associated with
+          the matched elements.</p>
+        <p><span class="code">$(element).detach()</span> is like <span
+          class="code">remove()</span>, but keeps the stored data and events
+          associated with the matched elements.
+        <p><span class="code">$(element).hide()</span> sets the matched
+          elements' CSS display property to none.
+
         <h3>Computed style</h3>
         <p>To read the actual property after CSS and styles are applied, the
-          DOM level 2 standard describes window.getComputedStyle method. All
-          browsers except <a href="#ie8">IE8</a> and older support this
-          method.</p>
+          DOM level 2 standard describes <span
+          class="code">window.getComputedStyle()</span> method. All browsers
+          except <a href="#ie8">IE8</a> and older support this method.</p>
         <p>
           <textarea id="marginLeft" class="code" readonly=true cols=41 rows=6>
   var cs = getComputedStyle(
@@ -65,9 +90,9 @@
   }();</textarea>
         </p>
 
-        <h3>Cascade</h3>
-        <p>Cascading enables calling many methods on the same object in
-          sequence in a single statement.</p>
+        <h3>Cascade (Chaining)</h3>
+        <p><em>Cascading</em> (or <em>chaining</em>) enables calling many
+          methods on the same object in sequence in a single statement.</p>
         <p>
           <textarea class="code" readonly=true cols=41 rows=6>
   listener($('#mouseover1')).
@@ -78,7 +103,7 @@
         </p>
 
         <h3>How to check if a class exists</h3>
-        <p>if (Class) {} is a reference error.</p>
+        <p><span class="code">if (Class) {}</span> is a reference error.</p>
         <p>
           <textarea class="code" readonly=true cols=41 rows=12>
   if (typeof Class === 'function') {
@@ -95,11 +120,12 @@
         </p>
 
         <h3>Event listeners and handlers</h3>
-        <p>Traditional DOM event handler attachEvent method only works in
+        <p>Traditional DOM event handler <span
+          class="code">attachEvent()</span> method only works in
           <a href="#ie8">Internet Explorer</a> and Opera. DOM level 2 event
-          listener addEventListener method works in Firefox, Google Chrome
-          and Safari (and Opera and <a href="#ie8">Internet Explorer</a>
-          from version 9).</p>
+          listener <span class="code">addEventListener()</span> method works
+          in Firefox, Google Chrome and Safari (and Opera and
+          <a href="#ie8">Internet Explorer</a> from version 9).</p>
         <div id="click1" class="listener
           clickable">click<br>(jQuery)</div>
         <div id="click2" class="listener
@@ -108,8 +134,9 @@
           clickable">onclick<br>(DOM Handler)</div>
 
         <h3>Mutation Observers</h3>
-        <p>Mutation observers are designed to wait until a script has finished
-          its task before reacting, then report the changes as a batch.</p>
+        <p><em>Mutation observers</em> are designed to wait until a script
+          has finished its task before reacting, then report the changes as
+          a batch.</p>
         <p>
           <textarea class="code" readonly=true cols=41 rows=17>
   var observer = new MutationObserver(
@@ -165,11 +192,14 @@
     return instance;
   };</textarea>
         </p>
-        <p>unit and increment() are public property and method.</p>
-        <p>count, element and update() are private properties and method.</p>
-        <p>'counter' starts with a lower case letter, which indicates that
-          an instance of this object is created without using the new
-          operator.</p>
+        <p><span class="code">unit</span> and <span
+          class="code">increment()</span> are public property and method.</p>
+        <p><span class="code">count</span>, <span class="code">element</span>
+          and <span class="code">update()</span> are private properties and
+          method.</p>
+        <p><span class="code">'counter'</span> starts with a lower case
+          letter, which indicates that an instance of this object is created
+          without using the new operator.</p>
         <div id="catButton" class="button">Cat counter</div>
         <div id="dogButton" class="button">Dog counter</div>
 
@@ -198,9 +228,9 @@
         <a id="ie8"></a><h3><a href="ie8/">Internet Explorer 8</a></h3>
         <p>Most browsers except IE8 treat whitespace between elements (such
           as spaces or carriage returns) as a text node.</p>
-        <p>IE8 had a different event model and did not support
-          addEventListener(). Instead, it used a method called
-          attachEvent().</p>
+        <p>IE8 had a different event model and did not support <span
+          class="code">addEventListener()</span>. Instead, it used a method
+          called <span class="code">attachEvent()</span>.</p>
         <p>
           <textarea class="code" readonly=true cols=41 rows=12>
   if (el.addEventListener) {
@@ -215,7 +245,7 @@
       });
   }</textarea>
         </p>
-        <p>Here is a <a href="ie8/">link to a page</a> which demonstrates
+        <p>Here is <a href="ie8/">a link to a page</a> which demonstrates
           some of the differences in IE8 when it is loaded in Internet
           Explorer.</p>
 
@@ -223,7 +253,7 @@
       <aside class="aside aside-2">
 
         <h3>JavaScript links</h3>
-        <ul>
+        <ul id="jsLinks">
           <li><a target="_blank" href=
             "http://eloquentjavascript.net/"
             >Eloquent JavaScript</a></li>
@@ -248,7 +278,7 @@
         </ul>
 
         <h3>jQuery links</h3>
-        <ul>
+        <ul id="jQLinks">
           <li><a target="_blank" href=
             "http://code.jquery.com/"
             >jQuery CDN</a></li>
