@@ -193,10 +193,10 @@ $(document).ready(function() {
       resizeCatImages();
     });
 
-    $('#catImages > li > img').click(function(event) {
+    $('#catImages').click(function(event) {
       var $item = $(event.target).parent();
       var $list = $($item).parent();
-      $item.detach();
+      $item.remove();
       $list.append($item);
     });
   }());
