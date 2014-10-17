@@ -1,32 +1,37 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
     <link rel="stylesheet" type="text/css" href="listener.css"/>
+    <link rel="stylesheet" type="text/css" href="flexbox.css" />
     <link rel="shortcut icon" href="favicon.ico" />
     <title>Notes on foundations of JavaScript</title>
   </head>
   <body>
+    <div class="wrapper">
+      <header class="header"></header>
+      <article class="main">
 
-    <h3>Computed style</h3>
-    <p>To read the actual property after CSS and styles are applied, the DOM
-      level 2 standard describes window.getComputedStyle method. All browsers
-      except <a href="#ie8">IE8</a> and older support this method.</p>
-    <p>
-      <textarea id="marginLeft" class="code" readonly=true cols=41 rows=6>
+        <h3>Computed style</h3>
+        <p>To read the actual property after CSS and styles are applied, the
+          DOM level 2 standard describes window.getComputedStyle method. All
+          browsers except <a href="#ie8">IE8</a> and older support this
+          method.</p>
+        <p>
+          <textarea id="marginLeft" class="code" readonly=true cols=41 rows=6>
   var cs = getComputedStyle(
     document.body, null);
 
 > console.log(cs.marginLeft);</textarea>
-    </p>
+        </p>
 
-    <h3>Memoization in Closure</h3>
-    <p>Fibonacci( <input id="fibn" type="text" size=5 maxlength=4> ) =
-      <span id="fibans">?</span></p>
-    <p>
-      <textarea class="code" readonly=true cols=41 rows=19>
+        <h3>Memoization in Closure</h3>
+        <p>Fibonacci( <input id="fibn" type="text" size=5 maxlength=4> ) =
+          <span id="fibans">?</span></p>
+        <p>
+          <textarea class="code" readonly=true cols=41 rows=19>
   var fibonacci = function() {
     var cache = [0, 1];
 
@@ -45,24 +50,24 @@
       return r;
     };
   }();</textarea>
-    </p>
+        </p>
 
-    <h3>Cascade</h3>
-    <p>Cascading enables calling many methods on the same object in sequence
-      in a single statement.</p>
-    <p>
-      <textarea class="code" readonly=true cols=41 rows=6>
+        <h3>Cascade</h3>
+        <p>Cascading enables calling many methods on the same object in
+          sequence in a single statement.</p>
+        <p>
+          <textarea class="code" readonly=true cols=41 rows=6>
   listener($('#mouseover1')).
     jQueryEvent('mouseover', '#howTo').
     callback = function(event) {
       showId(this.getElement(), event);
     };</textarea>
-    </p>
+        </p>
 
-    <h3>How to check if a class exists</h3>
-    <p>if (Class) {} is a reference error.</p>
-    <p>
-      <textarea class="code" readonly=true cols=41 rows=12>
+        <h3>How to check if a class exists</h3>
+        <p>if (Class) {} is a reference error.</p>
+        <p>
+          <textarea class="code" readonly=true cols=41 rows=12>
   if (typeof Class === 'function') {
     var obj = new Class();
 
@@ -74,23 +79,26 @@
       obj.method();
     }
   }</textarea>
-    </p>
+        </p>
 
-    <h3>Event listeners and handlers</h3>
-    <p>Traditional DOM event handler attachEvent method only works in
-      <a href="#ie8">Internet Explorer</a> and Opera. DOM level 2 event
-      listener addEventListener method works in Firefox, Google Chrome
-      and Safari (and Opera and <a href="#ie8">Internet Explorer</a>
-      from version 9).</p>
-    <div id="click1" class="listener clickable">click<br>(jQuery)</div>
-    <div id="click2" class="listener clickable">click<br>(DOM Listener)</div>
-    <div id="click3" class="listener clickable">onclick<br>(DOM Handler)</div>
+        <h3>Event listeners and handlers</h3>
+        <p>Traditional DOM event handler attachEvent method only works in
+          <a href="#ie8">Internet Explorer</a> and Opera. DOM level 2 event
+          listener addEventListener method works in Firefox, Google Chrome
+          and Safari (and Opera and <a href="#ie8">Internet Explorer</a>
+          from version 9).</p>
+        <div id="click1" class="listener
+          clickable">click<br>(jQuery)</div>
+        <div id="click2" class="listener
+          clickable">click<br>(DOM Listener)</div>
+        <div id="click3" class="listener
+          clickable">onclick<br>(DOM Handler)</div>
 
-    <h3>Mutation Observers</h3>
-    <p>Mutation observers are designed to wait until a script has finished
-      its task before reacting, then report the changes as a batch.</p>
-    <p>
-      <textarea class="code" readonly=true cols=41 rows=17>
+        <h3>Mutation Observers</h3>
+        <p>Mutation observers are designed to wait until a script has finished
+          its task before reacting, then report the changes as a batch.</p>
+        <p>
+          <textarea class="code" readonly=true cols=41 rows=17>
   var observer = new MutationObserver(
     function(mutations) {
       mutations.forEach(function(m) {
@@ -107,23 +115,23 @@
   observer.observe(element, {
     childList: true
   });</textarea>
-    </p>
-    <div id="catObserver" class="listener">Cat<br>observer</div>
-    <div id="ua"></div>
+        </p>
+        <div id="catObserver" class="listener">Cat<br>observer</div>
+        <div id="ua"></div>
 
-    <h3>Closure and Module</h3>
-    <p>The function has access to the context in which it was created.
-      This is called <em>closure</em>.</p>
-    <p>Functions and closure can make modules. A <em>module</em> is a function
-      or object that presents an interface but that hides its state and
-      implementation.</p>
-    <div id="start" class="button">Count</div>
-    <div id="counter" class="button"></div>
-    <div id="cats"></div>
+        <h3>Closure and Module</h3>
+        <p>The function has access to the context in which it was created.
+          This is called <em>closure</em>.</p>
+        <p>Functions and closure can make modules. A <em>module</em> is a
+          function or object that presents an interface but that hides its
+          state and implementation.</p>
+        <div id="start" class="button">Count</div>
+        <div id="counter" class="button"></div>
+        <div id="cats"></div>
 
-    <h3>Public and private members</h3>
-    <p>
-      <textarea class="code" readonly=true cols=41 rows=20>
+        <h3>Public and private members</h3>
+        <p>
+          <textarea class="code" readonly=true cols=41 rows=20>
   var counter = function(element) {
     var instance = {
       unit: '',
@@ -143,21 +151,23 @@
 
     return instance;
   };</textarea>
-    </p>
-    <p>unit and increment() are public property and method.</p>
-    <p>count, element and update() are private properties and method.</p>
-    <p>'counter' starts with a lower case letter, which indicates that an instance of this object is created without using the new operator.</p>
-    <div id="catButton" class="button">Cat counter</div>
-    <div id="dogButton" class="button">Dog counter</div>
+        </p>
+        <p>unit and increment() are public property and method.</p>
+        <p>count, element and update() are private properties and method.</p>
+        <p>'counter' starts with a lower case letter, which indicates that
+          an instance of this object is created without using the new
+          operator.</p>
+        <div id="catButton" class="button">Cat counter</div>
+        <div id="dogButton" class="button">Dog counter</div>
 
-    <h3>Objects by reference</h3>
-    <p>Arguments in primitive data types are passed to a function <em>by
-      value</em>. Objects are passed <em>by reference</em>. This is one
-      possible cause of
-      <a href="http://en.wikipedia.org/wiki/Side_effect_(computer_science)"
-        target="_blank">side effects</a>.</p>
-    <p>
-      <textarea id="bob" class="code" readonly=true cols=41 rows=14>
+        <h3>Objects by reference</h3>
+        <p>Arguments in primitive data types are passed to a function
+          <em>by value</em>. Objects are passed <em>by reference</em>.
+          This is one possible cause of <a
+          href="http://en.wikipedia.org/wiki/Side_effect_(computer_science)"
+          target="_blank">side effects</a>.</p>
+        <p>
+          <textarea id="bob" class="code" readonly=true cols=41 rows=14>
   var isBobSmiling = false;
 
   var bob = {
@@ -170,15 +180,16 @@
   }(isBobSmiling, bob));
 
 > console.log(isBobSmiling, bob);</textarea>
-    </p>
+        </p>
 
-    <a id="ie8"></a><h3><a href="ie8/">Internet Explorer 8</a></h3>
-    <p>Most browsers except IE8 treat whitespace between elements (such as
-      spaces or carriage returns) as a text node.</p>
-    <p>IE8 had a different event model and did not support addEventListener().
-      Instead, it used a method called attachEvent().</p>
-    <p>
-      <textarea class="code" readonly=true cols=41 rows=12>
+        <a id="ie8"></a><h3><a href="ie8/">Internet Explorer 8</a></h3>
+        <p>Most browsers except IE8 treat whitespace between elements (such
+          as spaces or carriage returns) as a text node.</p>
+        <p>IE8 had a different event model and did not support
+          addEventListener(). Instead, it used a method called
+          attachEvent().</p>
+        <p>
+          <textarea class="code" readonly=true cols=41 rows=12>
   if (el.addEventListener) {
     el.addEventListener('blur',
       function() {
@@ -190,15 +201,23 @@
         handleThisEvent();
       });
   }</textarea>
-    </p>
-    <p>Here is a <a href="ie8/">link to a page</a> which demonstrates some of
-      the differences in IE8 when it is loaded in Internet Explorer.</p>
+        </p>
+        <p>Here is a <a href="ie8/">link to a page</a> which demonstrates
+          some of the differences in IE8 when it is loaded in Internet
+          Explorer.</p>
 
-    <p>
-      <small><i>Changes last made on <span id="timestamp"></span></i></small>
-    </p>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <p>
+          <small><i>Changes last made on <span
+            id="timestamp"></span></i></small>
+        </p>
+      </article>
+      <aside class="aside aside-1"></aside>
+      <aside class="aside aside-2"></aside>
+      <footer class="footer"></footer>
+    </div>
+    <script
+      src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
+    </script>
     <script async src="listener.js"></script>
     <script async src="script.js"></script>
   </body>
