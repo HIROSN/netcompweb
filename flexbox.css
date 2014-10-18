@@ -1,11 +1,16 @@
 ﻿.wrapper {
   display: flex;
   flex-flow: row wrap;
+
+  display: -webkit-flex;
+  -webkit-flex-flow: row wrap;
 }
 
 .wrapper > * {
   padding: 10px;
   flex: 1 100%;
+
+  -webkit-flex: 1 100%;
 }
 
 .header {
@@ -30,13 +35,37 @@
 }
 
 @media all and (min-width: 300px) {
-  .aside { flex: 1 auto; }
+  .aside {
+    flex: 1 auto;
+
+    -webkit-flex: 1 auto;
+  }
 }
 
 @media all and (min-width: 1000px) {
-  .main    { flex: 3 0px; }
-  .aside-1 { order: 1; }
-  .main    { order: 2; }
-  .aside-2 { order: 3; }
-  .footer  { order: 4; }
+  .aside-1 {
+    order: 1;
+
+    -webkit-order: 1;
+  }
+
+  .main {
+    order: 2;
+    flex: 3 0px;
+
+    -webkit-order: 2;
+    -webkit-flex: 3 0px;
+  }
+
+  .aside-2 {
+    order: 3;
+
+    -webkit-order: 3;
+  }
+
+  .footer {
+    order: 4;
+
+    -webkit-order: 4;
+  }
 }
