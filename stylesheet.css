@@ -6,6 +6,16 @@ em {
   font-weight: bold;
 }
 
+strong {
+  font-weight: bold;
+  text-decoration: none
+}
+
+sup {
+  font-size: 6pt;
+  text-decoration: none
+}
+
 a {
   text-decoration: none;
   color: black;
@@ -41,6 +51,23 @@ ul {
 
 ol {
   padding-left: 1.5em;
+}
+
+td {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+td.data {
+  background: #DDDDDD;
+}
+
+td.default {
+  background: #DDDDFF;
+}
+
+td.head {
+  background: #CCCC99;
 }
 
 .cat {
