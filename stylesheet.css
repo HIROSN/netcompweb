@@ -93,3 +93,92 @@ ol {
   border-radius: 20px;
   cursor: pointer;
 }
+
+.listener {
+  display: inline-block;
+  margin-left: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 2.5em;
+  width: 120px;
+  border: solid 1px darkgray;
+  text-align: center;
+  padding-top: 0.5em;
+}
+
+.clickable {
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.wrapper {
+  display: -webkit-flex;
+  -webkit-flex-flow: row wrap;
+
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.wrapper > * {
+  -webkit-flex: 1 100%;
+
+  padding: 10px;
+  flex: 1 100%;
+}
+
+.header {
+  background: #FFEEEE;
+}
+
+.aside-1 {
+  background: #EEFFEE;
+}
+
+.main {
+  text-align: left;
+  background: #EEFFFF;
+}
+
+.aside-2 {
+  background: #FFFFEE;
+}
+
+.footer {
+  background: #EEEEFF;
+}
+
+@media all and (min-width: 300px) {
+  .aside {
+    -webkit-flex: 1 auto;
+
+    flex: 1 auto;
+  }
+}
+
+@media all and (min-width: 1000px) {
+  .aside-1 {
+    -webkit-order: 1;
+
+    order: 1;
+  }
+
+  .main {
+    -webkit-order: 2;
+    -webkit-flex: 3 0px;
+
+    order: 2;
+    flex: 3 0px;
+  }
+
+  .aside-2 {
+    -webkit-order: 3;
+
+    order: 3;
+  }
+
+  .footer {
+    -webkit-order: 4;
+
+    order: 4;
+  }
+}
