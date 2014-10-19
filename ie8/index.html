@@ -9,10 +9,15 @@
     <link rel="shortcut icon" href="../favicon.ico" />
     <title>Internet Explorer 8</title>
   </head>
-  <body class="main">
+  <body>
+    <table border="0" cellspacing="0">
+    <tr><td colspan="2" class="fakewrapper header" width="100%">
+      <h3>Internet Explorer 8</h3>
+    </td></tr>
+    <tr><td class="fakewrapper main" width="60%">
 
     <div id="page">
-      <h2>Buy groceries</h2>
+      <h3>Whitespace nodes in children of ul element</h3>
       <ul id="list">
         <li class="grocery hot"><em>fresh</em> figs</li>
         <li class="grocery hot">pine nuts</li>
@@ -20,7 +25,6 @@
         <li class="grocery">balsamic vinegar</li>
       </ul>
       <hr>
-      <h3>Whitespace nodes in children of ul element</h3>
       <div id="nodes"></div>
     </div>
 
@@ -108,10 +112,13 @@
       its value.</p>
     <ul id="catImages"><li><img src="http://media-cache-ec0.pinimg.com/236x/e3/d4/28/e3d4287e18b7405ed3c0c6357457e9d3.jpg"></li><li><img src="http://lovemeow.com/wp-content/uploads/2011/06/kitten102.jpg"></li><li><img src="http://adesignstory.com/wp-content/uploads/2010/05/Kitten1.jpg"></li><li><img src="http://www.catpichub.com/wp-content/uploads/2014/08/cute-cat-wallpaper-14001050-53f173c8980de-500x500.png"></li></ul>
 
-    <p>
-      <small>Changes last made on <span id="timestamp"></span></small>
-    </p>
-
+    </td><td class="fakewrapper aside-2"></td></tr>
+    <tr><td colspan="2" class="fakewrapper footer" width="100%">
+      <p>
+        <small>Changes last made on <span id="timestamp"></span></small>
+      </p>
+    </td></tr>
+    </table>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="../listener.js"></script>
     <script async src="script.js"></script>

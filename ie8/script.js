@@ -181,7 +181,7 @@ $(document).ready(function() {
         width = list.clientWidth;
       }
 
-      width -= 2 * numberOfCats;
+      width -= 2 * numberOfCats + 1;
       width = Math.floor(width / numberOfCats);
       height = Math.floor(width * 0.8);
       $images.width(width).height(height);
