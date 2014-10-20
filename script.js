@@ -16,6 +16,8 @@ $(function() {
   var MOVE_LENGTH = 50;
   var MOVE_TIME = 300;
   var DIRECTIONS = ['up', 'down', 'left', 'right'];
+  var PRELOADIMAGES = ['right', 'right-up', 'right-down', 'left', 'left-up',
+    'left-down', 'win'];
 
   var $mouse = $('#mouse');
   var $floor = $('#floor');
@@ -25,25 +27,47 @@ $(function() {
   var yMax = $floor.height() - $mouse.height();
   var idTimer = null;
   var leftOrRight = 'right';
+  var imageName = leftOrRight;
   var scared = 1;
 
   var boundValue = function(value, max) {
     return value < 0 ? 0 : value > max ? max : value;
-  }
+  };
 
   var randomDirection = function() {
     return DIRECTIONS[Math.floor(Math.random() * DIRECTIONS.length)];
-  }
+  };
 
   var current = function(positionProperty) {
     return parseInt($mouse.css(positionProperty));
-  }
+  };
 
   var layoutChange = function() {
     $floor.css('height', $(window).height() / 2);
     xMax = $floor.width() - $mouse.width();
     yMax = $floor.height() - $mouse.height();
-  }
+  };
+
+  var preloadImages = function() {
+    var $preload = $('#mouse-preload');
+    var i;
+
+    if ($preload.children().length === 0) {
+      for (i = 0; i < PRELOADIMAGES.length; i++) {
+        $preload.append($('<div class="mouse-preload mouse-' +
+          PRELOADIMAGES[i] + '"></div>'));
+      }
+    }
+  };
+
+  var setImage = function(newName, oldName) {
+    if (oldName) {
+      $mouse.removeClass('mouse-' + oldName);
+    }
+
+    $mouse.addClass('mouse-' + newName);
+    imageName = newName;
+  };
 
   var scamper = function() {
     var top = current('top');
@@ -78,7 +102,7 @@ $(function() {
       newLeft = boundValue(newLeft, xMax);
     }
 
-    $mouse.css('background-image', 'url("' + direction + '.gif")');
+    setImage(direction, imageName);
     scared = 1;
 
     if (newTop !== top) {
@@ -92,11 +116,13 @@ $(function() {
 
   $mouse.css('top', 0);
   $mouse.css('left', 0);
+  setImage(imageName);
 
   $playButton.click(function() {
     if (!idTimer) {
       layoutChange();
       $playButton.addClass('disabled');
+      preloadImages();
       idTimer = setInterval(scamper, MOVE_TIME + 10);
     }
   });
@@ -105,9 +131,14 @@ $(function() {
     if (idTimer) {
       clearInterval(idTimer);
       idTimer = null;
-      $mouse.css('background-image', 'url("win.gif")');
+      leftOrRight = 'right';
+      setImage('win', imageName);
       $playButton.removeClass('disabled');
       event.stopPropagation();
+    }
+    else {
+      leftOrRight = current('left') > xMax / 2 ? 'left' : 'right';
+      setImage(leftOrRight, imageName);
     }
   });
 
@@ -115,7 +146,7 @@ $(function() {
     if (idTimer) {
       scared = 10;
     }
-  })
+  });
 
   $(window).on('resize', function() {
     if (idTimer) {
@@ -219,8 +250,7 @@ $(function() {
     this.getElement().html(added + ' added<br>' + removed + ' removed');
   };
 
-  if (!catObserver.observe(document.getElementById('cats')))
-  {
+  if (!catObserver.observe(document.getElementById('cats'))) {
     $('#ua').text(navigator.userAgent);
   }
 });

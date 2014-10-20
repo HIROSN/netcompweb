@@ -220,5 +220,38 @@ td.head {
   height: 50px;
   width: 50px;
   position: relative;
+}
+
+.mouse-right {
   background-image: url("right.gif");
+}
+
+.mouse-right-up {
+  background-image: url("right-up.gif");
+}
+
+.mouse-right-down {
+  background-image: url("right-down.gif");
+}
+
+.mouse-left {
+  background-image: url("left.gif");
+}
+
+.mouse-left-up {
+  background-image: url("left-up.gif");
+}
+
+.mouse-left-down {
+  background-image: url("left-down.gif");
+}
+
+.mouse-win {
+  background-image: url("win.gif");
+}
+
+.mouse-preload {
+  height: 1px;
+  width: 1px;
+  display: inline-block;
 }
