@@ -18,12 +18,26 @@
             "#article"
             >Home</a></li>
           <li><a target="_self" href=
+            "#aside-2"
+            >Links</a></li>
+          <li><a target="_self" href=
             "ie8/"
             >IE8</a></li>
         </ul>
 
       </aside>
       <article class="main"><a id="article"></a>
+
+        <h3>Window height and document height</h3>
+        <p><span class="code">$(window).height()</span> returns the height
+          of the browser window viewport. <span
+          class="code">$(document).height()</span> returns the height of
+          the document including contents not visible outside of the window
+          viewport.</p>
+        <div id="floor">
+          <div id="mouse"></div>
+        </div>
+        <div id="play" class="button">Play</div>
 
         <h3>Browser developer tools</h3>
         <p>⌥⌘I (as in <u>I</u>nspect Element?) is a useful keyboard shortcut
@@ -283,7 +297,7 @@
           Explorer.</p>
 
       </article>
-      <aside class="aside aside-2">
+      <aside class="aside aside-2"><a id="aside-2"></a>
 
         <h3>JavaScript links</h3>
         <ul id="jsLinks">

@@ -210,3 +210,15 @@ td.head {
     order: 4;
   }
 }
+
+#floor {
+  background-color: #eee;
+  background-image: url("wood.gif");
+}
+
+#mouse {
+  height: 50px;
+  width: 50px;
+  position: relative;
+  background-image: url("right.gif");
+}

@@ -11,6 +11,119 @@ $(function() {
   });
 });
 
+// Window height and document height
+$(function() {
+  var MOVE_LENGTH = 50;
+  var MOVE_TIME = 300;
+  var DIRECTIONS = ['up', 'down', 'left', 'right'];
+
+  var $mouse = $('#mouse');
+  var $floor = $('#floor');
+  var $playButton = $('#play');
+
+  var xMax = $floor.width() - $mouse.width();
+  var yMax = $floor.height() - $mouse.height();
+  var idTimer = null;
+  var leftOrRight = 'right';
+  var scared = 1;
+
+  var boundValue = function(value, max) {
+    return value < 0 ? 0 : value > max ? max : value;
+  }
+
+  var randomDirection = function() {
+    return DIRECTIONS[Math.floor(Math.random() * DIRECTIONS.length)];
+  }
+
+  var current = function(positionProperty) {
+    return parseInt($mouse.css(positionProperty));
+  }
+
+  var layoutChange = function() {
+    $floor.css('height', $(window).height() / 2);
+    xMax = $floor.width() - $mouse.width();
+    yMax = $floor.height() - $mouse.height();
+  }
+
+  var scamper = function() {
+    var top = current('top');
+    var left = current('left');
+    var newTop = top;
+    var newLeft = left;
+    var direction;
+
+    while (newTop === top && newLeft === left) {
+      direction = randomDirection();
+
+      switch (direction) {
+        case 'up':
+          newTop  -= MOVE_LENGTH * scared;
+          direction = leftOrRight + '-' + direction;
+          break;
+        case 'down':
+          newTop  += MOVE_LENGTH * scared;
+          direction = leftOrRight + '-' + direction;
+          break;
+        case 'left':
+          newLeft -= MOVE_LENGTH * scared;
+          leftOrRight = direction;
+          break;
+        case 'right':
+          newLeft += MOVE_LENGTH * scared;
+          leftOrRight = direction;
+          break;
+      }
+
+      newTop = boundValue(newTop, yMax);
+      newLeft = boundValue(newLeft, xMax);
+    }
+
+    $mouse.css('background-image', 'url("' + direction + '.gif")');
+    scared = 1;
+
+    if (newTop !== top) {
+      $mouse.animate({top: newTop}, MOVE_TIME);
+    }
+
+    if (newLeft !== left) {
+      $mouse.animate({left: newLeft}, MOVE_TIME);
+    }
+  };
+
+  $mouse.css('top', 0);
+  $mouse.css('left', 0);
+
+  $playButton.click(function() {
+    if (!idTimer) {
+      layoutChange();
+      $playButton.addClass('disabled');
+      idTimer = setInterval(scamper, MOVE_TIME + 10);
+    }
+  });
+
+  $mouse.click(function(event) {
+    if (idTimer) {
+      clearInterval(idTimer);
+      idTimer = null;
+      $mouse.css('background-image', 'url("win.gif")');
+      $playButton.removeClass('disabled');
+      event.stopPropagation();
+    }
+  });
+
+  $floor.click(function() {
+    if (idTimer) {
+      scared = 10;
+    }
+  })
+
+  $(window).on('resize', function() {
+    if (idTimer) {
+      layoutChange();
+    }
+  });
+});
+
 // DOM element in jQuery object
 $(function() {
   $('#domElem').text($('#domElem').text() +
