@@ -66,6 +66,18 @@
         <div id="play" class="button">Play</div><span
           id="mouse-preload"></span>
 
+        <h3>Hit testing</h3>
+        <p>Hit testing in document coordinates works better than in element
+          (the wood floor in this case) coordinates. Click events on the
+          floor above are handled using <span class="code">event.pageX</span>
+          | <span class="code">pageY</span>, hit tested against the mouse
+          element location <span class="code">$(element).offset().left</span>
+          | <span class="code">top</span> or <span
+          class="code">element.offsetLeft</span> | <span
+          class="code">offsetTop</span>. Event offsets <span
+          class="code">event.offsetX</span> | <span
+          class="code">offsetY</span> returned undefined in Firefox 33.</p>
+
         <h3>Browser developer tools</h3>
         <p>⌥⌘I (as in <u>I</u>nspect Element?) is a useful keyboard shortcut
           to remember. It is option + command + I (or Ctrl + Shift + I on
