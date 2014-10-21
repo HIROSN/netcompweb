@@ -11,6 +11,12 @@ $(function() {
   });
 });
 
+// No touch feedback / text selection
+$(function() {
+  $('.button').addClass('notouch').addClass('noselect');
+  $('textarea.code').addClass('notouch');
+});
+
 // Window height and document height
 $(function() {
   var MOVE_LENGTH = 50;
@@ -142,9 +148,19 @@ $(function() {
     }
   });
 
-  $floor.click(function() {
+  $floor.click(function(event) {
+    var offset;
+    var x;
+    var y;
+
     if (idTimer) {
-      scared = 10;
+      offset = $mouse.offset();
+      x = Math.abs(offset.left + current('width') / 2 - event.pageX);
+      y = Math.abs(offset.top + current('height') / 2 - event.pageY);
+
+      if (x < MOVE_LENGTH * 2 && y < MOVE_LENGTH * 2) {
+        scared = 10;
+      }
     }
   });
 

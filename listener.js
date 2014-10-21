@@ -64,6 +64,8 @@ var listener = function($element) {
     }
   };
 
+  $element.addClass('notouch').addClass('noselect');
+
   return instance;
 };
 
@@ -97,6 +99,8 @@ var observer = function($element) {
   else {
     $element.addClass('disabled');
   }
+
+  $element.addClass('notouch').addClass('noselect');
 
   return instance;
 };

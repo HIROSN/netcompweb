@@ -139,6 +139,21 @@ td.head {
   border-radius: 5px;
 }
 
+.notouch {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  -ms-touch-action: none;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .wrapper {
   display: -webkit-flex;
   -webkit-flex-flow: row wrap;
