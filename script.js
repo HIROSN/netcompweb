@@ -60,8 +60,9 @@ $(function() {
 
     if ($preload.children().length === 0) {
       for (i = 0; i < PRELOADIMAGES.length; i++) {
-        $preload.append($('<div class="mouse-preload mouse-' +
-          PRELOADIMAGES[i] + '"></div>'));
+        $preload.append($('<div></div>', {
+          class: 'mouse-preload mouse-' + PRELOADIMAGES[i]
+        }));
       }
     }
   };
@@ -333,7 +334,9 @@ $(function() {
     if (count < maxCats) {
       idTimer = setInterval(function() {
         if (count++ < maxCats) {
-          $('#cats').append('<div class="cat"></div>');
+          $('#cats').append($('<div></div>', {
+            class: 'cat'
+          }));
         }
 
         if (count >= maxCats) {
