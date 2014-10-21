@@ -75,13 +75,9 @@ $(document).ready(function() {
     }
   });
 
-  $('#list').click(function(event) {
-    var target = getTarget(event);
-
-    if (target.tagName === 'LI') {
-      target.parentNode.removeChild(target);
-      showNodes();
-    }
+  $('#list').on('click', 'li', function(event) {
+    $(this).remove();
+    showNodes();
   });
 
   // Event object
@@ -193,11 +189,9 @@ $(document).ready(function() {
       resizeCatImages();
     });
 
-    $('#catImages').click(function(event) {
-      var $item = $(event.target).parent();
-      var $list = $($item).parent();
-      $item.remove();
-      $list.append($item);
+    $('#catImages').on('click', 'li', function(event) {
+      var $li = $(this);
+      $li.appendTo($li.parent());
     });
   }());
 });
