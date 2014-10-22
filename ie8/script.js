@@ -69,15 +69,23 @@ $(document).ready(function() {
       $(this).val('');
 
       if (grocery) {
-        $('#list').append('<li class="grocery">' + grocery + '</li>');
-        showNodes();
+        $('<li class="grocery">' + grocery + '</li>').
+          hide().
+          appendTo($('#list')).
+          slideDown('fast', function() {
+            showNodes();
+          });
       }
     }
   });
 
   $('#list').on('click', 'li', function(event) {
-    $(this).remove();
-    showNodes();
+    var $this = $(this);
+
+    $this.slideUp('fast', function() {
+      $this.remove();
+      showNodes();
+    });
   });
 
   // Event object
@@ -191,7 +199,11 @@ $(document).ready(function() {
 
     $('#catImages').on('click', 'li', function(event) {
       var $li = $(this);
-      $li.appendTo($li.parent());
+
+      $li.fadeOut('fast', function() {
+        $li.appendTo($li.parent()).
+          fadeIn('fast');
+      });
     });
   }());
 });
