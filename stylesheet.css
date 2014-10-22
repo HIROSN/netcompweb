@@ -82,6 +82,7 @@ td.head {
   border: solid 1px lightgray;
   background: url('http://www.catpichub.com/wp-content/uploads/2014/08/cute-cat-wallpaper-14001050-53f173c8980de-500x500.png');
   background-size: 5em 5em;
+  opacity: 0;
 }
 
 .button {
