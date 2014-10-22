@@ -49,9 +49,10 @@ $(function() {
   };
 
   var layoutChange = function() {
-    $floor.animate({height: $(window).height() / 2});
-    xMax = $floor.width() - $mouse.width();
-    yMax = $floor.height() - $mouse.height();
+    $floor.animate({height: $(window).height() / 2}, function() {
+      xMax = $floor.width() - $mouse.width();
+      yMax = $floor.height() - $mouse.height();
+    });
   };
 
   var preloadImages = function() {
