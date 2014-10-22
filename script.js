@@ -368,16 +368,18 @@ $(function() {
 // Public vs. private
 $(function() {
   var counter = function($element) {
-    var instance = {
+    function Counter() {
       // Public property
-      unit: '',
+      this.unit = '';
+    }
 
       // Public method
-      increment: function() {
-        ++count;
-        update();
-      }
+    Counter.prototype.increment = function() {
+      ++count;
+      update();
     };
+
+    var instance = new Counter();
 
     // Private property
     var count = 0;

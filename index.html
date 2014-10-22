@@ -190,7 +190,9 @@
         </p>
 
         <h3>How to check if a class exists</h3>
-        <p><span class="code">if (Class) {}</span> is a reference error.</p>
+        <p><span class="code">if (Class) {}</span> is a reference error.
+          jQuery has an API for this. It's <span
+          class="code">$.isFunction(Class)</span>.</p>
         <p>
           <textarea class="code" readonly=true cols=41 rows=12>
   if (typeof Class === 'function') {
@@ -258,21 +260,23 @@
 
         <h3>Public and private members</h3>
         <p>
-          <textarea class="code" readonly=true cols=41 rows=20>
-  var counter = function(element) {
-    var instance = {
-      unit: '',
+          <textarea class="code" readonly=true cols=41 rows=22>
+  var counter = function($element) {
+    function Counter() {
+      this.unit = '';
+    }
 
-      increment: function() {
+    Counter.prototype.increment =
+      function() {
         ++count;
         update();
-      }
-    };
+      };
 
+    var instance = new Counter();
     var count = 0;
 
     var update = function() {
-      element.text(
+      $element.text(
         count + ' ' + instance.unit);
     };
 
