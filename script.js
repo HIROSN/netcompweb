@@ -49,7 +49,7 @@ $(function() {
   };
 
   var layoutChange = function() {
-    $floor.css('height', $(window).height() / 2);
+    $floor.animate({height: $(window).height() / 2});
     xMax = $floor.width() - $mouse.width();
     yMax = $floor.height() - $mouse.height();
   };
@@ -334,9 +334,10 @@ $(function() {
     if (count < maxCats) {
       idTimer = setInterval(function() {
         if (count++ < maxCats) {
-          $('#cats').append($('<div></div>', {
-            class: 'cat'
-          }));
+          $('<div></div>', {class: 'cat'}).
+            hide().
+            appendTo($('#cats')).
+            fadeIn('slow');
         }
 
         if (count >= maxCats) {
