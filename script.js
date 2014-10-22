@@ -354,7 +354,11 @@ $(function() {
 
   $startButton.click(function() {
     if (!$(this).hasClass('disabled')) {
-      $('#cats > div').remove();
+
+      $('#cats > div').fadeOut('slow', function() {
+        $(this).remove();
+      });
+
       catCounter(counter.getValue(), 2000, $(this));
       fade($(this), [true, false, false], 1500);
     }
