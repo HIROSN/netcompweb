@@ -69,8 +69,10 @@ $(document).ready(function() {
       $(this).val('');
 
       if (grocery) {
-        $('<li class="grocery" style="display: none">' + grocery + '</li>').
-          appendTo($('#list')).slideDown('fast', function() {
+        $('<li class="grocery">' + grocery + '</li>').
+          hide().
+          appendTo($('#list')).
+          slideDown('fast', function() {
             showNodes();
           });
       }
@@ -78,8 +80,10 @@ $(document).ready(function() {
   });
 
   $('#list').on('click', 'li', function(event) {
-    $(this).slideUp('fast', function() {
-      $(this).remove();
+    var $this = $(this);
+
+    $this.slideUp('fast', function() {
+      $this.remove();
       showNodes();
     });
   });
@@ -196,8 +200,9 @@ $(document).ready(function() {
     $('#catImages').on('click', 'li', function(event) {
       var $li = $(this);
 
-      $li.animate({opacity: 0}, function() {
-        $li.appendTo($li.parent()).animate({opacity: 1});
+      $li.fadeOut('fast', function() {
+        $li.appendTo($li.parent()).
+          fadeIn('fast');
       });
     });
   }());
