@@ -289,6 +289,14 @@ td.head {
   padding-bottom: 0.5em;
 }
 
+#jsweekly-links a {
+  color: #0055bb;
+}
+
+#jsweekly-links a:hover {
+  color: #bb0055;
+}
+
 #jsweekly-latest-content {
   display: none;
 }
