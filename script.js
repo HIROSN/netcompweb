@@ -48,7 +48,7 @@ $(function() {
         input.disabled = false;
       });
     }
-  }).on('keydown', function() {
+  }).on('keydown', function(event) {
     if (event.which == 13) {
       $(this).blur();
     }
