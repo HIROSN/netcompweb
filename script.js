@@ -14,12 +14,14 @@ $(function() {
 // JavaScript Weekly
 $(function() {
   var dfd = $.Deferred();
+  var $message = $('#jsweekly-links > li:first');
 
   $.ajax({
     url: 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0',
     data: {q: 'http://javascriptweekly.com/rss/1i29bb1p'},
     dataType: 'jsonp',
-    success: dfd.resolve
+    success: dfd.resolve,
+    error: dfd.reject
   });
 
   dfd.promise().then(function(results) {
@@ -40,6 +42,7 @@ $(function() {
       }));
 
       $('#jsweekly-latest-content').html(latest.content);
+      $message.detach();
 
       $('#jsweekly-latest-content > table div > a').each(function() {
         var $link = $(this);
@@ -53,6 +56,14 @@ $(function() {
         }
       });
     }
+    else {
+      $message.text(results.responseDetails);
+    }
+  }).fail(function(results) {
+    $message.text(results.status + ' - ' + results.statusText);
+    console.log(results);
+  }).always(function() {
+    $message.css('color', 'red');
   });
 });
 
@@ -65,7 +76,8 @@ $(function() {
       url: 'http://www.omdbapi.com/',
       data: {s: title},
       dataType: 'jsonp',
-      success: dfd.resolve
+      success: dfd.resolve,
+      error: dfd.reject
     });
 
     return dfd.promise();
