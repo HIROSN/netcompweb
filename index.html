@@ -32,6 +32,17 @@
       </aside>
       <article class="main"><a id="article"></a>
 
+        <h3>jQuery Ajax, JSONP and Handlebars</h3>
+        <p>Title of a movie to search for: <input id="movie-title"
+          type="text"></p>
+        <ul id="movies">
+          <script id="movies-template" type="text/x-handlebars-template">
+            {{#each Search}}
+            <li>{{Title}} ({{Year}})</li>
+            {{/each}}
+          </script>
+        </ul>
+
         <h3>Touch feedback and action</h3>
         <p>Elements with a click event listener added will display some
           default feedback on a finger tap on mobile devices. Single tap on
@@ -401,6 +412,9 @@
     </div>
     <script
       src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+    </script>
+    <script
+      src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js">
     </script>
     <script src="listener.js"></script>
     <script async src="script.js"></script>

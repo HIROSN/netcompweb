@@ -11,6 +11,52 @@ $(function() {
   });
 });
 
+// jQuery Ajax, JSONP and Handlebars
+$(function() {
+  var searchMovie = function(title) {
+    var dfd = $.Deferred();
+
+    $.ajax({
+      url: 'http://www.omdbapi.com/',
+      data: {s: title},
+      dataType: 'jsonp',
+      success: dfd.resolve
+    });
+
+    return dfd.promise();
+  };
+
+  $('#movie-title').on('blur', function() {
+    var input = this;
+    var title = $(input).val();
+
+    $('#movies > li').slideUp('fast', function() {
+      $(this).remove();
+    });
+
+    if (title) {
+      input.disabled = true;
+
+      searchMovie(title).then(function(results) {
+        var template = Handlebars.compile($('#movies-template').html());
+
+        $(template(results)).
+          hide().
+          appendTo($('#movies')).
+          slideDown('fast');
+      }).always(function() {
+        input.disabled = false;
+      });
+    }
+  }).on('keydown', function() {
+    if (event.which == 13) {
+      $(this).blur();
+    }
+  }).on('focus', function() {
+    $(this).val('');
+  });
+});
+
 // No touch feedback / text selection
 $(function() {
   $('.button').addClass('notouch').addClass('noselect');
@@ -338,7 +384,7 @@ $(function() {
           $('<div></div>', {class: 'cat'}).
             hide().
             appendTo($('#cats')).
-            fadeIn('slow');
+            slideDown('fast');
         }
 
         if (count >= maxCats) {
@@ -355,7 +401,7 @@ $(function() {
   $startButton.click(function() {
     if (!$(this).hasClass('disabled')) {
 
-      $('#cats > div').fadeOut('slow', function() {
+      $('#cats > div').slideUp('fast', function() {
         $(this).remove();
       });
 
