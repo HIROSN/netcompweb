@@ -11,6 +11,51 @@ $(function() {
   });
 });
 
+// JavaScript Weekly
+$(function() {
+  var dfd = $.Deferred();
+
+  $.ajax({
+    url: 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0',
+    data: {q: 'http://javascriptweekly.com/rss/1i29bb1p'},
+    dataType: 'jsonp',
+    success: dfd.resolve
+  });
+
+  dfd.promise().then(function(results) {
+    var $header = $('#jsweekly');
+
+    var latest = results &&
+      results.responseData &&
+      results.responseData.feed &&
+      results.responseData.feed.entries &&
+      results.responseData.feed.entries.length &&
+      results.responseData.feed.entries[0];
+
+    if (latest) {
+      $header.html($('<a></a>', {
+        href: latest.link,
+        target: '_blank',
+        text: $header.text()
+      }));
+
+      $('#jsweekly-latest-content').html(latest.content);
+
+      $('#jsweekly-latest-content > table div > a').each(function() {
+        var $link = $(this);
+
+        if ($link.css('display') === 'block' &&
+            $link.css('text-decoration') === 'underline') {
+          $link.removeAttr('style').
+            attr('target', '_blank');
+          $('<li></li>').html($link).
+            appendTo($('#jsweekly-links'));
+        }
+      });
+    }
+  });
+});
+
 // jQuery Ajax, JSONP and Handlebars
 $(function() {
   var searchMovie = function(title) {
