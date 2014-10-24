@@ -32,7 +32,7 @@ $(function() {
   });
 
   dfd.promise().then(function(results) {
-    var latest = results &&
+    var latest =
       results.responseData &&
       results.responseData.feed &&
       results.responseData.feed.entries &&
@@ -61,7 +61,6 @@ $(function() {
     }
   }).fail(function(results) {
     $message.text(results.status + ' - ' + results.statusText);
-    console.log(results);
   }).always(function() {
     $message.css('color', 'red');
   });
