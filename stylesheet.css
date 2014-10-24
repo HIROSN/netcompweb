@@ -85,7 +85,7 @@ td.head {
 }
 
 .button {
-  display: inline-block;
+  display: none;
   margin-left: 5px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -123,7 +123,7 @@ td.head {
 }
 
 .listener {
-  display: inline-block;
+  display: none;
   margin-left: 5px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -298,5 +298,9 @@ td.head {
 }
 
 #jsweekly-latest-content {
+  display: none;
+}
+
+.js {
   display: none;
 }

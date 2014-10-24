@@ -53,3 +53,8 @@
 .fakewrapper {
   padding: 10px;
 }
+
+#catImages img {
+  width: 250px;
+  height: 200px;
+}

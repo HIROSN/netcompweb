@@ -1,20 +1,27 @@
-// All buttons
+// All elements
 $(function() {
-  $('.button').mouseenter(function() {
+  var $buttons = $('.button');
+
+  $buttons.mouseenter(function() {
     if (!$(this).hasClass('disabled')) {
       $(this).addClass('active');
     }
   });
 
-  $('.button').mouseleave(function() {
+  $buttons.mouseleave(function() {
     $(this).removeClass('active');
   });
+
+  $buttons.css('display', 'inline-block');
+  $('input').removeAttr('disabled');
+  $('.js').removeClass('js');
 });
 
 // JavaScript Weekly
 $(function() {
   var dfd = $.Deferred();
   var $message = $('#jsweekly-links > li:first');
+  $message.text('Loading...');
 
   $.ajax({
     url: 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0',
@@ -25,8 +32,6 @@ $(function() {
   });
 
   dfd.promise().then(function(results) {
-    var $header = $('#jsweekly');
-
     var latest = results &&
       results.responseData &&
       results.responseData.feed &&
@@ -35,12 +40,7 @@ $(function() {
       results.responseData.feed.entries[0];
 
     if (latest) {
-      $header.html($('<a></a>', {
-        href: latest.link,
-        target: '_blank',
-        text: $header.text()
-      }));
-
+      $('#jsweekly > a').attr('href', latest.link);
       $('#jsweekly-latest-content').html(latest.content);
       $message.detach();
 

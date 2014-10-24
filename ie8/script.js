@@ -5,6 +5,9 @@ $(document).ready(function() {
   // Timestamp
   $('#timestamp').text(document.lastModified);
 
+  // Enable elements
+  $('input').removeAttr('disabled');
+
   // Whitespace nodes in children of ul element
   showNodes = function() {
     var parent = document.getElementById('list');

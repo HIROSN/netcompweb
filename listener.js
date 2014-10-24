@@ -23,7 +23,8 @@ var fade = function($element, rgb, msec) {
       setTimeout(step, msec);
     }
     else {
-      $element.removeAttr('style');
+      $element.removeAttr('style').
+        css('display', 'inline-block');
     }
   };
 
@@ -104,3 +105,7 @@ var observer = function($element) {
 
   return instance;
 };
+
+$(function() {
+  $('.listener').css('display', 'inline-block');
+});
