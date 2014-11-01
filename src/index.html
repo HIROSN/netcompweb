@@ -37,6 +37,27 @@
         <ul id="jsweekly-links"><li></li></ul>
         <div id="jsweekly-latest-content"></div>
 
+        <h3>Localhost server using <a href="http://nodejs.org/"
+          target="_blank">Node.js</a> and <a href="http://expressjs.com/"
+          target="_blank">Express</a></h3>
+        <p>A few lines of code runs a localhost server (<span
+          class="code">open http://localhost:8000 &amp;&amp;
+          <a href="http://nodemon.io/" target="_blank">nodemon</a>
+          server</span>), foundation of <a href="http://expressjs.com/"
+          target="_blank">Express</a> <a href="http://nodejs.org/"
+          target="_blank">Node.js</a> web applications and server side
+          JavaScript.</p>
+        <p>
+          <textarea class="code" readonly=true cols=41 rows=8>
+  var express = require('express');
+  var app = express();
+
+  app.use(express.static(
+    __dirname + '/public'));
+
+  app.listen(process.env.PORT || 8000);</textarea>
+        </p>
+
         <h3>Alias for starting localhost server</h3>
         <ol>
           <li>Add <span class="code">alias server='open http://localhost:8000
@@ -322,7 +343,7 @@
         </p>
         <p><span class="code">unit</span> and <span
           class="code">increment()</span> are public property and method.</p>
-        <p><span class="code">count</span>, <span class="code">element</span>
+        <p><span class="code">count</span>, <span class="code">$element</span>
           and <span class="code">update()</span> are private properties and
           method.</p>
         <p><span class="code">'counter'</span> starts with a lower case
@@ -411,6 +432,9 @@
         <h3>Node.js links</h3>
         <ul id="nodeLinks">
           <li><a target="_blank" href=
+            "http://nodejs.org/"
+            >Node.js</a></li>
+          <li><a target="_blank" href=
             "http://www.nodebeginner.org/"
             >The Node Beginner Book</a></li>
           <li><a target="_blank" href=
@@ -419,6 +443,12 @@
           <li><a target="_blank" href=
             "https://docs.nodejitsu.com/"
             >docs.nodejitsu.com</a></li>
+          <li><a target="_blank" href=
+            "http://expressjs.com/"
+            >Express</a></li>
+          <li><a target="_blank" href=
+            "http://nodemon.io/"
+            >Nodemon</a></li>
         </ul>
 
         <h3>jQuery links</h3>

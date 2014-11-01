@@ -45,8 +45,8 @@ $(function() {
       $message.detach();
       $('#jsweekly > a').attr('href', latest.link);
 
-      $('#jsweekly-latest-content').html(
-        latest.content.replace(new RegExp('img', 'gi'), '!img'));
+      $('#jsweekly-latest-content').html(latest.content.replace(
+        new RegExp('< *img ', 'gi'), '<!img '));
 
       $('#jsweekly-latest-content > table div > a').each(function() {
         var $link = $(this);
