@@ -40,9 +40,11 @@ $(function() {
       results.responseData.feed.entries[0];
 
     if (latest) {
-      $('#jsweekly > a').attr('href', latest.link);
-      $('#jsweekly-latest-content').html(latest.content);
       $message.detach();
+      $('#jsweekly > a').attr('href', latest.link);
+
+      $('#jsweekly-latest-content').html(
+        latest.content.replace(new RegExp('img', 'gi'), '!img'));
 
       $('#jsweekly-latest-content > table div > a').each(function() {
         var $link = $(this);
@@ -230,6 +232,7 @@ $(function() {
 
   $playButton.click(function() {
     if (!idTimer) {
+      $floor.css('background-image', 'url("wood.gif")');
       layoutChange();
       $playButton.addClass('disabled');
       preloadImages();
