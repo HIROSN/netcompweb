@@ -36,11 +36,21 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'public/index.html': 'src/index.html',
-          'public/ie8/index.html': 'src/ie8/index.html'
         },
         options: {
           removeComments: true,
           collapseWhitespace: true
+        }
+      },
+
+      ie8: {
+        files: {
+          'public/ie8/index.html': 'src/ie8/index.html'
+        },
+        options: {
+          removeComments: true,
+          collapseWhitespace: true,
+          preserveLineBreaks: true
         }
       }
     },

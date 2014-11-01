@@ -36,7 +36,7 @@ $(document).ready(function() {
   showNodes();
   $('#page').append('<p>' + navigator.userAgent + '</p');
 
-  // Event $.listeners and handlers
+  // Event listeners and handlers
   getTarget = function(event) {
     var target;
     event = event || window.event;
@@ -51,7 +51,7 @@ $(document).ready(function() {
   $.listener($('#click1')).jQueryEvent(
     'click', '#click1');
 
-  $.listener($('#click2')).domEvent$.listener(
+  $.listener($('#click2')).domEventListener(
     'click', document.getElementById('click2'));
 
   $.listener($('#click3')).domEventHandler(
@@ -60,7 +60,7 @@ $(document).ready(function() {
   $.listener($('#input1')).jQueryEvent(
     'input', '#grocery');
 
-  $.listener($('#input2')).domEvent$.listener(
+  $.listener($('#input2')).domEventListener(
     'input', document.getElementById('grocery'));
 
   $.listener($('#input3')).domEventHandler(
@@ -111,7 +111,7 @@ $(document).ready(function() {
       };
 
     $.listener($('#mouseover2')).
-      domEvent$.listener('mouseover', document.getElementById('howTo')).
+      domEventListener('mouseover', document.getElementById('howTo')).
       callback = function(event) {
         showId(this.getElement(), event);
       };
@@ -150,7 +150,7 @@ $(document).ready(function() {
       };
 
     $.listener($('#click5')).
-      domEvent$.listener('click', document.getElementById('noLinks')).
+      domEventListener('click', document.getElementById('noLinks')).
       callback = function(event) {
         blockLink(event);
       };
@@ -161,8 +161,8 @@ $(document).ready(function() {
         blockLink(event);
       };
 
-    if (ie.addEvent$.listener) {
-      ie.addEvent$.listener('click', function(event) {
+    if (ie.addEventListener) {
+      ie.addEventListener('click', function(event) {
         followLink(event);
       }, false);
     }

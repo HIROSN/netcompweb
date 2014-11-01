@@ -1,6 +1,6 @@
 'use strict';
 
-$.prototype.fade = function($element, rgb, msec) {
+$.fade = function($element, rgb, msec) {
   var level = 1;
   var step;
   msec = (msec || 400) / 16;
@@ -33,7 +33,7 @@ $.prototype.fade = function($element, rgb, msec) {
   setTimeout(step, msec);
 };
 
-$.prototype.listener = function($element) {
+$.listener = function($element) {
   var instance = {
     callback: function() {},
 
@@ -72,7 +72,7 @@ $.prototype.listener = function($element) {
   return instance;
 };
 
-$.prototype.observer = function($element) {
+$.observer = function($element) {
   var mutationObserver;
 
   var instance = {
