@@ -5,7 +5,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-jscs');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-css');
 
   grunt.initConfig({
     jshint: {
@@ -57,10 +57,13 @@ module.exports = function(grunt) {
 
     cssmin: {
       my_target: {
-        files: {
-          'public/stylesheet.css': ['src/stylesheet.css'],
-          'public/ie8/stylesheet.css': ['src/ie8/stylesheet.css']
-        }
+        src: 'src/stylesheet.css',
+        dest: 'public/stylesheet.css'
+      },
+
+      ie8: {
+        src: 'src/ie8/stylesheet.css',
+        dest: 'public/ie8/stylesheet.css'
       }
     }
   });
