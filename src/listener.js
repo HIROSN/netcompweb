@@ -1,4 +1,6 @@
-var fade = function($element, rgb, msec) {
+'use strict';
+
+$.prototype.fade = function($element, rgb, msec) {
   var level = 1;
   var step;
   msec = (msec || 400) / 16;
@@ -31,9 +33,9 @@ var fade = function($element, rgb, msec) {
   setTimeout(step, msec);
 };
 
-var listener = function($element) {
+$.prototype.listener = function($element) {
   var instance = {
-    callback: function(event) {},
+    callback: function() {},
 
     getElement: function() {
       return $element;
@@ -61,7 +63,7 @@ var listener = function($element) {
 
   var blink = function(event) {
     if (!instance.callback(event)) {
-      fade($element, [false, false, true]);
+      $.fade($element, [false, false, true]);
     }
   };
 
@@ -70,11 +72,11 @@ var listener = function($element) {
   return instance;
 };
 
-var observer = function($element) {
+$.prototype.observer = function($element) {
   var mutationObserver;
 
   var instance = {
-    callback: function(mutations) {},
+    callback: function() {},
 
     getElement: function() {
       return $element;
@@ -93,7 +95,7 @@ var observer = function($element) {
   if (typeof MutationObserver === 'function') {
     mutationObserver = new MutationObserver(function(mutations) {
       if (!instance.callback(mutations)) {
-        fade($element, [false, false, true]);
+        $.fade($element, [false, false, true]);
       }
     });
   }

@@ -1,3 +1,5 @@
+'use strict';
+
 $(document).ready(function() {
   var showNodes;
   var getTarget;
@@ -34,7 +36,7 @@ $(document).ready(function() {
   showNodes();
   $('#page').append('<p>' + navigator.userAgent + '</p');
 
-  // Event listeners and handlers
+  // Event $.listeners and handlers
   getTarget = function(event) {
     var target;
     event = event || window.event;
@@ -46,22 +48,22 @@ $(document).ready(function() {
     return target;
   };
 
-  listener($('#click1')).jQueryEvent(
+  $.listener($('#click1')).jQueryEvent(
     'click', '#click1');
 
-  listener($('#click2')).domEventListener(
+  $.listener($('#click2')).domEvent$.listener(
     'click', document.getElementById('click2'));
 
-  listener($('#click3')).domEventHandler(
+  $.listener($('#click3')).domEventHandler(
     'click', document.getElementById('click3'));
 
-  listener($('#input1')).jQueryEvent(
+  $.listener($('#input1')).jQueryEvent(
     'input', '#grocery');
 
-  listener($('#input2')).domEventListener(
+  $.listener($('#input2')).domEvent$.listener(
     'input', document.getElementById('grocery'));
 
-  listener($('#input3')).domEventHandler(
+  $.listener($('#input3')).domEventHandler(
     'input', document.getElementById('grocery'));
 
   $('#grocery').on('keyup', function(event) {
@@ -82,7 +84,7 @@ $(document).ready(function() {
     }
   });
 
-  $('#list').on('click', 'li', function(event) {
+  $('#list').on('click', 'li', function() {
     var $this = $(this);
 
     $this.slideUp('fast', function() {
@@ -102,19 +104,19 @@ $(document).ready(function() {
       }
     };
 
-    listener($('#mouseover1')).
+    $.listener($('#mouseover1')).
       jQueryEvent('mouseover', '#howTo').
       callback = function(event) {
         showId(this.getElement(), event);
       };
 
-    listener($('#mouseover2')).
-      domEventListener('mouseover', document.getElementById('howTo')).
+    $.listener($('#mouseover2')).
+      domEvent$.listener('mouseover', document.getElementById('howTo')).
       callback = function(event) {
         showId(this.getElement(), event);
       };
 
-    listener($('#mouseover3')).
+    $.listener($('#mouseover3')).
       domEventHandler('mouseover', document.getElementById('howTo')).
       callback = function(event) {
         showId(this.getElement(), event);
@@ -141,26 +143,26 @@ $(document).ready(function() {
 
     var ie = document.getElementById('IE');
 
-    listener($('#click4')).
+    $.listener($('#click4')).
       jQueryEvent('click', '#noLinks').
       callback = function(event) {
         blockLink(event);
       };
 
-    listener($('#click5')).
-      domEventListener('click', document.getElementById('noLinks')).
+    $.listener($('#click5')).
+      domEvent$.listener('click', document.getElementById('noLinks')).
       callback = function(event) {
         blockLink(event);
       };
 
-    listener($('#click6')).
+    $.listener($('#click6')).
       domEventHandler('click', document.getElementById('noLinks')).
       callback = function(event) {
         blockLink(event);
       };
 
-    if (ie.addEventListener) {
-      ie.addEventListener('click', function(event) {
+    if (ie.addEvent$.listener) {
+      ie.addEvent$.listener('click', function(event) {
         followLink(event);
       }, false);
     }
@@ -182,7 +184,7 @@ $(document).ready(function() {
       var height;
 
       if (window.getComputedStyle) {
-        width = parseInt(getComputedStyle(list, null).width);
+        width = parseInt(window.getComputedStyle(list, null).width);
       }
       else {
         width = list.clientWidth;
@@ -200,7 +202,7 @@ $(document).ready(function() {
       resizeCatImages();
     });
 
-    $('#catImages').on('click', 'li', function(event) {
+    $('#catImages').on('click', 'li', function() {
       var $li = $(this);
 
       $li.fadeOut('fast', function() {

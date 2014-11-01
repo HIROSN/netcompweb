@@ -1,3 +1,5 @@
+'use strict';
+
 // All elements
 $(function() {
   var $buttons = $('.button');
@@ -287,7 +289,7 @@ $(function() {
 // Computed style
 $(function() {
   var marginLeft = parseInt(
-    getComputedStyle(document.body, null).marginLeft);
+    window.getComputedStyle(document.body, null).marginLeft);
 
   $('#marginLeft').text($('#marginLeft').text() +
     '\n' + marginLeft + 'px');
@@ -347,19 +349,19 @@ $(function() {
 
 // Event listeners and handlers
 $(function() {
-  listener($('#click1')).jQueryEvent(
+  $.listener($('#click1')).jQueryEvent(
     'click', '#click1');
 
-  listener($('#click2')).domEventListener(
+  $.listener($('#click2')).domEventListener(
     'click', document.getElementById('click2'));
 
-  listener($('#click3')).domEventHandler(
+  $.listener($('#click3')).domEventHandler(
     'click', document.getElementById('click3'));
 });
 
 // Mutation Observers
 $(function() {
-  var catObserver = observer($('#catObserver'));
+  var catObserver = $.observer($('#catObserver'));
 
   catObserver.callback = function(mutations) {
     var added = 0;
@@ -422,7 +424,7 @@ $(function() {
 
     update();
 
-    $element.click(function(event) {
+    $element.click(function() {
       instance.increment();
     });
 
@@ -465,7 +467,7 @@ $(function() {
       });
 
       catCounter(counter.getValue(), 2000, $(this));
-      fade($(this), [true, false, false], 1500);
+      $.fade($(this), [true, false, false], 1500);
     }
   });
 });
