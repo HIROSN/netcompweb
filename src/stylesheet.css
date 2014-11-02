@@ -41,6 +41,12 @@ span.code {
   padding-right: 5px;
 }
 
+td.code {
+  font-family: Monaco, Consolas;
+  background-color: #EEEEEE;
+  font-size: 11pt;
+}
+
 input {
   font-size: 12pt;
 }

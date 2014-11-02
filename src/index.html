@@ -38,15 +38,38 @@
         <div id="jsweekly-latest-content"></div>
 
         <h3>Differences in parseInt(string) and Number(string)</h3>
-        <p>
-          <textarea class="code" readonly=true cols=41 rows=7>
-  str  parseInt(str)  Number(str)
-  '.1'        NaN        0.1
-  '0.5'       0          0.5
-  '1e1'       1          10
-  '20%'       20         NaN
-  '48pt'      48         NaN</textarea>
-        </p>
+        <table>
+          <tr>
+            <td class="head code">str</td>
+            <td class="head code">parseInt(str)</td>
+            <td class="head code">Number(str)</td>
+          </tr>
+          <tr>
+            <td class="data code">'.1'</td>
+            <td class="data code">NaN</td>
+            <td class="data code">0.1</td>
+          </tr>
+          <tr>
+            <td class="data code">'0.5'</td>
+            <td class="data code">0</td>
+            <td class="data code">0.5</td>
+          </tr>
+          <tr>
+            <td class="data code">'1e1'</td>
+            <td class="data code">1</td>
+            <td class="data code">10</td>
+          </tr>
+          <tr>
+            <td class="data code">'20%'</td>
+            <td class="data code">20</td>
+            <td class="data code">NaN</td>
+          </tr>
+          <tr>
+            <td class="data code">'48pt'</td>
+            <td class="data code">48</td>
+            <td class="data code">NaN</td>
+          </tr>
+        </table>
 
         <h3>Localhost server using <a href="http://nodejs.org/"
           target="_blank">Node.js</a> and <a href="http://expressjs.com/"
