@@ -37,16 +37,28 @@
         <ul id="jsweekly-links"><li></li></ul>
         <div id="jsweekly-latest-content"></div>
 
+        <h3>Differences in parseInt(string) and Number(string)</h3>
+        <p>
+          <textarea class="code" readonly=true cols=41 rows=7>
+  str  parseInt(str)  Number(str)
+  '.1'        NaN        0.1
+  '0.5'       0          0.5
+  '1e1'       1          10
+  '20%'       20         NaN
+  '48pt'      48         NaN</textarea>
+        </p>
+
         <h3>Localhost server using <a href="http://nodejs.org/"
           target="_blank">Node.js</a> and <a href="http://expressjs.com/"
           target="_blank">Express</a></h3>
         <p>A few lines of code runs a localhost server (<span
           class="code">open http://localhost:8000 &amp;&amp;
-          <a href="http://nodemon.io/" target="_blank">nodemon</a>
-          server.js</span>), foundation of <a href="http://expressjs.com/"
-          target="_blank">Express</a> <a href="http://nodejs.org/"
-          target="_blank">Node.js</a> web applications and server side
-          JavaScript.</p>
+          <a href="http://nodemon.io/" target="_blank"><span
+            class="code">nodemon</span></a> server.js</span>),
+            foundation of <a href="http://expressjs.com/"
+            target="_blank">Express</a> <a href="http://nodejs.org/"
+            target="_blank">Node.js</a> web applications and server
+            side JavaScript.</p>
         <p>
           <textarea class="code" readonly=true cols=41 rows=8>
   var express = require('express');
