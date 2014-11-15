@@ -26,7 +26,7 @@ $(function() {
 
     $.ajax({
       contentType: 'application/json; charset=utf-8',
-      url: 'http://freegeoip.net/json/',
+      url: 'https://freegeoip.net/json/',
       dataType: 'jsonp',
       success: dfd.resolve,
       error: dfd.reject
