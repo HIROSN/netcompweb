@@ -19,6 +19,42 @@ $(function() {
   $('.js').removeClass('js');
 });
 
+// coldenoughtostorebeeroutside.herokuapp.com/api
+$(function() {
+  var getIPaddress = function(done) {
+    var dfd = $.Deferred();
+
+    $.ajax({
+      contentType: 'application/json; charset=utf-8',
+      url: 'http://freegeoip.net/json/',
+      dataType: 'jsonp',
+      success: dfd.resolve,
+      error: dfd.reject
+    });
+
+    dfd.promise().then(function(results) {
+      done(results.ip);
+    });
+  };
+
+  getIPaddress(function(ip) {
+    var dfd = $.Deferred();
+
+    $.ajax({
+      url: 'https://coldenoughtostorebeeroutside.herokuapp.com/api?ip=' + ip,
+      dataType: 'jsonp',
+      success: dfd.resolve,
+      error: dfd.reject
+    });
+
+    dfd.promise().then(function(results) {
+      $('#tempf').
+        text(results.tempf + '°F').
+        slideDown('fast');
+    });
+  });
+});
+
 // JavaScript Weekly
 $(function() {
   var dfd = $.Deferred();
