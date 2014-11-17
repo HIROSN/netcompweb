@@ -316,3 +316,7 @@ td.head {
   background-size: 1em;
   padding-left: 1em;
 }
+
+#tempf {
+  color: darkgray;
+}

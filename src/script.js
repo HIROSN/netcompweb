@@ -21,37 +21,13 @@ $(function() {
 
 // coldenoughtostorebeeroutside.herokuapp.com/api
 $(function() {
-  var getIPaddress = function(done) {
-    var dfd = $.Deferred();
-
-    $.ajax({
-      contentType: 'application/json; charset=utf-8',
-      url: 'https://freegeoip.net/json/',
-      dataType: 'jsonp',
-      success: dfd.resolve,
-      error: dfd.reject
-    });
-
-    dfd.promise().then(function(results) {
-      done(results.ip);
-    });
-  };
-
-  getIPaddress(function(ip) {
-    var dfd = $.Deferred();
-
-    $.ajax({
-      url: 'https://coldenoughtostorebeeroutside.herokuapp.com/api?ip=' + ip,
-      dataType: 'jsonp',
-      success: dfd.resolve,
-      error: dfd.reject
-    });
-
-    dfd.promise().then(function(results) {
-      $('#tempf').
-        text(results.tempf + '°F').
-        slideDown('fast');
-    });
+  $.getJSON('https://freegeoip.net/json/?callback=?', function(ipdata) {
+    $.getJSON('https://coldenoughtostorebeeroutside.herokuapp.com/' +
+      'api?ip=' + ipdata.ip + '&callback=?', function(wudata) {
+        $('#tempf').
+          text(wudata.tempf + '°F').
+          slideDown('fast');
+      });
   });
 });
 
