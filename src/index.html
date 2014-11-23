@@ -45,6 +45,29 @@
         <ul id="jsweekly-links"><li></li></ul>
         <div id="jsweekly-latest-content"></div>
 
+        <h3>Empty object is truthy</h3>
+        <p>JSON object is in the request body. It has an <span
+          class="code">id</span> property. Process the request by the ID.
+          When there is no request body, return status code 500.</p>
+        <p>
+          <textarea class="code" readonly=true cols=41 rows=10>
+  var handler = function(req, res) {
+    if (req.body) {
+      process(req.body.id);
+    }
+    else {
+      res.status(500);
+    }
+    res.json({});
+  };</textarea>
+        </p>
+        <p>The error handling above works when <span class="code">null ===
+          req.body</span>. When the body is empty (has an empty JSON object
+          <span class="code">{}</span> which is truthy), this code passes
+          <span class="code">undefined</span> as <span
+          class="code">req.body.id</span> into the <span
+          class="code">process()</span> function.</p>
+
         <h3>Coding Interviews in JavaScript</h3>
         <p>Using JavaScript, it is relatively easier to code for moderate
           to hard coding interview questions which you may not get asked
