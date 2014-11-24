@@ -5,6 +5,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-jscs');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
+  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-css');
 
   grunt.initConfig({
@@ -51,6 +52,15 @@ module.exports = function(grunt) {
           removeComments: true,
           collapseWhitespace: true,
           preserveLineBreaks: true
+        }
+      }
+    },
+
+    sass: {
+      dist: {
+        files: {
+          'src/stylesheet.css': 'src/stylesheet.scss',
+          'src/ie8/stylesheet.css': 'src/ie8/stylesheet.scss'
         }
       }
     },
