@@ -70,7 +70,7 @@ td.head {
   height: 5em;
   width: 5em;
   border: solid 1px lightgray;
-  background: url("http://www.catpichub.com/wp-content/uploads/2014/08/cute-cat-wallpaper-14001050-53f173c8980de-500x500.png");
+  background: url('http://www.catpichub.com/wp-content/uploads/2014/08/cute-cat-wallpaper-14001050-53f173c8980de-500x500.png');
   background-size: 5em 5em; }
 
 .button {
@@ -121,7 +121,7 @@ td.head {
   border-radius: 5px; }
 
 .notouch {
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
   -ms-touch-action: none; }
 
@@ -163,7 +163,9 @@ td.head {
 @media all and (min-width: 300px) {
   .aside {
     -webkit-flex: 1 auto;
-    flex: 1 auto; } }
+    flex: 1 auto; }
+ }
+
 @media all and (min-width: 1000px) {
   .aside-1 {
     -webkit-order: 1;
@@ -181,7 +183,9 @@ td.head {
 
   .footer {
     -webkit-order: 4;
-    order: 4; } }
+    order: 4; }
+ }
+
 #floor {
   background-color: #eee; }
 
@@ -254,5 +258,3 @@ td.head {
 
 #wind {
   max-width: 4em; }
-
-/*# sourceMappingURL=stylesheet.css.map */
