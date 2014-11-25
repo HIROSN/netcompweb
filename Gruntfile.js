@@ -5,7 +5,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-jscs');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
-  grunt.loadNpmTasks('grunt-sass');
+  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-css');
 
   grunt.initConfig({
@@ -59,25 +59,35 @@ module.exports = function(grunt) {
     sass: {
       dist: {
         files: {
-          'src/stylesheet.css': 'src/stylesheet.scss',
-          'src/ie8/stylesheet.css': 'src/ie8/stylesheet.scss'
+          'stylesheet/stylesheet.css': 'src/stylesheet.scss',
+          'stylesheet/ie8/stylesheet.css': 'src/ie8/stylesheet.scss'
         }
       }
     },
 
     cssmin: {
       my_target: {
-        src: 'src/stylesheet.css',
+        src: 'stylesheet/stylesheet.css',
         dest: 'public/stylesheet.css'
       },
 
       ie8: {
-        src: 'src/ie8/stylesheet.css',
+        src: 'stylesheet/ie8/stylesheet.css',
         dest: 'public/ie8/stylesheet.css'
       }
     }
   });
 
-  grunt.registerTask('test',  ['jshint', 'jscs']);
-  grunt.registerTask('default',  ['test', 'uglify', 'htmlmin', 'cssmin']);
+  grunt.registerTask('test', [
+    'jshint',
+    'jscs'
+  ]);
+
+  grunt.registerTask('default', [
+    'test',
+    'uglify',
+    'htmlmin',
+    'sass',
+    'cssmin'
+  ]);
 };
