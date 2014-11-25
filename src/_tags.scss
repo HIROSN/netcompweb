@@ -1,0 +1,38 @@
+* {
+  font-family: Helvetica, Arial;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+
+  &:hover {
+    color: blue;
+  }
+}
+
+em {
+  font-weight: bold;
+}
+
+input {
+  font-size: 12pt;
+}
+
+ol {
+  padding-left: 1.5em;
+}
+
+strong {
+  font-weight: bold;
+  text-decoration: none
+}
+
+sup {
+  font-size: 6pt;
+  text-decoration: none
+}
+
+ul {
+  padding-left: 1.5em;
+}

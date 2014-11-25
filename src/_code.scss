@@ -1,0 +1,27 @@
+textarea {
+  &.code {
+    font-family: Monaco, Consolas;
+    font-size: 9pt;
+    overflow: auto;
+    color: lightgray;
+    background-color: black;
+  }
+}
+
+span {
+  &.code {
+    font-family: Monaco, Consolas;
+    background-color: #EEEEEE;
+    font-size: 11pt;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+td {
+  &.code {
+    font-family: Monaco, Consolas;
+    background-color: #EEEEEE;
+    font-size: 10pt;
+  }
+}

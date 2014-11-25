@@ -1,8 +1,20 @@
 * {
   font-family: Helvetica, Arial; }
 
+a {
+  text-decoration: none;
+  color: black; }
+  a:hover {
+    color: blue; }
+
 em {
   font-weight: bold; }
+
+input {
+  font-size: 12pt; }
+
+ol {
+  padding-left: 1.5em; }
 
 strong {
   font-weight: bold;
@@ -12,12 +24,8 @@ sup {
   font-size: 6pt;
   text-decoration: none; }
 
-a {
-  text-decoration: none;
-  color: black; }
-
-a:hover {
-  color: blue; }
+ul {
+  padding-left: 1.5em; }
 
 textarea.code {
   font-family: Monaco, Consolas;
@@ -38,28 +46,16 @@ td.code {
   background-color: #EEEEEE;
   font-size: 10pt; }
 
-input {
-  font-size: 12pt; }
-
-ul {
-  padding-left: 1.5em; }
-
-ol {
-  padding-left: 1.5em; }
-
 td {
   padding-left: 10px;
   padding-right: 10px;
   vertical-align: text-top; }
-
-td.data {
-  background: #DDDDDD; }
-
-td.default {
-  background: #DDDDFF; }
-
-td.head {
-  background: #CCCC99; }
+  td.data {
+    background: #DDDDDD; }
+  td.default {
+    background: #DDDDFF; }
+  td.head {
+    background: #CCCC99; }
 
 .cat {
   display: inline-block;
@@ -72,6 +68,16 @@ td.head {
   border: solid 1px lightgray;
   background: url('http://www.catpichub.com/wp-content/uploads/2014/08/cute-cat-wallpaper-14001050-53f173c8980de-500x500.png');
   background-size: 5em 5em; }
+
+#catImages {
+  list-style-type: none;
+  padding-left: 0; }
+  #catImages > li {
+    display: inline-block;
+    margin: 1px; }
+    #catImages > li > img {
+      border-radius: 20px;
+      cursor: pointer; }
 
 .button {
   display: none;
@@ -92,18 +98,6 @@ td.head {
 .disabled {
   color: lightgray;
   cursor: not-allowed; }
-
-#catImages {
-  list-style-type: none;
-  padding-left: 0; }
-
-#catImages > li {
-  display: inline-block;
-  margin: 1px; }
-
-#catImages > li > img {
-  border-radius: 20px;
-  cursor: pointer; }
 
 .listener {
   display: none;
@@ -138,53 +132,49 @@ td.head {
   -webkit-flex-flow: row wrap;
   display: flex;
   flex-flow: row wrap; }
-
-.wrapper > * {
-  -webkit-flex: 1 100%;
-  padding: 10px;
-  flex: 1 100%; }
+  .wrapper > * {
+    -webkit-flex: 1 100%;
+    padding: 10px;
+    flex: 1 100%; }
 
 .header {
   background: #FFEEEE; }
 
 .aside-1 {
   background: #EEFFEE; }
+  @media all and (min-width: 1000px) {
+    .aside-1 {
+      -webkit-order: 1;
+      order: 1; } }
 
 .main {
   text-align: left;
   background: #EEFFFF; }
+  @media all and (min-width: 1000px) {
+    .main {
+      -webkit-order: 2;
+      -webkit-flex: 3 0px;
+      order: 2;
+      flex: 3 0px; } }
 
 .aside-2 {
   background: #FFFFEE; }
+  @media all and (min-width: 1000px) {
+    .aside-2 {
+      -webkit-order: 3;
+      order: 3; } }
 
 .footer {
   background: #EEEEFF; }
+  @media all and (min-width: 1000px) {
+    .footer {
+      -webkit-order: 4;
+      order: 4; } }
 
 @media all and (min-width: 300px) {
   .aside {
     -webkit-flex: 1 auto;
-    flex: 1 auto; }
- }
-
-@media all and (min-width: 1000px) {
-  .aside-1 {
-    -webkit-order: 1;
-    order: 1; }
-
-  .main {
-    -webkit-order: 2;
-    -webkit-flex: 3 0px;
-    order: 2;
-    flex: 3 0px; }
-
-  .aside-2 {
-    -webkit-order: 3;
-    order: 3; }
-
-  .footer {
-    -webkit-order: 4;
-    order: 4; }
- }
+    flex: 1 auto; } }
 
 #floor {
   background-color: #eee; }
@@ -222,23 +212,19 @@ td.head {
 
 #movies {
   padding-left: 0; }
-
-#movies li {
-  list-style-type: none;
-  padding-top: 0.5em; }
+  #movies li {
+    list-style-type: none;
+    padding-top: 0.5em; }
 
 #jsweekly-links {
   padding-left: 0; }
-
-#jsweekly-links li {
-  list-style-type: none;
-  padding-bottom: 0.5em; }
-
-#jsweekly-links a {
-  color: #0055bb; }
-
-#jsweekly-links a:hover {
-  color: #bb0055; }
+  #jsweekly-links li {
+    list-style-type: none;
+    padding-bottom: 0.5em; }
+  #jsweekly-links a {
+    color: #0055bb; }
+    #jsweekly-links a:hover {
+      color: #bb0055; }
 
 #jsweekly-latest-content {
   display: none; }
