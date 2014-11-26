@@ -33,13 +33,23 @@ module.exports = function(grunt) {
             'src/script.js',
             'src/fade.js',
             'src/listener.js',
-            'src/observer.js'
+            'src/observer.js',
+            'src/wunderground.js',
+            'src/jsweekly.js',
+            'src/omdbapi.js',
+            'src/catchthemouse.js',
+            'src/fibonacci.js',
+            'src/catcounter.js',
+            'src/publicvsprivate.js'
           ],
 
           'build/ie8/script.js': [
             'src/ie8/script.js',
             'src/fade.js',
-            'src/listener.js'
+            'src/listener.js',
+            'src/ie8/eventobject.js',
+            'src/ie8/defaultbehavior.js',
+            'src/ie8/computedstyle.js'
           ]
         }
       }
