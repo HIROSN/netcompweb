@@ -3,6 +3,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-jscs');
+  grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-sass');
@@ -23,12 +24,30 @@ module.exports = function(grunt) {
       }
     },
 
+    browserify: {
+      dist: {
+        files: {
+          'script/script.js': [
+            'src/script.js',
+            'src/fade.js',
+            'src/listener.js',
+            'src/observer.js'
+          ],
+
+          'script/ie8/script.js': [
+            'src/ie8/script.js',
+            'src/fade.js',
+            'src/listener.js'
+          ]
+        }
+      }
+    },
+
     uglify: {
       my_target: {
         files: {
-          'public/script.js': ['src/script.js'],
-          'public/listener.js': ['src/listener.js'],
-          'public/ie8/script.js': ['src/ie8/script.js']
+          'public/script.js': ['script/script.js'],
+          'public/ie8/script.js': ['script/ie8/script.js']
         }
       }
     },
@@ -85,6 +104,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', [
     'test',
+    'browserify',
     'uglify',
     'htmlmin',
     'sass',

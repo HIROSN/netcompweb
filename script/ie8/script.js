@@ -1,3 +1,40 @@
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+'use strict';
+
+module.exports = function($element, rgb, msec) {
+  var level = 1;
+  var step;
+  msec = (msec || 400) / 16;
+
+  step = function() {
+    var hex = level.toString(16);
+    var color = '#';
+    var i;
+
+    for (i = 0; i < 3; i++) {
+      if (rgb[i]) {
+        color += hex + hex;
+      }
+      else {
+        color += 'FF';
+      }
+    }
+
+    $element.css('background-color', color);
+
+    if (level++ < 15) {
+      setTimeout(step, msec);
+    }
+    else {
+      $element.removeAttr('style').
+        css('display', 'inline-block');
+    }
+  };
+
+  setTimeout(step, msec);
+};
+
+},{}],2:[function(require,module,exports){
 'use strict';
 
 $(document).ready(function() {
@@ -213,3 +250,52 @@ $(document).ready(function() {
     });
   }());
 });
+
+},{"../listener":3}],3:[function(require,module,exports){
+'use strict';
+
+module.exports = function($element) {
+  var fade = require('./fade');
+  var instance = {
+    callback: function() {},
+
+    getElement: function() {
+      return $element;
+    },
+
+    jQueryEvent: function(name, source) {
+      $(document).on(name, source, blink);
+      return this;
+    },
+
+    domEventListener: function(name, source) {
+      if (source.addEventListener) {
+        source.addEventListener(name, blink, false);
+      }
+      return this;
+    },
+
+    domEventHandler: function(name, source) {
+      if (source.attachEvent) {
+        source.attachEvent('on' + name, blink);
+      }
+      return this;
+    }
+  };
+
+  var blink = function(event) {
+    if (!instance.callback(event)) {
+      fade($element, [false, false, true]);
+    }
+  };
+
+  $element.addClass('notouch').addClass('noselect');
+
+  return instance;
+};
+
+$(function() {
+  $('.listener').css('display', 'inline-block');
+});
+
+},{"./fade":1}]},{},[2,1,3]);
