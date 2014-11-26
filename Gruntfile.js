@@ -27,14 +27,14 @@ module.exports = function(grunt) {
     browserify: {
       dist: {
         files: {
-          'script/script.js': [
+          'build/script.js': [
             'src/script.js',
             'src/fade.js',
             'src/listener.js',
             'src/observer.js'
           ],
 
-          'script/ie8/script.js': [
+          'build/ie8/script.js': [
             'src/ie8/script.js',
             'src/fade.js',
             'src/listener.js'
@@ -46,8 +46,8 @@ module.exports = function(grunt) {
     uglify: {
       my_target: {
         files: {
-          'public/script.js': ['script/script.js'],
-          'public/ie8/script.js': ['script/ie8/script.js']
+          'public/script.js': ['build/script.js'],
+          'public/ie8/script.js': ['build/ie8/script.js']
         }
       }
     },
@@ -78,20 +78,20 @@ module.exports = function(grunt) {
     sass: {
       dist: {
         files: {
-          'stylesheet/stylesheet.css': 'src/stylesheet.scss',
-          'stylesheet/ie8/stylesheet.css': 'src/ie8/stylesheet.scss'
+          'build/stylesheet.css': 'src/stylesheet.scss',
+          'build/ie8/stylesheet.css': 'src/ie8/stylesheet.scss'
         }
       }
     },
 
     cssmin: {
       my_target: {
-        src: 'stylesheet/stylesheet.css',
+        src: 'build/stylesheet.css',
         dest: 'public/stylesheet.css'
       },
 
       ie8: {
-        src: 'stylesheet/ie8/stylesheet.css',
+        src: 'build/ie8/stylesheet.css',
         dest: 'public/ie8/stylesheet.css'
       }
     }
