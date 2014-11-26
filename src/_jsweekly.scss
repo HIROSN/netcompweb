@@ -7,10 +7,10 @@
   }
 
   a {
-    color: #0055bb;
+    color: $jsWeeklyLinkDefault;
 
     &:hover {
-      color: #bb0055;
+      color: $jsWeeklyLinkHover;
     }
   }
 }

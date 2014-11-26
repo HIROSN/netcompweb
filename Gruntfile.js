@@ -1,5 +1,7 @@
+'use strict';
+
 module.exports = function(grunt) {
-  var srcFiles = ['src/**/*.js'];
+  var srcFiles = ['*.js', 'src/**/*.js'];
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-jscs');
@@ -44,7 +46,7 @@ module.exports = function(grunt) {
     },
 
     uglify: {
-      my_target: {
+      target: {
         files: {
           'public/script.js': ['build/script.js'],
           'public/ie8/script.js': ['build/ie8/script.js']
@@ -85,7 +87,7 @@ module.exports = function(grunt) {
     },
 
     cssmin: {
-      my_target: {
+      target: {
         src: 'build/stylesheet.css',
         dest: 'public/stylesheet.css'
       },

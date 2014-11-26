@@ -6,7 +6,7 @@
   border-radius: 5px;
   height: 2em;
   width: 120px;
-  border: solid 1px darkgray;
+  border: $elementBorder;
   text-align: center;
   padding-top: 1em;
   cursor: pointer;
@@ -28,7 +28,7 @@
   margin-bottom: 10px;
   height: 2.5em;
   width: 120px;
-  border: solid 1px darkgray;
+  border: $elementBorder;
   text-align: center;
   padding-top: 0.5em;
 }

@@ -1,13 +1,13 @@
 * {
-  font-family: Helvetica, Arial;
+  font-family: $articleFonts;
 }
 
 a {
   text-decoration: none;
-  color: black;
+  color: $linkDefault;
 
   &:hover {
-    color: blue;
+    color: $linkHover;
   }
 }
 

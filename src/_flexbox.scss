@@ -14,11 +14,11 @@
 }
 
 .header {
-  background: #FFEEEE;
+  background: $backgroundHeader;
 }
 
 .aside-1 {
-  background: #EEFFEE;
+  background: $backgroundAsideLeft;
 
   @media all and (min-width: 1000px) {
     -webkit-order: 1;
@@ -29,7 +29,7 @@
 
 .main {
   text-align: left;
-  background: #EEFFFF;
+  background: $backgroundArticle;
 
   @media all and (min-width: 1000px) {
     -webkit-order: 2;
@@ -41,7 +41,7 @@
 }
 
 .aside-2 {
-  background: #FFFFEE;
+  background: $backgroundAsideRight;
 
   @media all and (min-width: 1000px) {
     -webkit-order: 3;
@@ -51,7 +51,7 @@
 }
 
 .footer {
-  background: #EEEEFF;
+  background: $backgroundFooter;
 
   @media all and (min-width: 1000px) {
     -webkit-order: 4;

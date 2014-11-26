@@ -4,14 +4,14 @@ td {
   vertical-align: text-top;
 
   &.data {
-    background: #DDDDDD;
+    background: $tableData;
   }
 
   &.default {
-    background: #DDDDFF;
+    background: $tableDefault;
   }
 
   &.head {
-    background: #CCCC99;
+    background: $tableHead;
   }
 }

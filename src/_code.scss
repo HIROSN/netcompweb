@@ -1,17 +1,17 @@
 textarea {
   &.code {
-    font-family: Monaco, Consolas;
+    font-family: $codeFonts;
     font-size: 9pt;
     overflow: auto;
-    color: lightgray;
-    background-color: black;
+    color: $textConsole;
+    background-color: $backgroundConsole;
   }
 }
 
 span {
   &.code {
-    font-family: Monaco, Consolas;
-    background-color: #EEEEEE;
+    font-family: $codeFonts;
+    background-color: $backgroundCode;
     font-size: 11pt;
     padding-left: 5px;
     padding-right: 5px;
@@ -20,8 +20,8 @@ span {
 
 td {
   &.code {
-    font-family: Monaco, Consolas;
-    background-color: #EEEEEE;
+    font-family: $codeFonts;
+    background-color: $backgroundCode;
     font-size: 10pt;
   }
 }

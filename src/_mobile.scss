@@ -4,11 +4,15 @@
   -ms-touch-action: none;
 }
 
+@mixin user-select($selection) {
+  -webkit-touch-callout: $selection;
+  -webkit-user-select: $selection;
+  -khtml-user-select: $selection;
+  -moz-user-select: $selection;
+  -ms-user-select: $selection;
+  user-select: $selection;
+}
+
 .noselect {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  @include user-select(none);
 }
