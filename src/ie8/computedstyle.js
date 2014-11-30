@@ -31,8 +31,8 @@ module.exports = function() {
     var $li = $(this);
 
     $li.fadeOut('fast', function() {
-      $li.appendTo($li.parent()).
-      fadeIn('fast');
+      $li.appendTo($li.parent())
+      .fadeIn('fast');
     });
   });
 };

@@ -21,23 +21,23 @@ module.exports = function() {
 
   var ie = document.getElementById('IE');
 
-  listener($('#click4')).
-    jQueryEvent('click', '#noLinks').
-    callback = function(event) {
-      blockLink(event);
-    };
+  listener($('#click4'))
+  .jQueryEvent('click', '#noLinks')
+  .callback = function(event) {
+    blockLink(event);
+  };
 
-  listener($('#click5')).
-    domEventListener('click', document.getElementById('noLinks')).
-    callback = function(event) {
-      blockLink(event);
-    };
+  listener($('#click5'))
+  .domEventListener('click', document.getElementById('noLinks'))
+  .callback = function(event) {
+    blockLink(event);
+  };
 
-  listener($('#click6')).
-    domEventHandler('click', document.getElementById('noLinks')).
-    callback = function(event) {
-      blockLink(event);
-    };
+  listener($('#click6'))
+  .domEventHandler('click', document.getElementById('noLinks'))
+  .callback = function(event) {
+    blockLink(event);
+  };
 
   if (ie.addEventListener) {
     ie.addEventListener('click', function(event) {

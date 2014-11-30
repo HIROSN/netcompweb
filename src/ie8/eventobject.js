@@ -23,21 +23,21 @@ module.exports = function() {
     }
   };
 
-  listener($('#mouseover1')).
-    jQueryEvent('mouseover', '#howTo').
-    callback = function(event) {
-      showId(this.getElement(), event);
-    };
+  listener($('#mouseover1'))
+  .jQueryEvent('mouseover', '#howTo')
+  .callback = function(event) {
+    showId(this.getElement(), event);
+  };
 
-  listener($('#mouseover2')).
-    domEventListener('mouseover', document.getElementById('howTo')).
-    callback = function(event) {
-      showId(this.getElement(), event);
-    };
+  listener($('#mouseover2'))
+  .domEventListener('mouseover', document.getElementById('howTo'))
+  .callback = function(event) {
+    showId(this.getElement(), event);
+  };
 
-  listener($('#mouseover3')).
-    domEventHandler('mouseover', document.getElementById('howTo')).
-    callback = function(event) {
-      showId(this.getElement(), event);
-    };
+  listener($('#mouseover3'))
+  .domEventHandler('mouseover', document.getElementById('howTo'))
+  .callback = function(event) {
+    showId(this.getElement(), event);
+  };
 };

@@ -63,12 +63,12 @@ $(document).ready(function() {
       $(this).val('');
 
       if (grocery) {
-        $('<li class="grocery">' + grocery + '</li>').
-          hide().
-          appendTo($('#list')).
-          slideDown('fast', function() {
-            showNodes();
-          });
+        $('<li class="grocery">' + grocery + '</li>')
+        .hide()
+        .appendTo($('#list'))
+        .slideDown('fast', function() {
+          showNodes();
+        });
       }
     }
   });
