@@ -28,12 +28,12 @@ module.exports = function() {
 
       searchMovie(title).then(function(results) {
         var template = Handlebars.compile($('#movies-template').html());
-
-        $(template(results)).
-          hide().
-          appendTo($('#movies')).
-          slideDown('fast');
-      }).always(function() {
+        $(template(results))
+        .hide()
+        .appendTo($('#movies'))
+        .slideDown('fast');
+      })
+      .always(function() {
         input.disabled = false;
       });
     }

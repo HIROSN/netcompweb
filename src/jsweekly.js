@@ -30,13 +30,12 @@ module.exports = function() {
 
       $('#jsweekly-latest-content > table div > a').each(function() {
         var $link = $(this);
+        var display = $link.css('display');
+        var textDecoration = $link.css('text-decoration');
 
-        if ($link.css('display') === 'block' &&
-            $link.css('text-decoration') === 'underline') {
-          $link.removeAttr('style').
-            attr('target', '_blank');
-          $('<li></li>').html($link).
-            appendTo($('#jsweekly-links'));
+        if ('block' === display && 'underline' === textDecoration) {
+          $link.removeAttr('style').attr('target', '_blank');
+          $('<li></li>').html($link).appendTo($('#jsweekly-links'));
         }
       });
     }

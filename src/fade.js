@@ -25,8 +25,8 @@ module.exports = function($element, rgb, msec) {
       setTimeout(step, msec);
     }
     else {
-      $element.removeAttr('style').
-        css('display', 'inline-block');
+      $element.removeAttr('style')
+      .css('display', 'inline-block');
     }
   };
 

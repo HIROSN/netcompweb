@@ -61,10 +61,10 @@ module.exports = function() {
     if (count < maxCats) {
       idTimer = setInterval(function() {
         if (count++ < maxCats) {
-          $('<div></div>', {class: 'cat'}).
-            hide().
-            appendTo($('#cats')).
-            slideDown('fast');
+          $('<div></div>', {class: 'cat'})
+          .hide()
+          .appendTo($('#cats'))
+          .slideDown('fast');
         }
 
         if (count >= maxCats) {
