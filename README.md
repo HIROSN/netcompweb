@@ -3,4 +3,4 @@
 
 upstream:
 http://hirosn.azurewebsites.net/
-http://pweb.netcom.com/~ghnagata/
+(deprecated: http://pweb.netcom.com/~ghnagata/)
