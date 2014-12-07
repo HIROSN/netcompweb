@@ -22,41 +22,31 @@ module.exports = function(grunt) {
     jscs: {
       src: srcFiles,
       options: {
-        preset: 'google'
+        preset: 'google',
+        requireCamelCaseOrUpperCaseIdentifiers: 'ignoreProperties'
       }
     },
 
     browserify: {
-      dist: {
+      build: {
         files: {
           'build/script.js': [
             'src/script.js',
-            'src/es5/fade.js',
-            'src/es5/listener.js',
-            'src/es5/observer.js',
-            'src/es5/wunderground.js',
-            'src/es5/jsweekly.js',
-            'src/es5/omdbapi.js',
-            'src/es5/catchthemouse.js',
-            'src/es5/fibonacci.js',
-            'src/es5/catcounter.js',
-            'src/es5/publicvsprivate.js'
+            'src/es5/*.js'
           ],
 
           'build/ie8/script.js': [
             'src/ie8/script.js',
             'src/es5/fade.js',
             'src/es5/listener.js',
-            'src/ie8/es5/eventobject.js',
-            'src/ie8/es5/defaultbehavior.js',
-            'src/ie8/es5/computedstyle.js'
+            'src/ie8/es5/*.js'
           ]
         }
       }
     },
 
     uglify: {
-      target: {
+      public: {
         files: {
           'public/script.js': ['build/script.js'],
           'public/ie8/script.js': ['build/ie8/script.js']
@@ -65,7 +55,7 @@ module.exports = function(grunt) {
     },
 
     htmlmin: {
-      dist: {
+      public: {
         files: {
           'public/index.html': 'src/index.html',
         },
@@ -75,7 +65,7 @@ module.exports = function(grunt) {
         }
       },
 
-      ie8: {
+      public_ie8: {
         files: {
           'public/ie8/index.html': 'src/ie8/index.html'
         },
@@ -88,7 +78,7 @@ module.exports = function(grunt) {
     },
 
     sass: {
-      dist: {
+      build: {
         files: {
           'build/stylesheet.css': 'src/stylesheet.scss',
           'build/ie8/stylesheet.css': 'src/ie8/stylesheet.scss'
@@ -97,12 +87,12 @@ module.exports = function(grunt) {
     },
 
     cssmin: {
-      target: {
+      public: {
         src: 'build/stylesheet.css',
         dest: 'public/stylesheet.css'
       },
 
-      ie8: {
+      public_ie8: {
         src: 'build/ie8/stylesheet.css',
         dest: 'public/ie8/stylesheet.css'
       }
