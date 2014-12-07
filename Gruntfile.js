@@ -1,10 +1,16 @@
 'use strict';
 
 module.exports = function(grunt) {
-  var srcFiles = ['*.js', 'src/**/*.js'];
+  var srcFiles = [
+    '**/*.js',
+    '!node_modules/**/*',
+    '!build/**/*',
+    '!public/**/*'
+  ];
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-jscs');
+  grunt.loadNpmTasks('grunt-simple-mocha');
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
@@ -25,6 +31,10 @@ module.exports = function(grunt) {
         preset: 'google',
         requireCamelCaseOrUpperCaseIdentifiers: 'ignoreProperties'
       }
+    },
+
+    simplemocha: {
+      src: ['test/misc/**/*.js']
     },
 
     browserify: {
@@ -99,13 +109,10 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('test', [
-    'jshint',
-    'jscs'
-  ]);
-
   grunt.registerTask('default', [
-    'test',
+    'jshint',
+    'jscs',
+    'simplemocha',
     'browserify',
     'uglify',
     'htmlmin',
