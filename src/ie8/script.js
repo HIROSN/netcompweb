@@ -1,7 +1,7 @@
 'use strict';
 
 $(document).ready(function() {
-  var listener = require('../listener');
+  var listener = require('../es5/listener');
   var showNodes;
 
   // Timestamp
@@ -83,11 +83,11 @@ $(document).ready(function() {
   });
 
   // Event object
-  require('./eventobject')();
+  require('./es5/eventobject')();
 
   // Changing default behavior
-  require('./defaultbehavior')();
+  require('./es5/defaultbehavior')();
 
   // Computed style
-  require('./computedstyle')();
+  require('./es5/computedstyle')();
 });

@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function() {
-  var listener = require('../listener');
+  var listener = require('../../es5/listener');
 
   var blockLink = function(event) {
     if (event.preventDefault) {

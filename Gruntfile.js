@@ -30,26 +30,26 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'build/script.js': [
-            'src/js/script.js',
-            'src/js/fade.js',
-            'src/js/listener.js',
-            'src/js/observer.js',
-            'src/js/wunderground.js',
-            'src/js/jsweekly.js',
-            'src/js/omdbapi.js',
-            'src/js/catchthemouse.js',
-            'src/js/fibonacci.js',
-            'src/js/catcounter.js',
-            'src/js/publicvsprivate.js'
+            'src/script.js',
+            'src/es5/fade.js',
+            'src/es5/listener.js',
+            'src/es5/observer.js',
+            'src/es5/wunderground.js',
+            'src/es5/jsweekly.js',
+            'src/es5/omdbapi.js',
+            'src/es5/catchthemouse.js',
+            'src/es5/fibonacci.js',
+            'src/es5/catcounter.js',
+            'src/es5/publicvsprivate.js'
           ],
 
           'build/ie8/script.js': [
-            'src/js/ie8/script.js',
-            'src/js/fade.js',
-            'src/js/listener.js',
-            'src/js/ie8/eventobject.js',
-            'src/js/ie8/defaultbehavior.js',
-            'src/js/ie8/computedstyle.js'
+            'src/ie8/script.js',
+            'src/es5/fade.js',
+            'src/es5/listener.js',
+            'src/ie8/es5/eventobject.js',
+            'src/ie8/es5/defaultbehavior.js',
+            'src/ie8/es5/computedstyle.js'
           ]
         }
       }
@@ -90,8 +90,8 @@ module.exports = function(grunt) {
     sass: {
       dist: {
         files: {
-          'build/stylesheet.css': 'src/scss/stylesheet.scss',
-          'build/ie8/stylesheet.css': 'src/scss/ie8/stylesheet.scss'
+          'build/stylesheet.css': 'src/stylesheet.scss',
+          'build/ie8/stylesheet.css': 'src/ie8/stylesheet.scss'
         }
       }
     },

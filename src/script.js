@@ -20,13 +20,13 @@ $(function() {
 });
 
 // coldenoughtostorebeeroutside.herokuapp.com/api
-$(require('./wunderground'));
+$(require('./es5/wunderground'));
 
 // JavaScript Weekly
-$(require('./jsweekly'));
+$(require('./es5/jsweekly'));
 
 // jQuery Ajax, JSONP and Handlebars
-$(require('./omdbapi'));
+$(require('./es5/omdbapi'));
 
 // No touch feedback / text selection
 $(function() {
@@ -35,7 +35,7 @@ $(function() {
 });
 
 // Window height and document height
-$(require('./catchthemouse'));
+$(require('./es5/catchthemouse'));
 
 // DOM element in jQuery object
 $(function() {
@@ -53,11 +53,11 @@ $(function() {
 });
 
 // Memoization in Closure
-$(require('./fibonacci'));
+$(require('./es5/fibonacci'));
 
 // Event listeners and handlers
 $(function() {
-  var listener = require('./listener');
+  var listener = require('./es5/listener');
 
   listener($('#click1')).jQueryEvent(
     'click', '#click1');
@@ -71,7 +71,7 @@ $(function() {
 
 // Mutation Observers
 $(function() {
-  var observer = require('./observer');
+  var observer = require('./es5/observer');
   var catObserver = observer($('#catObserver'));
 
   catObserver.callback = function(mutations) {
@@ -92,10 +92,10 @@ $(function() {
 });
 
 // Cat Counter
-$(require('./catcounter'));
+$(require('./es5/catcounter'));
 
 // Public vs. private
-$(require('./publicvsprivate'));
+$(require('./es5/publicvsprivate'));
 
 // Objects by reference
 $(function() {
