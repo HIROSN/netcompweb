@@ -27,6 +27,7 @@
 <hr>
 <div id="nodes"></div>
 </div>
+<div>
 <h3>Event listeners and handlers</h3>
 <p>IE8 had a different event model and did not support <span class="code">addEventListener()</span>. Instead, it used a method called <span class="code">attachEvent()</span>.</p>
 <div id="click1" class="listener clickable">click<br>(jQuery)</div>
@@ -37,6 +38,8 @@
 <div id="input1" class="listener">input<br>(jQuery)</div>
 <div id="input2" class="listener">input<br>(DOM Listener)</div>
 <div id="input3" class="listener">oninput<br>(DOM Handler)</div>
+</div>
+<div>
 <h3>Event object</h3>
 <p>Event object is not passed automatically to event handler functions in IE8. It is available as a child of the <span class="code">window</span> object.</p>
 <p>
@@ -51,6 +54,8 @@
 <div id="mouseover1" class="listener">mouseover<br>(jQuery)</div>
 <div id="mouseover2" class="listener">mouseover<br>(DOM Listener)</div>
 <div id="mouseover3" class="listener">onmouseover<br>(DOM Handler)</div>
+</div>
+<div>
 <h3>Changing default behavior</h3>
 <p><span class="code">preventDefault()</span> is used to prevent the default behavior of links below. IE8 had an equivalent property called
 <span class="code">returnValue</span> which can be set to false.</p>
@@ -85,9 +90,12 @@
     }
   }</textarea>
 </p>
+</div>
+<div>
 <h3>Computed style</h3>
 <p>IE8 had a proprietary <span class="code">currentStyle</span> property which is almost equivalent to <span class="code">getComputedStyle()</span> method. In some cases, <span class="code">currentStyle</span> property may return a style with <span class="code">NaN</span> or <span class="code">'auto'</span>, etc. as its value.</p>
-<ul id="catImages" class="notouch"><li><img src="http://media-cache-ec0.pinimg.com/236x/e3/d4/28/e3d4287e18b7405ed3c0c6357457e9d3.jpg"></li><li><img src="http://lovemeow.com/wp-content/uploads/2011/06/kitten102.jpg"></li><li><img src="http://adesignstory.com/wp-content/uploads/2010/05/Kitten1.jpg"></li><li><img src="http://lovemeow.com/wp-content/uploads/2011/01/kitten1.jpg"></li></ul>
+<ul id="catImages" class="notouch"><li><img></li><li><img></li><li><img></li><li><img></li></ul>
+</div>
 </td><td class="fakewrapper aside-2"></td></tr>
 <tr><td colspan="2" class="fakewrapper footer" width="100%">
 <p>

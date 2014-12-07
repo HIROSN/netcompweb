@@ -1,9 +1,11 @@
 'use strict';
 
 module.exports = function() {
+  var config = require('./config');
+  var $images = $('#catImages > li > img');
+
   var resizeCatImages = function() {
     var list = document.getElementById('catImages');
-    var $images = $('#catImages > li > img');
     var numberOfCats = $images.length;
     var width;
     var height;
@@ -20,6 +22,10 @@ module.exports = function() {
     height = Math.floor(width * 0.8);
     $images.width(width).height(height);
   };
+
+  $images.each(function(index) {
+    $(this).attr('src', config.catImages[index]);
+  });
 
   resizeCatImages();
 
