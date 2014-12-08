@@ -3,7 +3,7 @@
 /* global $: false */
 
 module.exports = function() {
-  var listener = require('../../es5/listener');
+  var listener = require('./listener');
   var showNodes = require('./shownodes');
 
   listener($('#click1'))
