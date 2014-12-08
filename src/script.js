@@ -7,7 +7,7 @@ $(function() {
   var app = angular.module('webapp', []);
 
   app.footerLoaded = function() {
-    $('aside, article, footer').fadeIn('fast');
+    $('.delayed').fadeIn('fast');
   };
 
   require('./js/directives/aside')(app);
