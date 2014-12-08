@@ -14,7 +14,8 @@
     "window"            : false,
     "navigator"         : false,
     "MutationObserver"  : false,
-    "Handlebars"        : false
+    "Handlebars"        : false,
+    "angular"           : false
   },
 
   "globalstrict"        : true,

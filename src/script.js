@@ -1,6 +1,11 @@
 'use strict';
 
 var $ = require('jquery');
+require('angular');
+
+$(function() {
+  angular.module('webapp', []);
+});
 
 // Enable non-static elements
 $(require('./es5/enable'));
