@@ -1,5 +1,7 @@
 'use strict';
 
+/* global $: false */
+
 $(document).ready(function() {
   var showNodes = require('./es5/shownodes');
 

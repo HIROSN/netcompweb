@@ -1,5 +1,7 @@
 'use strict';
 
+var $ = require('jquery');
+
 module.exports = function($element) {
   var fade = require('./fade');
   var instance = {

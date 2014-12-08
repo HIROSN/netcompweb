@@ -1,5 +1,7 @@
 'use strict';
 
+/* global $: false */
+
 module.exports = function() {
   var config = require('./config');
   var $images = $('#catImages > li > img');

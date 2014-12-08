@@ -1,5 +1,7 @@
 'use strict';
 
+var $ = require('jquery');
+
 // Enable non-static elements
 $(require('./es5/enable'));
 

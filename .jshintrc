@@ -10,7 +10,6 @@
     "after"             : false,
     "afterEach"         : false,
     "equal"             : false,
-    "$"                 : false,
     "document"          : false,
     "window"            : false,
     "navigator"         : false,

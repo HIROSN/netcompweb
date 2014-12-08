@@ -1,5 +1,7 @@
 'use strict';
 
+/* global $: false */
+
 module.exports = function() {
   var parent = document.getElementById('list');
   var child = parent.firstChild;

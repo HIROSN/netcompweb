@@ -1,5 +1,7 @@
 'use strict';
 
+var $ = require('jquery');
+
 module.exports = function() {
   $.getJSON('https://freegeoip.net/json/?callback=?', function(ipdata) {
     $.getJSON('https://coldenoughtostorebeeroutside.herokuapp.com/' +

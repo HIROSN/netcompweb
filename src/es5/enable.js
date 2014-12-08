@@ -1,5 +1,7 @@
 'use strict';
 
+var $ = require('jquery');
+
 module.exports = function() {
   // Timestamp
   $('#timestamp').text(document.lastModified);

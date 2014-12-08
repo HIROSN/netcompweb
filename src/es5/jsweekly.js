@@ -1,5 +1,7 @@
 'use strict';
 
+var $ = require('jquery');
+
 module.exports = function() {
   var dfd = $.Deferred();
   var $message = $('#jsweekly-links > li:first');

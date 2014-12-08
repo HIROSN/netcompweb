@@ -1,5 +1,7 @@
 'use strict';
 
+var $ = require('jquery');
+
 module.exports = function() {
   var fibonacci = function() {
     var cache = [0, 1];

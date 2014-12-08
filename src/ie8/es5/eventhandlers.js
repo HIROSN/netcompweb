@@ -1,5 +1,7 @@
 'use strict';
 
+/* global $: false */
+
 module.exports = function() {
   var listener = require('../../es5/listener');
   var showNodes = require('./shownodes');

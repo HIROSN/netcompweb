@@ -1,5 +1,7 @@
 'use strict';
 
+var $ = require('jquery');
+
 module.exports = function() {
   var searchMovie = function(title) {
     var dfd = $.Deferred();
