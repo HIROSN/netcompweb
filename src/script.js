@@ -1,23 +1,7 @@
 'use strict';
 
-// All elements
-$(function() {
-  var $buttons = $('.button');
-
-  $buttons.mouseenter(function() {
-    if (!$(this).hasClass('disabled')) {
-      $(this).addClass('active');
-    }
-  });
-
-  $buttons.mouseleave(function() {
-    $(this).removeClass('active');
-  });
-
-  $buttons.css('display', 'inline-block');
-  $('input').removeAttr('disabled');
-  $('.js').removeClass('js');
-});
+// Enable non-static elements
+$(require('./es5/enable'));
 
 // coldenoughtostorebeeroutside.herokuapp.com/api
 $(require('./es5/wunderground'));
@@ -27,12 +11,6 @@ $(require('./es5/jsweekly'));
 
 // jQuery Ajax, JSONP and Handlebars
 $(require('./es5/omdbapi'));
-
-// No touch feedback / text selection
-$(function() {
-  $('.button').addClass('notouch').addClass('noselect');
-  $('textarea.code').addClass('notouch');
-});
 
 // Window height and document height
 $(require('./es5/catchthemouse'));
@@ -59,14 +37,14 @@ $(require('./es5/fibonacci'));
 $(function() {
   var listener = require('./es5/listener');
 
-  listener($('#click1')).jQueryEvent(
-    'click', '#click1');
+  listener($('#click1'))
+  .jQueryEvent('click', '#click1');
 
-  listener($('#click2')).domEventListener(
-    'click', document.getElementById('click2'));
+  listener($('#click2'))
+  .domEventListener('click', document.getElementById('click2'));
 
-  listener($('#click3')).domEventHandler(
-    'click', document.getElementById('click3'));
+  listener($('#click3'))
+  .domEventHandler('click', document.getElementById('click3'));
 });
 
 // Mutation Observers
@@ -113,9 +91,4 @@ $(function() {
 
   log = '\n' + isBobSmiling + ' Object {smiling: ' + bob.smiling + '}';
   $('#bob').text($('#bob').text() + log);
-});
-
-// Timestamp
-$(function() {
-  $('#timestamp').text(document.lastModified);
 });
