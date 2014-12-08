@@ -30,6 +30,7 @@
 .main {
   text-align: left;
   background: $backgroundArticle;
+  min-height: 1000px;
 
   @media all and (min-width: 1000px) {
     -webkit-order: 2;
