@@ -50,7 +50,6 @@ module.exports = function(grunt) {
           'build/ie8/script.js': [
             'src/ie8/script.js',
             'src/es5/fade.js',
-            'src/es5/listener.js',
             'src/ie8/es5/*.js'
           ]
         }
