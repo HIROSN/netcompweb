@@ -1,6 +1,6 @@
 'use strict';
 
-var config = require('../../../src/ie8/es5/config');
+var config = require('../../../src/ie8/js/config');
 
 describe('Config tests', function() {
   it('should have some cat images', function() {

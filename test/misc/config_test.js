@@ -3,7 +3,7 @@
 var expect = require('chai').expect;
 var async = require('async');
 var request = require('superagent');
-var config = require('../../src/ie8/es5/config');
+var config = require('../../src/ie8/js/config');
 
 describe('Config tests', function() {
   it('should be ok to request external resources', function(done) {

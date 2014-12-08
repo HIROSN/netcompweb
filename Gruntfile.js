@@ -44,13 +44,14 @@ module.exports = function(grunt) {
         files: {
           'build/script.js': [
             'src/script.js',
-            'src/es5/*.js'
+            'src/js/modules/*.js',
+            'src/js/directives/*.js'
           ],
 
           'build/ie8/script.js': [
             'src/ie8/script.js',
-            'src/es5/fade.js',
-            'src/ie8/es5/*.js'
+            'src/js/modules/fade.js',
+            'src/ie8/js/*.js'
           ]
         }
       },
@@ -58,8 +59,8 @@ module.exports = function(grunt) {
       test_browser: {
         files: {
           'test/browser/browser_unit_tests.js': [
-            'src/es5/*.js',
-            'src/ie8/es5/*.js',
+            'src/js/modules/*.js',
+            'src/ie8/js/*.js',
             'test/browser/unit/*.js'
           ]
         }
@@ -79,6 +80,8 @@ module.exports = function(grunt) {
       public: {
         files: {
           'public/index.html': 'src/index.html',
+          'public/aside-pages.html': 'src/html/aside-pages.html',
+          'public/aside-wudata.html': 'src/html/aside-wudata.html'
         },
         options: {
           removeComments: true,

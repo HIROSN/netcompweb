@@ -3,7 +3,7 @@
 /* global $: false */
 
 $(document).ready(function() {
-  var showNodes = require('./es5/shownodes');
+  var showNodes = require('./js/shownodes');
 
   // Timestamp
   $('#timestamp').text(document.lastModified);
@@ -16,14 +16,14 @@ $(document).ready(function() {
   $('#page').append('<p>' + navigator.userAgent + '</p');
 
   // Event listeners and handlers
-  require('./es5/eventhandlers')();
+  require('./js/eventhandlers')();
 
   // Event object
-  require('./es5/eventobject')();
+  require('./js/eventobject')();
 
   // Changing default behavior
-  require('./es5/defaultbehavior')();
+  require('./js/defaultbehavior')();
 
   // Computed style
-  require('./es5/computedstyle')();
+  require('./js/computedstyle')();
 });

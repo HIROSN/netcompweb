@@ -3,7 +3,7 @@
 /* global $: false */
 
 module.exports = function($element) {
-  var fade = require('../../es5/fade');
+  var fade = require('../../js/modules/fade');
   var instance = {
     callback: function() {},
 

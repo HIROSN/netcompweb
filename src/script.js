@@ -4,23 +4,24 @@ var $ = require('jquery');
 require('angular');
 
 $(function() {
-  angular.module('webapp', []);
+  var app = angular.module('webapp', []);
+  require('./js/directives/aside-1')(app);
 });
 
 // Enable non-static elements
-$(require('./es5/enable'));
+$(require('./js/modules/enable'));
 
 // coldenoughtostorebeeroutside.herokuapp.com/api
-$(require('./es5/wunderground'));
+$(require('./js/modules/wunderground'));
 
 // JavaScript Weekly
-$(require('./es5/jsweekly'));
+$(require('./js/modules/jsweekly'));
 
 // jQuery Ajax, JSONP and Handlebars
-$(require('./es5/omdbapi'));
+$(require('./js/modules/omdbapi'));
 
 // Window height and document height
-$(require('./es5/catchthemouse'));
+$(require('./js/modules/catchthemouse'));
 
 // DOM element in jQuery object
 $(function() {
@@ -38,11 +39,11 @@ $(function() {
 });
 
 // Memoization in Closure
-$(require('./es5/fibonacci'));
+$(require('./js/modules/fibonacci'));
 
 // Event listeners and handlers
 $(function() {
-  var listener = require('./es5/listener');
+  var listener = require('./js/modules/listener');
 
   listener($('#click1'))
   .jQueryEvent('click', '#click1');
@@ -56,7 +57,7 @@ $(function() {
 
 // Mutation Observers
 $(function() {
-  var observer = require('./es5/observer');
+  var observer = require('./js/modules/observer');
   var catObserver = observer($('#catObserver'));
 
   catObserver.callback = function(mutations) {
@@ -77,10 +78,10 @@ $(function() {
 });
 
 // Cat Counter
-$(require('./es5/catcounter'));
+$(require('./js/modules/catcounter'));
 
 // Public vs. private
-$(require('./es5/publicvsprivate'));
+$(require('./js/modules/publicvsprivate'));
 
 // Objects by reference
 $(function() {
