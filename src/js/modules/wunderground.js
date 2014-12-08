@@ -3,9 +3,9 @@
 var $ = require('jquery');
 
 module.exports = function() {
-  $.getJSON('https://freegeoip.net/json/?callback=?', function(ipdata) {
+  $.getJSON('http://ip-api.com/json/?callback=?', function(ipdata) {
     $.getJSON('https://coldenoughtostorebeeroutside.herokuapp.com/' +
-      'api?ip=' + ipdata.ip + '&callback=?', function(wudata) {
+      'api?ip=' + ipdata.query + '&callback=?', function(wudata) {
         $('#icon').attr('src', wudata.icon);
         $('#tempf').text(wudata.tempf + '°F');
         $('#precip').text(wudata.precip + 'in');
@@ -13,4 +13,6 @@ module.exports = function() {
         $('.wudata').slideDown('fast');
       });
   });
+
+  require('./enable')('#aside-wudata');
 };

@@ -1,0 +1,23 @@
+<a id="ie8"></a><h3><a href="ie8/">Internet Explorer 8</a></h3>
+<p>Most browsers except IE8 treat whitespace between elements (such
+  as spaces or carriage returns) as a text node.</p>
+<p>IE8 had a different event model and did not support <span
+  class="code">addEventListener()</span>. Instead, it used a method
+  called <span class="code">attachEvent()</span>.</p>
+<p>
+  <textarea class="code" readonly=true cols=41 rows=12>
+  if (el.addEventListener) {
+    el.addEventListener('blur',
+      function() {
+        handleThisEvent();
+      }, false);
+  } else {
+    el.attachEvent('onblur',
+      function() {
+        handleThisEvent();
+      });
+  }</textarea>
+</p>
+<p>Here is <a href="ie8/">a link to a page</a> which demonstrates
+  some of the differences in IE8 when it is loaded in Internet
+  Explorer.</p>

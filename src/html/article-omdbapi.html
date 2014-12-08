@@ -1,0 +1,10 @@
+<h3>jQuery Ajax, JSONP and Handlebars</h3>
+<p>Title of a movie to search for: <input id="movie-title"
+  maxlength=140 type="text" disabled></p>
+<ul id="movies">
+  <script id="movies-template" type="text/x-handlebars-template">
+    {{#each Search}}
+    <li>{{Title}} ({{Year}})</li>
+    {{/each}}
+  </script>
+</ul>

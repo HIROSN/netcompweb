@@ -1,0 +1,8 @@
+<h3>Localhost server using <a href="http://nodejs.org/" target="_blank">Node.js</a> and <a href="http://expressjs.com/" target="_blank">Express</a></h3><p>A few lines of code runs a localhost server (<span class="code">open http://localhost:8000 &amp;&amp; <a href="http://nodemon.io/" target="_blank"><span class="code">nodemon</span></a> server.js</span>), foundation of <a href="http://expressjs.com/" target="_blank">Express</a> <a href="http://nodejs.org/" target="_blank">Node.js</a> web applications and server side JavaScript.</p><p><textarea class="code" readonly="true" cols="41" rows="8">
+  var express = require('express');
+  var app = express();
+
+  app.use(express.static(
+    __dirname + '/public'));
+
+  app.listen(process.env.PORT || 8000);</textarea></p>

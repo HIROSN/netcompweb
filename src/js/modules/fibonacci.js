@@ -51,4 +51,6 @@ module.exports = function() {
       $(this).blur();
     }
   });
+
+  require('./enable')('#article-fibonacci');
 };

@@ -1,0 +1,35 @@
+<h3>Mutation Observers</h3>
+<p><em>Mutation observers</em> are designed to wait until a script
+  has finished its task before reacting, then report the changes as
+  a batch.</p>
+<p>
+  <textarea class="code" readonly=true cols=41 rows=17>
+  var observer = new MutationObserver(
+    function(mutations) {
+      mutations.forEach(function(m) {
+        for (var i = 0;
+          i &lt; m.addedNodes.length;
+          i++)
+        {
+          console.log(m.addedNodes[i]);
+        }
+      });
+    }
+  );
+
+  observer.observe(element, {
+    childList: true
+  });</textarea>
+</p>
+<div id="catObserver" class="listener">Cat<br>observer</div>
+<div id="ua"></div>
+
+<h3>Closure and Module</h3>
+<p>The function has access to the context in which it was created.
+  This is called <em>closure</em>.</p>
+<p>Functions and closure can make modules. A <em>module</em> is a
+  function or object that presents an interface but that hides its
+  state and implementation.</p>
+<div id="start" class="button">Count</div>
+<div id="counter" class="button"></div>
+<div id="cats"></div>

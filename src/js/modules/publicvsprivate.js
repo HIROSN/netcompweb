@@ -42,4 +42,6 @@ module.exports = function() {
   $dogButton.click(function() {
     dogCounter.increment();
   });
+
+  require('./enable')('#article-publicvsprivate');
 };

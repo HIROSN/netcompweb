@@ -96,14 +96,7 @@ module.exports = function() {
 
     setImage(direction, imageName);
     scared = 1;
-
-    if (newTop !== top) {
-      $mouse.animate({top: newTop}, MOVE_TIME);
-    }
-
-    if (newLeft !== left) {
-      $mouse.animate({left: newLeft}, MOVE_TIME);
-    }
+    $mouse.animate({top: newTop, left: newLeft}, MOVE_TIME);
   };
 
   $mouse.css('top', 0);
@@ -156,4 +149,6 @@ module.exports = function() {
       layoutChange();
     }
   });
+
+  require('./enable')('#article-catchthemouse');
 };

@@ -1,0 +1,12 @@
+<h3>How to check if a class exists</h3><p><span class="code">if (Class) {}</span> is a reference error. jQuery has an API for this. It's <span class="code">$.isFunction(Class)</span>.</p><p><textarea class="code" readonly="true" cols="41" rows="12">
+  if (typeof Class === 'function') {
+    var obj = new Class();
+
+    if (obj.hasOwnProperty('property')) {
+      var p = obj.property;
+    }
+
+    if (obj.method) {
+      obj.method();
+    }
+  }</textarea></p>

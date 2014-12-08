@@ -1,0 +1,35 @@
+<h3>Public and private members</h3>
+<p>
+  <textarea class="code" readonly=true cols=41 rows=22>
+  var counter = function($element) {
+    function Counter() {
+      this.unit = '';
+    }
+
+    Counter.prototype.increment =
+      function() {
+        ++count;
+        update();
+      };
+
+    var instance = new Counter();
+    var count = 0;
+
+    var update = function() {
+      $element.text(
+        count + ' ' + instance.unit);
+    };
+
+    return instance;
+  };</textarea>
+</p>
+<p><span class="code">unit</span> and <span
+  class="code">increment()</span> are public property and method.</p>
+<p><span class="code">count</span>, <span class="code">$element</span>
+  and <span class="code">update()</span> are private properties and
+  method.</p>
+<p><span class="code">'counter'</span> starts with a lower case
+  letter, which indicates that an instance of this object is created
+  without using the new operator.</p>
+<div id="catButton" class="button">Cat counter</div>
+<div id="dogButton" class="button">Dog counter</div>

@@ -1,0 +1,22 @@
+<h3>Touch feedback and action</h3>
+<p>Elements with a click event listener added will display some
+  default feedback on a finger tap on mobile devices. Single tap on
+  these devices could also mean to initiate a text selection. The
+  following CSS can be used to disable the default behaviors.</p>
+<p>
+  <textarea class="code" readonly=true cols=41 rows=15>
+/* Disable touch feedback */
+  -webkit-tap-highlight-color:
+    rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color:
+    transparent;
+  -ms-touch-action: none;
+
+/* Disable text selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;</textarea>
+</p>

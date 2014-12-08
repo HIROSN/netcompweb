@@ -46,4 +46,6 @@ module.exports = function() {
   }).on('focus', function() {
     $(this).val('');
   });
+
+  require('./enable')('#article-omdbapi');
 };

@@ -2,12 +2,9 @@
 
 var $ = require('jquery');
 
-module.exports = function() {
-  // Timestamp
-  $('#timestamp').text(document.lastModified);
-
+module.exports = function(selector) {
   // Display buttons
-  var $buttons = $('.button');
+  var $buttons = $(selector + ' .button');
   $buttons.css('display', 'inline-block');
   $buttons.addClass('notouch').addClass('noselect');
 
@@ -21,8 +18,12 @@ module.exports = function() {
     $(this).removeClass('active');
   });
 
+  // Enable input
+  $(selector + ' input').removeAttr('disabled');
+
+  // Enable listener
+  $(selector + ' .listener').css('display', 'inline-block');
+
   // Enable other non-static elements
-  $('input').removeAttr('disabled');
-  $('.js').removeClass('js');
-  $('textarea.code').addClass('notouch');
+  require('./default')();
 };

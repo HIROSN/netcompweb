@@ -41,7 +41,3 @@ module.exports = function($element) {
 
   return instance;
 };
-
-$(function() {
-  $('.listener').css('display', 'inline-block');
-});
