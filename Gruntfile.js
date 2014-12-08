@@ -78,11 +78,20 @@ module.exports = function(grunt) {
 
     htmlmin: {
       public: {
-        files: {
-          'public/index.html': 'src/index.html',
-          'public/aside-pages.html': 'src/html/aside-pages.html',
-          'public/aside-wudata.html': 'src/html/aside-wudata.html'
-        },
+        files: {'public/index.html': 'src/index.html'},
+        options: {
+          removeComments: true,
+          collapseWhitespace: true
+        }
+      },
+
+      public_src_html: {
+        files: [{
+          expand: true,
+          cwd: 'src/html/',
+          src: '**/*.html',
+          dest: 'public/'
+        }],
         options: {
           removeComments: true,
           collapseWhitespace: true

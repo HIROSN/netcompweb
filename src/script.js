@@ -5,7 +5,7 @@ require('angular');
 
 $(function() {
   var app = angular.module('webapp', []);
-  require('./js/directives/aside-1')(app);
+  require('./js/directives/aside')(app);
 });
 
 // Enable non-static elements
@@ -22,12 +22,6 @@ $(require('./js/modules/omdbapi'));
 
 // Window height and document height
 $(require('./js/modules/catchthemouse'));
-
-// DOM element in jQuery object
-$(function() {
-  $('#domElem').text($('#domElem').text() +
-    '\n' + $('#jsLinks li').first()[0].textContent);
-});
 
 // Computed style
 $(function() {
