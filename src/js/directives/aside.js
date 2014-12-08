@@ -9,14 +9,6 @@ module.exports = function(app) {
     };
   });
 
-  app.directive('asideWudata', function() {
-    return {
-      restrict: 'A',
-      templateUrl: 'aside-wudata.html',
-      controller: require('../modules/wunderground')
-    };
-  });
-
   app.directive('asideJsLinks', function() {
     return {
       restrict: 'A',
