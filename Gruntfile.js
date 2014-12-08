@@ -5,7 +5,8 @@ module.exports = function(grunt) {
     '**/*.js',
     '!node_modules/**/*',
     '!build/**/*',
-    '!public/**/*'
+    '!public/**/*',
+    '!test/browser/**/*'
   ];
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -16,6 +17,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-css');
+  grunt.loadNpmTasks('grunt-karma');
 
   grunt.initConfig({
     jshint: {
@@ -50,6 +52,16 @@ module.exports = function(grunt) {
             'src/es5/fade.js',
             'src/es5/listener.js',
             'src/ie8/es5/*.js'
+          ]
+        }
+      },
+
+      test_browser: {
+        files: {
+          'test/browser/browser_unit_tests.js': [
+            'src/es5/*.js',
+            'src/ie8/es5/*.js',
+            'test/browser/unit/*.js'
           ]
         }
       }
@@ -106,6 +118,26 @@ module.exports = function(grunt) {
         src: 'build/ie8/stylesheet.css',
         dest: 'public/ie8/stylesheet.css'
       }
+    },
+
+    karma: {
+      options: {
+        files: [
+          'node_modules/jquery/dist/jquery.js',
+          'test/browser/browser_unit_tests.js'
+        ],
+        frameworks: ['jasmine'],
+        browsers: ['PhantomJS'],
+        logLevel: 'INFO',
+        plugins : [
+          'karma-jasmine',
+          'karma-phantomjs-launcher'
+        ],
+        reporters: 'dots'
+      },
+      unit: {
+        singleRun: true
+      }
     }
   });
 
@@ -117,6 +149,7 @@ module.exports = function(grunt) {
     'uglify',
     'htmlmin',
     'sass',
-    'cssmin'
+    'cssmin',
+    'karma'
   ]);
 };
