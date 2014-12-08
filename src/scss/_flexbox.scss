@@ -18,6 +18,7 @@
 }
 
 .aside-1 {
+  display: none;
   background: $backgroundAsideLeft;
 
   @media all and (min-width: 1000px) {
@@ -28,9 +29,9 @@
 }
 
 .main {
+  display: none;
   text-align: left;
   background: $backgroundArticle;
-  min-height: 1000px;
 
   @media all and (min-width: 1000px) {
     -webkit-order: 2;
@@ -42,6 +43,7 @@
 }
 
 .aside-2 {
+  display: none;
   background: $backgroundAsideRight;
 
   @media all and (min-width: 1000px) {
@@ -52,6 +54,7 @@
 }
 
 .footer {
+  display: none;
   background: $backgroundFooter;
 
   @media all and (min-width: 1000px) {

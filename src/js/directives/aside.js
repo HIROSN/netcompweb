@@ -1,7 +1,5 @@
 'use strict';
 
-var $ = require('jquery');
-
 module.exports = function(app) {
   app.directive('asidePages', function() {
     return {
@@ -48,17 +46,6 @@ module.exports = function(app) {
       restrict: 'A',
       templateUrl: 'aside-other-links.html',
       controller: require('../modules/default')
-    };
-  });
-
-  app.directive('footer', function() {
-    return {
-      restrict: 'A',
-      templateUrl: 'footer.html',
-      controller: function() {
-        $('#timestamp').text(document.lastModified);
-        require('../modules/default')();
-      }
     };
   });
 };
