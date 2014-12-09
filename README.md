@@ -4,3 +4,7 @@
 upstream:
 http://hirosn.azurewebsites.net/
 (deprecated: http://pweb.netcom.com/~ghnagata/)
+
+## Resources
+
+- [Node.js Tutorials and Documentation](//azure.microsoft.com/en-us/develop/nodejs/)
