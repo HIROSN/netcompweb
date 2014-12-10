@@ -12,6 +12,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-jscs');
   grunt.loadNpmTasks('grunt-simple-mocha');
+  grunt.loadNpmTasks('grunt-html2js');
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
@@ -39,13 +40,37 @@ module.exports = function(grunt) {
       src: ['test/misc/**/*.js']
     },
 
+    html2js: {
+      options: {
+        base: 'src/html',
+        module: 'webApp.templates',
+        singleModule: true,
+        useStrict: true,
+        htmlmin: {
+          collapseBooleanAttributes: true,
+          collapseWhitespace: true,
+          removeAttributeQuotes: true,
+          removeComments: true,
+          removeEmptyAttributes: true,
+          removeRedundantAttributes: true,
+          removeScriptTypeAttributes: true,
+          removeStyleLinkTypeAttributes: true
+        }
+      },
+      main: {
+        src: ['src/html/**/*.html'],
+        dest: 'build/templates.js'
+      },
+    },
+
     browserify: {
       build: {
         files: {
           'build/script.js': [
             'src/script.js',
             'src/js/modules/*.js',
-            'src/js/directives/*.js'
+            'src/js/directives/*.js',
+            'build/templates.js'
           ],
 
           'build/ie8/script.js': [
@@ -79,19 +104,6 @@ module.exports = function(grunt) {
     htmlmin: {
       public: {
         files: {'public/index.html': 'src/index.html'},
-        options: {
-          removeComments: true,
-          collapseWhitespace: true
-        }
-      },
-
-      public_src_html: {
-        files: [{
-          expand: true,
-          cwd: 'src/html/',
-          src: '**/*.html',
-          dest: 'public/'
-        }],
         options: {
           removeComments: true,
           collapseWhitespace: true
@@ -156,6 +168,7 @@ module.exports = function(grunt) {
     'jshint',
     'jscs',
     'simplemocha',
+    'html2js',
     'browserify',
     'uglify',
     'htmlmin',
