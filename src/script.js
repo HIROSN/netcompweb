@@ -4,7 +4,7 @@ var $ = require('jquery');
 require('angular');
 
 $(function() {
-  var app = angular.module('webapp', []);
+  var app = angular.module('webApp', []);
 
   app.footerLoaded = function() {
     $('.delayed').fadeIn('fast');
