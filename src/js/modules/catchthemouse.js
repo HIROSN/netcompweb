@@ -105,7 +105,7 @@ module.exports = function() {
 
   $playButton.click(function() {
     if (!idTimer) {
-      $floor.css('background-image', 'url("wood.gif")');
+      $floor.css('background-image', 'url("/images/wood.gif")');
       layoutChange();
       $playButton.addClass('disabled');
       preloadImages();

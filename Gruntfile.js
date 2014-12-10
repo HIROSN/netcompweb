@@ -12,6 +12,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-jscs');
   grunt.loadNpmTasks('grunt-simple-mocha');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-html2js');
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -38,6 +40,19 @@ module.exports = function(grunt) {
 
     simplemocha: {
       src: ['test/misc/**/*.js']
+    },
+
+    clean: {
+      src: ['public/']
+    },
+
+    copy: {
+      images: {
+        cwd: 'src/images/',
+        expand: true,
+        src: ['**/*.*'],
+        dest: 'public/images/'
+      }
     },
 
     html2js: {
@@ -168,6 +183,8 @@ module.exports = function(grunt) {
     'jshint',
     'jscs',
     'simplemocha',
+    'clean',
+    'copy',
     'html2js',
     'browserify',
     'uglify',
