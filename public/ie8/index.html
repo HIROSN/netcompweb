@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+<link rel="icon" type="image/png" href="/images/favicon.png">
+<link rel="shortcut icon" href="/images/favicon.ico">
+<title>Internet Explorer 8</title>
+</head>
+<body><a id="topOfPage"></a>
+<table border="0" cellspacing="0">
+<tr><td colspan="2" class="fakewrapper header" width="100%">
+<h3>Internet Explorer 8</h3>
+</td></tr>
+<tr><td class="fakewrapper main" width="60%">
+<div id="page">
+<h3>Whitespace nodes in children of ul element</h3>
+<ul id="list" class="notouch">
+<li class="grocery hot"><em>fresh</em> figs</li>
+<li class="grocery hot">pine nuts</li>
+<li class="grocery hot">honey</li>
+<li class="grocery">balsamic vinegar</li>
+</ul>
+<hr>
+<div id="nodes"></div>
+</div>
+<div>
+<h3>Event listeners and handlers</h3>
+<p>IE8 had a different event model and did not support <span class="code">addEventListener()</span>. Instead, it used a method called <span class="code">attachEvent()</span>.</p>
+<div id="click1" class="listener clickable">click<br>(jQuery)</div>
+<div id="click2" class="listener clickable">click<br>(DOM Listener)</div>
+<div id="click3" class="listener clickable">onclick<br>(DOM Handler)</div>
+<p><span class="code">'input'</span> and <span class="code">'change'</span> form events are supported in IE9 and up.</p>
+<p>Add to the grocery list: <input id="grocery" type="text" disabled="disabled"></p>
+<div id="input1" class="listener">input<br>(jQuery)</div>
+<div id="input2" class="listener">input<br>(DOM Listener)</div>
+<div id="input3" class="listener">oninput<br>(DOM Handler)</div>
+</div>
+<div>
+<h3>Event object</h3>
+<p>Event object is not passed automatically to event handler functions in IE8. It is available as a child of the <span class="code">window</span> object.</p>
+<p>
+<textarea id="howTo" class="code" readonly="true" cols="41" rows="7">
+  function(e) {
+    var target;
+    e = e || window.event;
+    target = e.target || e.srcElement;
+    console.log(target.id);
+  }</textarea>
+</p>
+<div id="mouseover1" class="listener">mouseover<br>(jQuery)</div>
+<div id="mouseover2" class="listener">mouseover<br>(DOM Listener)</div>
+<div id="mouseover3" class="listener">onmouseover<br>(DOM Handler)</div>
+</div>
+<div>
+<h3>Changing default behavior</h3>
+<p><span class="code">preventDefault()</span> is used to prevent the default behavior of links below. IE8 had an equivalent property called
+<span class="code">returnValue</span> which can be set to false.</p>
+<p>
+<textarea class="code" readonly="true" cols="41" rows="8">
+  function(e) {
+    if (e.preventDefault) {
+      e.preventDefault();
+    } else {
+      e.returnValue = false;
+    }
+  }</textarea>
+</p>
+<ul id="noLinks" class="notouch">
+<li><a target="_blank" href="http://www.google.com/chrome/">Google Chrome</a></li>
+<li><a target="_blank" href="http://www.mozilla.org/firefox/">Mozilla Firefox</a></li>
+<li><a target="_blank" href="http://www.apple.com/safari/">Apple Safari</a></li>
+<li><a target="_blank" href="http://www.opera.com/">Opera browser</a></li>
+<li><a target="_blank" id="IE" href="http://www.microsoft.com/ie/">Microsoft Internet Explorer</a></li>
+</ul>
+<div id="click4" class="listener">click<br>(jQuery)</div>
+<div id="click5" class="listener">click<br>(DOM Listener)</div>
+<div id="click6" class="listener">onclick<br>(DOM Handler)</div>
+<p><span class="code">stopPropagation()</span> is used to stop an event bubbling up. The equivalent in IE8 is the <span class="code">cancelBubble</span> property.</p>
+<p>
+<textarea class="code" readonly="true" cols="41" rows="8">
+  function(e) {
+    if (e.stopPropagation) {
+      e.stopPropagation();
+    } else {
+      e.cancelBubble = true;
+    }
+  }</textarea>
+</p>
+</div>
+<div>
+<h3>Computed style</h3>
+<p>IE8 had a proprietary <span class="code">currentStyle</span> property which is almost equivalent to <span class="code">getComputedStyle()</span> method. In some cases, <span class="code">currentStyle</span> property may return a style with <span class="code">NaN</span> or <span class="code">'auto'</span>, etc. as its value.</p>
+<ul id="catImages" class="notouch"><li><img></li><li><img></li><li><img></li><li><img></li></ul>
+</div>
+</td><td class="fakewrapper aside-2"></td></tr>
+<tr><td colspan="2" class="fakewrapper footer" width="100%">
+<p>
+</p><p><a href="#topOfPage">↑ Back to top</a></p>
+<small>Changes last made on <span id="timestamp"></span></small>
+
+</td></tr>
+</table>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script async src="script.js"></script>
+</body>
+</html>
