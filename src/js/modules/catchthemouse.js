@@ -3,8 +3,8 @@
 var $ = require('jquery');
 
 module.exports = function() {
-  var MOVE_LENGTH = 100;
-  var MOVE_TIME = 200;
+  var MOVE_LENGTH = 50;
+  var MOVE_TIME = 300;
   var DIRECTIONS = ['up', 'down', 'left', 'right'];
   var PRELOADIMAGES = ['right', 'right-up', 'right-down', 'left', 'left-up',
     'left-down', 'win'];
