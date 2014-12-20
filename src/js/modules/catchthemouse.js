@@ -3,8 +3,8 @@
 var $ = require('jquery');
 
 module.exports = function() {
-  var MOVE_LENGTH = 50;
-  var MOVE_TIME = 400;
+  var MOVE_LENGTH = 100;
+  var MOVE_TIME = 200;
   var DIRECTIONS = ['up', 'down', 'left', 'right'];
   var PRELOADIMAGES = ['right', 'right-up', 'right-down', 'left', 'left-up',
     'left-down', 'win'];
@@ -13,8 +13,8 @@ module.exports = function() {
   var $floor = $('#floor');
   var $playButton = $('#play');
 
-  var xMax = $floor.width() - $mouse.width();
-  var yMax = $floor.height() - $mouse.height();
+  var xMax = 0;
+  var yMax = 0;
   var idTimer = null;
   var leftOrRight = 'right';
   var imageName = leftOrRight;
@@ -32,10 +32,13 @@ module.exports = function() {
     return parseInt($mouse.css(positionProperty));
   };
 
-  var layoutChange = function() {
+  var layoutChange = function(done) {
+    done = done || function() {};
+
     $floor.animate({height: $(window).height() / 2}, function() {
       xMax = $floor.width() - $mouse.width();
       yMax = $floor.height() - $mouse.height();
+      done();
     });
   };
 
@@ -106,10 +109,11 @@ module.exports = function() {
   $playButton.click(function() {
     if (!idTimer) {
       $floor.css('background-image', 'url("/images/wood.gif")');
-      layoutChange();
       $playButton.addClass('disabled');
       preloadImages();
-      idTimer = setInterval(scamper, MOVE_TIME + 10);
+      layoutChange(function() {
+        idTimer = setInterval(scamper, MOVE_TIME + 10);
+      });
     }
   });
 
