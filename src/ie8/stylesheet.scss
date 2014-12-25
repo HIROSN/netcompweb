@@ -54,7 +54,19 @@
   padding: 10px;
 }
 
-#catImages img {
-  width: 250px;
-  height: 200px;
+#catImages {
+  list-style-type: none;
+  padding-left: 0;
+
+  > li {
+    display: inline-block;
+    margin: 1px;
+
+    > img {
+      width: 250px;
+      height: 200px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+  }
 }

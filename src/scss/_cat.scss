@@ -11,18 +11,3 @@
   background-size: 5em 5em;
   background-repeat: no-repeat;
 }
-
-#catImages {
-  list-style-type: none;
-  padding-left: 0;
-
-  > li {
-    display: inline-block;
-    margin: 1px;
-
-    > img {
-      border-radius: 20px;
-      cursor: pointer;
-    }
-  }
-}
