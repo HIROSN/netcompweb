@@ -52,6 +52,13 @@ module.exports = function(grunt) {
         expand: true,
         src: ['**/*.*'],
         dest: 'public/images/'
+      },
+
+      ie8_css: {
+        cwd: 'src/ie8/css/',
+        expand: true,
+        src: ['**/*.*'],
+        dest: 'public/ie8/'
       }
     },
 
