@@ -22,4 +22,7 @@ module.exports = function() {
 
     child = child.nextSibling;
   }
+
+  var $items = $('.item');
+  if ($items.corner) { $items.corner('5px'); }
 };
