@@ -1,5 +1,1 @@
-#catImages > li > img {
-  behavior: url(pie.htc);
-  position: relative;
-  zoom: 1;
-}
+#catImages>li>img{behavior:url(pie.htc);position:relative;zoom:1}

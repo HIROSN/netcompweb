@@ -54,10 +54,10 @@ module.exports = function(grunt) {
         dest: 'public/images/'
       },
 
-      ie8_css: {
+      ie8_htc: {
         cwd: 'src/ie8/css/',
         expand: true,
-        src: ['**/*.*'],
+        src: ['**/*.htc'],
         dest: 'public/ie8/'
       }
     },
@@ -162,6 +162,11 @@ module.exports = function(grunt) {
       public_ie8: {
         src: 'build/ie8/stylesheet.css',
         dest: 'public/ie8/stylesheet.css'
+      },
+
+      ie8_css: {
+        src: 'src/ie8/css/ie8.css',
+        dest: 'public/ie8/ie8.css'
       }
     },
 
