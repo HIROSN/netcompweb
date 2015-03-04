@@ -59,6 +59,13 @@ module.exports = function(grunt) {
         expand: true,
         src: ['**/*.htc'],
         dest: 'public/ie8/'
+      },
+
+      private_images: {
+        cwd: 'src/private/images/',
+        expand: true,
+        src: ['**/*.*'],
+        dest: 'public/private/'
       }
     },
 
@@ -120,6 +127,12 @@ module.exports = function(grunt) {
           'public/script.js': ['build/script.js'],
           'public/ie8/script.js': ['build/ie8/script.js']
         }
+      },
+
+      private: {
+        files: {
+          'public/private/script.js': ['src/private/js/script.js']
+        }
       }
     },
 
@@ -140,6 +153,19 @@ module.exports = function(grunt) {
           removeComments: true,
           collapseWhitespace: true,
           preserveLineBreaks: true
+        }
+      },
+
+      private: {
+        files: [{
+          expand: true,
+          cwd: 'src/private/',
+          src: '*.html',
+          dest: 'public/private/'
+        }],
+        options: {
+          removeComments: true,
+          collapseWhitespace: true
         }
       }
     },
@@ -167,6 +193,16 @@ module.exports = function(grunt) {
       ie8_css: {
         src: 'src/ie8/css/ie8.css',
         dest: 'public/ie8/ie8.css'
+      },
+
+      private: {
+        src: 'src/private/css/stylesheet.css',
+        dest: 'public/private/stylesheet.css'
+      },
+
+      private_animate: {
+        src: 'src/private/css/animate.css',
+        dest: 'public/private/animate.css'
       }
     },
 
