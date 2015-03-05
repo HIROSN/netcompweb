@@ -3,7 +3,6 @@
 
 upstream:
 http://hirosn.azurewebsites.net/
-(deprecated: http://pweb.netcom.com/~ghnagata/)
 
 ## Resources
 
