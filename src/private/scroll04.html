@@ -5,29 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
   <body style="margin: 0px">
-    <img id="img1" src="dark_1366x854_01_prog.jpg" style="
+    <img id="intersected" src="dark_1366x854_01_prog.jpg" style="
       position: fixed;
       width: 100%;
       height: 100%;
       "/>
-    <div id="div1" style="
+    <div style="
       position: relative;
+      top: 0px;
+      left: 20%;
+      width: 60%;
       height: 3000px;
-      background-color: yellow;
-      width: 160px;
+      background-color: white;
       ">
-      <div id="div2" style="
+      <div id="iiLayer" style="
         position: relative;
         z-index: 1;
         height: 140px;
         ">
       </div>
     </div>
-    <div id="div3" style="
-      top: 0px;
+    <div style="
       position: absolute;
+      top: 0px;
+      left: 20%;
       ">
-      <img id="img2" src="bottomImage.jpg" />
+      <img src="bottomImage.jpg" />
     </div>
   </body>
 </html>
