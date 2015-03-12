@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+
+    .world {
+      position: absolute;
+      left:100px;
+      top:50px;
+      -webkit-transform-style: preserve-3d;
+      -webkit-transform: rotateX(20deg) rotateY(20deg);
+      transform-style: preserve-3d;
+      transform: rotateX(20deg) rotateY(20deg);
+    }
+
+    .face {
+      position:absolute;
+      left:0px;
+      top:0px;
+      height:100px;
+      width:100px;
+      -webkit-transform-origin: 0 0;
+      transform-origin: 0 0;
+    }
+
+    .faceback{
+      background-color: green;
+    }
+
+    .faceleft {
+      background-color: blue;
+      -webkit-transform: rotateY(90deg);
+      transform: rotateY(90deg);
+    }
+
+    .facebottom {
+      background-color: red;
+      -webkit-transform: translateY(100px) rotateX(-90deg);
+      transform: translateY(100px) rotateX(-90deg);
+    }
+    </style>
+  </head>
+  <body>
+    <div class="world">
+      <div class="face faceback"></div>
+      <div class="face faceleft"></div>
+      <div class="face facebottom"></div>
+    </div>
+  </body>
+</html>
