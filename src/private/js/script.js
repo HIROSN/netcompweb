@@ -118,11 +118,13 @@ $(function() {
   $pos.on('click', function(event) {
     var $target = $(event.target);
     var $filters = $('#filters');
-    $filters.removeClass('had-fixed-pos');
-    $('.filter').removeClass('fixed-pos');
+    var $filter = $target.closest('.filter');
     if ($target.is(':checked')) {
       $filters.addClass('had-fixed-pos');
-      $target.closest('.filter').addClass('fixed-pos');
+      $filter.addClass('fixed-pos');
+    } else {
+      $filters.removeClass('had-fixed-pos');
+      $filter.removeClass('fixed-pos');
     }
   });
 
@@ -130,11 +132,12 @@ $(function() {
     var $target = $(event.target);
     var $background = $('#background');
     var filter = $target.closest('.filter').find('img').attr('class');
-    $background.removeClass('background');
-    $background.removeClass(filter);
     if ($target.is(':checked')) {
       $background.addClass('background');
       $background.addClass(filter);
+    } else {
+      $background.removeClass('background');
+      $background.removeClass(filter);
     }
   });
 
