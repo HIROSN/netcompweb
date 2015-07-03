@@ -1,4 +1,5 @@
 body {
+  margin: 0;
   padding-top: 86px;
 }
 
@@ -37,6 +38,10 @@ body {
   top: 0;
   z-index: 10;
   width: 100%;
+}
+
+#myOuterWrapper {
+  padding: 8px;
 }
 
 td {
@@ -90,23 +95,60 @@ label {
   animation-iteration-count: infinite;
 }
 
-.defaultTheme {
-  background-image: url(dark_1366x854_01_prog.jpg);
-}
-
 #filters {
   position: relative;
 }
 
 .filter {
   margin-top: 20px;
+}
+
+.filter span, label {
   font-family: Helvetica, Arial;
   font-size: 14pt;
   color: lightgray;
+  line-height: 150%;
 }
 
 .filter img {
   width: 100%;
+}
+
+.pos-bg {
+  text-align: right;
+}
+
+.pos-box, .bg-box {
+  margin-top: 0;
+}
+
+.fixed-pos {
+  position: fixed;
+  z-index: 8;
+  top: 94px;
+  width: 18em;
+  text-align: right;
+}
+
+.had-fixed-pos {
+  padding-top: 242px;
+}
+
+#background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.background {
+  background-image: url(berlinskyline_night.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.unset {
+  -webkit-filter: unset;
+  filter: unset;
 }
 
 .blur {

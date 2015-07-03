@@ -19,6 +19,9 @@ $(function() {
   var $showFilters = $('#showFilters');
   var $filters = $('#filters');
 
+  var $pos = $('.pos-box');
+  var $bg = $('.bg-box');
+
   var showHideFilters = function() {
     if ($showFilters.is(':checked')) {
       $filters.removeClass('hidden');
@@ -110,6 +113,29 @@ $(function() {
   })
   .on('click', '.App_v2', function() {
     $(this).toggle(1000);
+  });
+
+  $pos.on('click', function(event) {
+    var $target = $(event.target);
+    var $filters = $('#filters');
+    $filters.removeClass('had-fixed-pos');
+    $('.filter').removeClass('fixed-pos');
+    if ($target.is(':checked')) {
+      $filters.addClass('had-fixed-pos');
+      $target.closest('.filter').addClass('fixed-pos');
+    }
+  });
+
+  $bg.on('click', function(event) {
+    var $target = $(event.target);
+    var $background = $('#background');
+    var filter = $target.closest('.filter').find('img').attr('class');
+    $background.removeClass('background');
+    $background.removeClass(filter);
+    if ($target.is(':checked')) {
+      $background.addClass('background');
+      $background.addClass(filter);
+    }
   });
 
   showHideFilters();
