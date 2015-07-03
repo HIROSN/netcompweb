@@ -122,9 +122,12 @@ $(function() {
     if ($target.is(':checked')) {
       $filters.addClass('had-fixed-pos');
       $filter.addClass('fixed-pos');
+      $pos.prop('disabled', true);
+      $target.prop('disabled', false);
     } else {
       $filters.removeClass('had-fixed-pos');
       $filter.removeClass('fixed-pos');
+      $pos.prop('disabled', false);
     }
   });
 
@@ -135,9 +138,12 @@ $(function() {
     if ($target.is(':checked')) {
       $background.addClass('background');
       $background.addClass(filter);
+      $bg.prop('disabled', true);
+      $target.prop('disabled', false);
     } else {
       $background.removeClass('background');
       $background.removeClass(filter);
+      $bg.prop('disabled', false);
     }
   });
 
