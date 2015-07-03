@@ -16,6 +16,18 @@ $(function() {
   var $fixed = $('#fixed');
   var $headerImage = $('#header-image img');
 
+  var $showFilters = $('#showFilters');
+  var $filters = $('#filters');
+
+  var showHideFilters = function() {
+    if ($showFilters.is(':checked')) {
+      $filters.removeClass('hidden');
+    }
+    else {
+      $filters.addClass('hidden');
+    }
+  };
+
   var showHideColumn = function() {
     if ($showColumn.is(':checked')) {
       $myColumns.removeClass('hidden');
@@ -42,6 +54,10 @@ $(function() {
   var removeAnimation = function() {
     $('#myPageWrapper .animated').remove();
   };
+
+  $showFilters.on('click', function() {
+    showHideFilters();
+  });
 
   $showColumn.on('click', function() {
     showHideColumn();
@@ -96,6 +112,7 @@ $(function() {
     $(this).toggle(1000);
   });
 
+  showHideFilters();
   showHideColumn();
   showContents();
 });

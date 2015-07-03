@@ -93,3 +93,32 @@ label {
 .defaultTheme {
   background-image: url(dark_1366x854_01_prog.jpg);
 }
+
+#filters {
+  position: relative;
+}
+
+.filter {
+  margin-top: 20px;
+  font-family: Helvetica, Arial;
+  font-size: 14pt;
+  color: lightgray;
+}
+
+.filter img {
+  width: 100%;
+}
+
+.blur {
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+}
+
+.brightness {
+  -webkit-filter: brightness(0.2);
+  filter: brightness(0.2);
+}
+
+.contrast {
+  -webkit-filter: contrast(300%);
+}

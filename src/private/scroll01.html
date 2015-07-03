@@ -17,11 +17,11 @@
         <table>
           <tr>
             <td>
-              <input id="filter" type="checkbox">
-              <label for="filter">Filter</label>
+              <input id="showFilters" type="checkbox" checked>
+              <label for="showFilters">Filter</label>
             </td>
             <td>
-              <input id="showColumn" type="checkbox" checked>
+              <input id="showColumn" type="checkbox">
               <label for="showColumn">Column</label>
             </td>
             <td>
@@ -46,6 +46,26 @@
     </div>
     <div id="myOuterWrapper">
       <div id="myPageWrapper">
+        <div class="myColumn">
+          <div id="filters">
+            <div class="filter">
+              original image
+              <div><img src="berlinskyline_night.jpg"></div>
+            </div>
+            <div class="filter">
+              blur()
+              <div><img class="blur" src="berlinskyline_night.jpg"></div>
+            </div>
+            <div class="filter">
+              brightness()
+              <div><img class="brightness" src="berlinskyline_night.jpg"></div>
+            </div>
+            <div class="filter">
+              contrast()
+              <div><img class="contrast" src="berlinskyline_night.jpg"></div>
+            </div>
+          </div>
+        </div>
         <div id="myColumns">
           <div class="myColumn">
             <div class="myContent">
