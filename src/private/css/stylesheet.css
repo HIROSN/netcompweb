@@ -41,20 +41,23 @@ body {
 
 td {
   padding: 0px;
-  vertical-align: top;
 }
 
 input {
   font-family: Helvetica, Arial;
-  font-size: 16pt;
+  font-size: 14pt;
   margin-left: 8px;
   margin-top: 20px;
 }
 
 label {
   font-family: Helvetica, Arial;
-  font-size: 16pt;
+  font-size: 14pt;
   color: lightgray;
+}
+
+.textInput {
+  width: 4em;
 }
 
 .hidden {
@@ -62,7 +65,7 @@ label {
 }
 
 .myColumn {
-  width: 33.33%;
+  width: 18em;
 }
 
 .myContent {
@@ -85,4 +88,8 @@ label {
   color: lightgray;
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
+}
+
+.defaultTheme {
+  background-image: url(dark_1366x854_01_prog.jpg);
 }

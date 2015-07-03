@@ -7,8 +7,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
   </head>
   <body>
-    <img id="theme" src="transparent-95031.png"
-      style="background-image: url(dark_1366x854_01_prog.jpg);">
+    <img id="theme" class="defaultTheme" src="transparent-95031.png">
     <div id="header-image">
       <img src="transparent-95031.png"
         style="background-image: url(dark_1366x854_01_prog.jpg);">
@@ -18,28 +17,28 @@
         <table>
           <tr>
             <td>
-              <div>
-                <input id="showColumn" type="checkbox" checked>
-                <label for="showColumn">Column</label>
-              </div>
-              <div>
-                <input id="numContents" type="text" value="10">
-              </div>
+              <input id="filter" type="checkbox">
+              <label for="filter">Filter</label>
             </td>
             <td>
-              <div>
-                <input id="showAnimation" type="checkbox">
-                <label for="showAnimation">Animation</label>
-              </div>
-              <div>
-                <input id="numAnimations" type="text" value="1000">
-              </div>
+              <input id="showColumn" type="checkbox" checked>
+              <label for="showColumn">Column</label>
             </td>
             <td>
-              <div>
-                <input id="fixed" type="checkbox" checked>
-                <label for="fixed">Fixed</label>
-              </div>
+              <input id="showAnimation" type="checkbox">
+              <label for="showAnimation">Animation</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input id="fixed" type="checkbox">
+              <label for="fixed">Fixed</label>
+            </td>
+            <td>
+              <input id="numContents" type="text" value="10" class="textInput">
+            </td>
+            <td>
+              <input id="numAnimations" type="text" value="1000" class="textInput">
             </td>
           </tr>
         </table>
