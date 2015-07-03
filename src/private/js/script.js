@@ -19,6 +19,7 @@ $(function() {
   var $showFilters = $('#showFilters');
   var $filters = $('#filters');
 
+  var $anim = $('.anim-box');
   var $pos = $('.pos-box');
   var $bg = $('.bg-box');
 
@@ -115,6 +116,16 @@ $(function() {
     $(this).toggle(1000);
   });
 
+  $anim.on('click', function(event) {
+    var $target = $(event.target);
+    var $filter = $target.closest('.filter').find('img');
+    if ($target.is(':checked')) {
+      $filter.addClass($target.attr('id'));
+    } else {
+      $filter.removeClass($target.attr('id'));
+    }
+  });
+
   $pos.on('click', function(event) {
     var $target = $(event.target);
     var $filters = $('#filters');
@@ -140,10 +151,12 @@ $(function() {
       $background.addClass(filter);
       $bg.prop('disabled', true);
       $target.prop('disabled', false);
+      $anim.prop('disabled', true);
     } else {
       $background.removeClass('background');
       $background.removeClass(filter);
       $bg.prop('disabled', false);
+      $anim.prop('disabled', false);
     }
   });
 

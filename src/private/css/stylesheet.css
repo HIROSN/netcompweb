@@ -118,7 +118,7 @@ label {
   text-align: right;
 }
 
-.pos-box, .bg-box {
+.anim-box, .pos-box, .bg-box {
   margin-top: 0;
 }
 
@@ -199,4 +199,33 @@ label {
 .sepia {
   -webkit-filter: sepia(100%);
   filter: sepia(100%);
+}
+
+@-webkit-keyframes anim-blur {
+  0% {
+    -webkit-filter: blur(5px);
+  }
+  50% {
+    -webkit-filter: blur(0px);
+  }
+  100% {
+    -webkit-filter: blur(5px);
+  }
+}
+
+@keyframes anim-blur {
+  0% {
+    -webkit-filter: blur(5px);
+  }
+  50% {
+    -webkit-filter: blur(0px);
+  }
+  100% {
+    -webkit-filter: blur(5px);
+  }
+}
+
+.anim-blur {
+  -webkit-animation: anim-blur 5s infinite;
+  animation: anim-blur 5s infinite;
 }
