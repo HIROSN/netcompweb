@@ -4,6 +4,10 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <style>
+    .unset {
+      -webkit-filter: unset;
+      filter: unset;
+    }
     #bg {
       position: fixed;
       background-image: url(bg.jpg);
@@ -22,7 +26,7 @@
     </style>
   </head>
   <body>
-    <div id="bg"></div>
+    <div id="bg" class="unset"></div>
     <div class="content"></div>
     <div class="content"></div>
     <div class="content"></div>
