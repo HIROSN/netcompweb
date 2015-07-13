@@ -3,6 +3,7 @@
 /* global $: false */
 
 $(function() {
+  var $theme = $('#theme');
   var $myPageWrapper = $('#myPageWrapper');
   var $myColumns = $('#myColumns');
   var $myContent = $('.myContent');
@@ -100,9 +101,11 @@ $(function() {
   $fixed.on('click', function() {
     if ($fixed.is(':checked')) {
       $headerImage.css('background-attachment', 'fixed');
+      $theme.removeClass('hidden');
     }
     else {
       $headerImage.css('background-attachment', 'scroll');
+      $theme.addClass('hidden');
     }
   });
 
