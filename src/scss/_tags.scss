@@ -2,6 +2,10 @@
   font-family: $articleFonts;
 }
 
+body {
+  margin: 0px;
+}
+
 a {
   text-decoration: none;
   color: $linkDefault;
