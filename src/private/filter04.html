@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+    .blur {
+      -webkit-filter: blur(5px);
+      filter: blur(5px);
+    }
+    .float {
+      float: left;
+    }
+    .top {
+      margin-top: 0px;
+    }
+    section {
+      clear: both;
+    }
+    img {
+      width: 150px;
+      height: 150px;
+      margin-right: 8px;
+      margin-bottom: 1em;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+    }
+    td {
+      padding: 0px;
+    }
+    * {
+      font-family: Consolas, "Liberation Mono", Courier, monospace;
+    }
+    </style>
+  </head>
+  <body>
+    <section class="blur">
+      <img src="../images/wood.gif" class="float">
+      <h3>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter#blur()">blur()</a>
+      </h3>
+      <p>Applies a Gaussian blur to the input image. The value of ‘radius’ defines the value of the standard deviation to the Gaussian function, or how many pixels on the screen blend into each other, so a larger value will create more blur. If no parameter is provided, then a value 0 is used. The parameter is specified as a CSS length, but does not accept percentage values.</p>
+    </section>
+    <section>
+      <img src="../images/wood.gif" class="blur float">
+      <h3>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter#blur()">blur()</a>
+      </h3>
+      <p>Applies a Gaussian <span class="blur">blur</span> to the input image. The value of ‘radius’ defines the value of the standard deviation to the Gaussian function, or how many pixels on the screen blend into each other, so a larger value will create more <span class="blur">blur</span>. If no parameter is provided, then a value 0 is used. The parameter is specified as a CSS length, but does not accept percentage values.</p>
+    </section>
+    <section>
+      <table>
+        <tr>
+          <td valign="top">
+            <img src="../images/wood.gif" class="blur">
+          </td>
+          <td valign="top" class="blur">
+            <h3 class="top">
+              <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter#blur()">blur()</a>
+            </h3>
+            <p>Applies a Gaussian blur to the input image. The value of ‘radius’ defines the value of the standard deviation to the Gaussian function, or how many pixels on the screen blend into each other, so a larger value will create more blur. If no parameter is provided, then a value 0 is used. The parameter is specified as a CSS length, but does not accept percentage values.</p>
+          </td>
+        </tr>
+      </table>
+  </body>
+</html>
