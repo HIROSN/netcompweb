@@ -141,7 +141,7 @@ label {
 }
 
 .background {
-  background-image: url(berlinskyline_night.jpg);
+  background-image: url(bg.jpg);
   background-attachment: fixed;
   background-size: cover;
 }
