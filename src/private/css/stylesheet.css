@@ -201,14 +201,11 @@ label {
   filter: sepia(100%);
 }
 
-.turbulence {
+.url {
   -webkit-filter: url(#turbulence);
+  -webkit-filter: url(filters.xml#turbulence);
   filter: url(#turbulence);
-}
-
-.fractal-noise {
-  -webkit-filter: url(filters.xml#fractalNoise);
-  filter: url(filters.xml#fractalNoise);
+  filter: url(filters.xml#turbulence);
 }
 
 @-webkit-keyframes anim-blur {
