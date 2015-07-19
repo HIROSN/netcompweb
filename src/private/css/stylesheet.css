@@ -100,7 +100,7 @@ label {
 }
 
 .filter {
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 .filter span, label {
@@ -131,7 +131,7 @@ label {
 }
 
 .had-fixed-pos {
-  padding-top: 242px;
+  padding-top: 326px;
 }
 
 #background {
@@ -199,6 +199,11 @@ label {
 .sepia {
   -webkit-filter: sepia(100%);
   filter: sepia(100%);
+}
+
+.url {
+  -webkit-filter: url(#turbulence);
+  filter: url(#turbulence);
 }
 
 @-webkit-keyframes anim-blur {
