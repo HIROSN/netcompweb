@@ -207,8 +207,8 @@ label {
 }
 
 .fractal-noise {
-  -webkit-filter: url(filters.svg#fractalNoise);
-  filter: url(filters.svg#fractalNoise);
+  -webkit-filter: url(filters.xml#fractalNoise);
+  filter: url(filters.xml#fractalNoise);
 }
 
 @-webkit-keyframes anim-blur {
