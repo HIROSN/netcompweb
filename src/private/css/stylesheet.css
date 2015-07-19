@@ -203,9 +203,7 @@ label {
 
 .url {
   -webkit-filter: url(#turbulence);
-  -webkit-filter: url(filters.xml#turbulence);
   filter: url(#turbulence);
-  filter: url(filters.xml#turbulence);
 }
 
 @-webkit-keyframes anim-blur {
