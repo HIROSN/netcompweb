@@ -190,6 +190,23 @@
                 <label for="bg-url">bg</label>
               </div>
             </div>
+            <div class="filter">
+              <span>SVG</span>
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="288" height="288">
+                  <defs>
+                    <filter id="turbulence" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%">
+                      <feTurbulence type="turbulence" baseFrequency="0.1" numOctaves="1" />
+                    </filter>
+                  </defs>
+                  <rect width="288" height="288" filter="url(#turbulence)" />
+                </svg>
+              </div>
+              <div class="pos-bg">
+                <input id="pos-svg" type="checkbox" class="pos-box">
+                <label for="pos-svg">pos</label>
+              </div>
+            </div>
           </div>
         </div>
         <div id="myColumns">
@@ -200,11 +217,6 @@
         </div>
       </div>
     </div>
-    <svg xmlns="http://www.w3.org/2000/svg" height="0">
-      <filter id="turbulence" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%">
-        <feTurbulence type="turbulence" baseFrequency="0.1" numOctaves="1" />
-      </filter>
-    </svg>
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script async src="script.js"></script>
   </body>
