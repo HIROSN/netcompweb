@@ -27,6 +27,7 @@
     <script>
       var count = 0;
       var wheel = (-1);
+      var prevent = false;
       $(function() {
         var $counter = $('#counter');
         var $wheel = $('#wheel');
@@ -47,9 +48,15 @@
         });
         $wheel.click(function() {
           if (wheel < 0) {
-            $(window).on('wheel', function() {
-              $wheel.text(++wheel);
+            $(window).on('wheel', function(event) {
+              if (prevent) {
+                event.preventDefault();
+              } else {
+                $wheel.text(++wheel);
+              }
             });
+          } else {
+            prevent = !prevent;
           }
           $wheel.text(wheel = 0);
         });
