@@ -110,13 +110,18 @@ label {
   line-height: 150%;
 }
 
-.filter img {
+.filter img, video {
   width: 100%;
 }
 
 .filter svg {
   width: 288px;
   height: 288px;
+}
+
+.filter canvas {
+  width: 288px;
+  height: 216px;
 }
 
 .pos-bg {

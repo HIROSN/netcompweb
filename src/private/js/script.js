@@ -121,11 +121,12 @@ $(function() {
 
   $anim.on('click', function(event) {
     var $target = $(event.target);
-    var $filter = $target.closest('.filter').find('img');
+    var $filter = $target.closest('.filter').find('.target');
+    var func = $target.attr('data') || $target.attr('id');
     if ($target.is(':checked')) {
-      $filter.addClass($target.attr('id'));
+      $filter.addClass(func);
     } else {
-      $filter.removeClass($target.attr('id'));
+      $filter.removeClass(func);
     }
   });
 
@@ -148,7 +149,7 @@ $(function() {
   $bg.on('click', function(event) {
     var $target = $(event.target);
     var $background = $('#background');
-    var filter = $target.closest('.filter').find('img').attr('class');
+    var filter = $target.closest('.filter').find('.target').attr('class');
     if ($target.is(':checked')) {
       $background.addClass('background');
       $background.addClass(filter);
@@ -162,6 +163,16 @@ $(function() {
       $anim.prop('disabled', false);
     }
   });
+
+  (function() {
+    var hueRotateCanvas = document.getElementById('hue-rotate-canvas');
+    var context = hueRotateCanvas.getContext('2d');
+    var radient = context.createLinearGradient(0, 0, 400, 0);
+    radient.addColorStop(0, 'red');
+    radient.addColorStop(1, 'white');
+    context.fillStyle = radient;
+    context.fillRect(0, 0, 400, 216);
+  })();
 
   showHideFilters();
   showHideColumn();
