@@ -47,6 +47,13 @@ module.exports = function(grunt) {
     },
 
     copy: {
+      config: {
+        cwd: 'src/',
+        expand: true,
+        src: ['**/*.config'],
+        dest: 'public/'
+      },
+
       images: {
         cwd: 'src/images/',
         expand: true,
