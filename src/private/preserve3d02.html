@@ -31,31 +31,38 @@
 
   #roller {
     position: absolute;
+    -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
   }
 
   .face {
     position: absolute;
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   }
 
   #face-top {
+    -webkit-transform: rotateX(90deg);
     transform: rotateX(90deg);
   }
 
   #face-bottom {
+    -webkit-transform: rotateX(-90deg);
     transform: rotateX(-90deg);
   }
 
   .animated {
+    -webkit-transition: 0.4s;
     transition: 0.4s;
   }
 
   .scroll-up {
+    -webkit-transform: rotateX(90deg);
     transform: rotateX(90deg);
   }
 
   .scroll-down {
+    -webkit-transform: rotateX(-90deg);
     transform: rotateX(-90deg);
   }
 
@@ -80,11 +87,10 @@
     }
   }
 
-
   @media (min-width: 54rem) {
     .container {
-      width: 90%;
-      margin-left: 5%;
+      width: 70%;
+      margin-left: 15%;
       margin-top: 2em;
     }
   }
@@ -117,13 +123,20 @@
     var $scroller = $('#scroller');
     var loading = false;
     var scrolling = false;
+    var initialized = false;
     var indexImage = 0;
     var transformStyle;
 
+    var getTransformStyle = function (prefix) {
+      var cs = getComputedStyle($('#roller')[0], null);
+      if (prefix) { return cs.getPropertyValue(prefix + 'transform-style'); }
+      return cs.transformStyle;
+    };
+
     var isPreserve3dSupported = function () {
       if (!transformStyle) {
-        var cs = getComputedStyle($('#roller')[0], null);
-        transformStyle = cs.transformStyle || 'flat';
+        transformStyle = getTransformStyle() ||
+          getTransformStyle('-webkit-') || 'flat';
       }
 
       return (transformStyle.toLowerCase() === 'preserve-3d');
@@ -132,7 +145,7 @@
     var getBingImageUrls = function (index) {
       var dfd = new $.Deferred();
       var query = 'http://www.bing.com/HPImageArchive.aspx' +
-      '?format=rss&idx=' + index + '&n=4&mkt=en-US';
+        '?format=rss&idx=' + index + '&n=4&mkt=en-US';
 
       $.ajax({
         url: 'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0',
@@ -196,19 +209,49 @@
     var resizeFaces = function () {
       var width = $scroller[0].scrollWidth;
       var height = $scroller.height();
-      var origin = '50% 50% ' + (height / -2) + 'px';
+      var perspective = height * 5;
+
+      $('.world').css({
+        perspective: perspective + 'px'
+      });
+
+      if (getTransformStyle()) {
+        // Standard transform-style is supported. Use transform-origin.
+        $('#roller, #face-top, #face-bottom').css({
+          'transform-origin': '50% 50% ' + (height / -2) + 'px'
+        });
+      }
+      else {
+        // -webkit-transform-style is supported. Use translateZ.
+        var halfHeight = height / 2;
+        halfHeight = (perspective * halfHeight) / (perspective + halfHeight);
+        var halfWidth = halfHeight * 16 / 9;
+
+        $('.world').css({
+          '-webkit-perspective': perspective + 'px',
+          'margin-left': (width / 2 - halfWidth) + 'px',
+          'margin-top': (height / 2 - halfHeight) + 'px'
+        });
+
+        $('#face-front').css({
+          '-webkit-transform': 'translateZ(' + halfHeight + 'px)'
+        });
+
+        $('#face-top').css({
+          '-webkit-transform': 'rotateX(90deg) translateZ(' + halfHeight + 'px)'
+        });
+
+        $('#face-bottom').css({
+          '-webkit-transform': 'rotateX(-90deg) translateZ(' + halfHeight + 'px)'
+        });
+
+        width = halfWidth * 2;
+        height = halfHeight * 2;
+      }
 
       $('.world, #roller, .face').css({
         width: width,
         height: height
-      });
-
-      $('.world').css({
-        perspective: (height * 5) + 'px'
-      });
-
-      $('#roller, #face-top, #face-bottom').css({
-        'transform-origin': origin
       });
     };
 
@@ -219,6 +262,7 @@
     };
 
     var performScrollTransition = function (index) {
+      var end = 'transitionend webkitTransitionEnd oTransitionEnd';
       var $roller = $('#roller');
 
       if (!scrolling && index !== indexImage) {
@@ -230,7 +274,7 @@
         $roller
         .addClass('animated')
         .addClass(up ? 'scroll-up' : 'scroll-down')
-        .one('transitionend', function () {
+        .one(end, function () {
           setFaceImage('#face-front', indexImage);
           $roller.removeClass('animated scroll-up scroll-down');
           scrolling = false;
@@ -253,6 +297,9 @@
         setFaceImage('#face-front', indexImage);
         $('.image-frame').css('opacity', 0);
       }
+
+      if (initialized) { return; }
+      initialized = true;
 
       $scroller.on('scroll', function (event) {
         var height = $scroller.height();
