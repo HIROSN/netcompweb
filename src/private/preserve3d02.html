@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preserve-3D</title>
+  <style>
+  #scroller {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+
+  .bing-image {
+    width: 100%;
+  }
+
+  .image-frame {
+    width: 100%;
+    height: 100%;
+  }
+
+  .load-error {
+    color: red;
+  }
+
+  .world {
+    position: absolute;
+  }
+
+  #roller {
+    position: absolute;
+    transform-style: preserve-3d;
+  }
+
+  .face {
+    position: absolute;
+    backface-visibility: hidden;
+  }
+
+  #face-top {
+    transform: rotateX(90deg);
+  }
+
+  #face-bottom {
+    transform: rotateX(-90deg);
+  }
+
+  .animated {
+    transition: 0.4s;
+  }
+
+  .scroll-up {
+    transform: rotateX(90deg);
+  }
+
+  .scroll-down {
+    transform: rotateX(-90deg);
+  }
+
+  .text-title {
+    font-family: Helvetica, Arial;
+    font-size: 11pt;
+    margin-top: 0.5em;
+    text-align: center;
+  }
+
+  .container {
+    margin-top: 8em;
+  }
+
+  @media (min-width: 32rem) {
+    .container {
+      margin-top: 4em;
+    }
+
+    .text-title {
+      font-size: 13pt;
+    }
+  }
+
+
+  @media (min-width: 54rem) {
+    .container {
+      width: 90%;
+      margin-left: 5%;
+      margin-top: 2em;
+    }
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="world">
+      <div id="roller">
+        <div id="face-top" class="face"><img class="bing-image"></div>
+        <div id="face-front" class="face"><img class="bing-image"></div>
+        <div id="face-bottom" class="face"><img class="bing-image"></div>
+      </div>
+    </div>
+    <div id="scroller">
+      <script id="images-template" type="text/x-handlebars-template">
+        {{#each entries}}
+        <div class="image-frame">
+          <img class="bing-image" src="http://www.bing.com{{link}}" title="{{title}}">
+        </div>
+        {{/each}}
+      </script>
+    </div>
+    <div class="text-title"></div>
+  </div>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
+  <script>
+  (function () {
+    var $scroller = $('#scroller');
+    var loading = false;
+    var scrolling = false;
+    var indexImage = 0;
+    var transformStyle;
+
+    var isPreserve3dSupported = function () {
+      if (!transformStyle) {
+        var cs = getComputedStyle($('#roller')[0], null);
+        transformStyle = cs.transformStyle || 'flat';
+      }
+
+      return (transformStyle.toLowerCase() === 'preserve-3d');
+    };
+
+    var getBingImageUrls = function (index) {
+      var dfd = new $.Deferred();
+      var query = 'http://www.bing.com/HPImageArchive.aspx' +
+      '?format=rss&idx=' + index + '&n=4&mkt=en-US';
+
+      $.ajax({
+        url: 'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0',
+        data: {q: query},
+        dataType: 'jsonp',
+        success: dfd.resolve,
+        error: dfd.reject
+      });
+
+      return dfd.promise();
+    };
+
+    var setScrollerHeight = function () {
+      var width = $scroller[0].scrollWidth;
+      $scroller.css('height', width * 9 / 16);
+    };
+
+    var loadError = function () {
+      $scroller.children().remove();
+
+      $('<div></div>')
+      .text('Error: Unable to load images.')
+      .addClass('load-error')
+      .appendTo($scroller);
+    };
+
+    var loadImages = function (index, fadeIn, done) {
+      done = done || function () {};
+
+      getBingImageUrls(index).then(function (results) {
+        if (results && results.responseData && results.responseData.feed) {
+          var template = Handlebars.compile($('#images-template').html());
+          var $images = $(template(results.responseData.feed));
+
+          if (fadeIn) {
+            $images
+            .hide()
+            .appendTo($scroller)
+            .fadeIn('fast', function () {
+              done();
+            });
+          }
+          else {
+            $images
+            .css('opacity', isPreserve3dSupported() ? 0 : 1)
+            .appendTo($scroller);
+            done();
+          }
+
+          setScrollerHeight();
+        }
+        else if (index === 0) {
+          loadError();
+        }
+      })
+      .fail(function () {
+        loadError();
+      });
+    };
+
+    var resizeFaces = function () {
+      var width = $scroller[0].scrollWidth;
+      var height = $scroller.height();
+      var origin = '50% 50% ' + (height / -2) + 'px';
+
+      $('.world, #roller, .face').css({
+        width: width,
+        height: height
+      });
+
+      $('.world').css({
+        perspective: (height * 5) + 'px'
+      });
+
+      $('#roller, #face-top, #face-bottom').css({
+        'transform-origin': origin
+      });
+    };
+
+    var setFaceImage = function (selector, index) {
+      var $frame = $('.image-frame').eq(index);
+      var src = $frame ? $frame.find('img').attr('src') : '';
+      $(selector).find('img').attr('src', src);
+    };
+
+    var performScrollTransition = function (index) {
+      var $roller = $('#roller');
+
+      if (!scrolling && index !== indexImage) {
+        var up = (index > indexImage);
+        scrolling = true;
+        indexImage = index;
+        setFaceImage(up ? '#face-bottom' : '#face-top', indexImage);
+
+        $roller
+        .addClass('animated')
+        .addClass(up ? 'scroll-up' : 'scroll-down')
+        .one('transitionend', function () {
+          setFaceImage('#face-front', indexImage);
+          $roller.removeClass('animated scroll-up scroll-down');
+          scrolling = false;
+        });
+      }
+    };
+
+    var updateImageTitle = function (index) {
+      var $frame = $('.image-frame').eq(index);
+      var title = $frame ? $frame.find('img').attr('title') : '';
+      $('.text-title').text(title);
+    };
+
+    loadImages(indexImage, true, function () {
+      setScrollerHeight();
+      updateImageTitle(indexImage);
+
+      if (isPreserve3dSupported()) {
+        resizeFaces();
+        setFaceImage('#face-front', indexImage);
+        $('.image-frame').css('opacity', 0);
+      }
+
+      $scroller.on('scroll', function (event) {
+        var height = $scroller.height();
+        var scrollCenter = event.target.scrollTop + height / 2;
+        var index = Math.floor(scrollCenter / height);
+        var length = $scroller.children('div').length;
+
+        if (!loading && index >= length - 1) {
+          loading = true;
+          loadImages(length, false, function () {
+            loading = false;
+          });
+        }
+
+        if (isPreserve3dSupported()) {
+          performScrollTransition(index);
+
+          if (scrolling) {
+            event.target.scrollTop = height * indexImage;
+          }
+        }
+        else {
+          if (Math.abs(index * height - event.target.scrollTop) < 8) {
+            event.target.scrollTop = height * index;
+          }
+        }
+
+        updateImageTitle(index);
+      });
+
+      $(window).on('resize', function () {
+        setScrollerHeight();
+
+        if (isPreserve3dSupported()) {
+          resizeFaces();
+        }
+      });
+    });
+  }());
+  </script>
+</body>
+</html>
