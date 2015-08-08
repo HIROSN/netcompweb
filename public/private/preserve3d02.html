@@ -104,6 +104,7 @@
     };
 
     var isPreserve3dSupported = function () {
+      if (navigator.userAgent.indexOf('Trident/') > 0) { return false; }
       if (!transformStyle) {
         transformStyle = getTransformStyle() ||
           getTransformStyle('-webkit-') || 'flat';
