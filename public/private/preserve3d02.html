@@ -186,14 +186,8 @@
         perspective: perspective + 'px'
       });
 
-      if (getTransformStyle()) {
-        // Standard transform-style is supported. Use transform-origin.
-        $('#roller, #face-top, #face-bottom').css({
-          'transform-origin': '50% 50% ' + (height / -2) + 'px'
-        });
-      }
-      else {
-        // -webkit-transform-style is supported. Use translateZ.
+      if (navigator.userAgent.indexOf('AppleWebKit/') > 0) {
+        // Apple WebKit. Use translateZ.
         var halfHeight = height / 2;
         halfHeight = (perspective * halfHeight) / (perspective + halfHeight);
         var halfWidth = halfHeight * 16 / 9;
@@ -218,6 +212,12 @@
 
         width = halfWidth * 2;
         height = halfHeight * 2;
+      }
+      else {
+        // Standard transform-style should be supported. Use transform-origin.
+        $('#roller, #face-top, #face-bottom').css({
+          'transform-origin': '50% 50% ' + (height / -2) + 'px'
+        });
       }
 
       $('.world, #roller, .face').css({
