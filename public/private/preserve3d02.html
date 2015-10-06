@@ -103,6 +103,11 @@
       return cs.transformStyle;
     };
 
+    var getBackfaceVisibility = function () {
+      var cs = getComputedStyle($('#face-front')[0], null);
+      return cs.getPropertyValue('backface-visibility');
+    };
+
     var isPreserve3dSupported = function () {
       if (navigator.userAgent.indexOf('Trident/') > 0) { return false; }
       if (!transformStyle) {
@@ -186,8 +191,14 @@
         perspective: perspective + 'px'
       });
 
-      if (navigator.userAgent.indexOf('AppleWebKit/') > 0) {
-        // Apple WebKit. Use translateZ.
+      if (getTransformStyle() && getBackfaceVisibility()) {
+        // Use transform-origin
+        $('#roller, #face-top, #face-bottom').css({
+          'transform-origin': '50% 50% ' + (height / -2) + 'px'
+        });
+      }
+      else {
+        // Use translateZ
         var halfHeight = height / 2;
         halfHeight = (perspective * halfHeight) / (perspective + halfHeight);
         var halfWidth = halfHeight * 16 / 9;
@@ -212,12 +223,6 @@
 
         width = halfWidth * 2;
         height = halfHeight * 2;
-      }
-      else {
-        // Standard transform-style should be supported. Use transform-origin.
-        $('#roller, #face-top, #face-bottom').css({
-          'transform-origin': '50% 50% ' + (height / -2) + 'px'
-        });
       }
 
       $('.world, #roller, .face').css({
