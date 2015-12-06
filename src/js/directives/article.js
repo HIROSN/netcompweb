@@ -231,12 +231,4 @@ module.exports = function(app) {
       }
     };
   });
-
-  app.directive('articleIe8', function() {
-    return {
-      restrict: 'A',
-      templateUrl: 'article-ie8.html',
-      controller: require('../modules/default')
-    };
-  });
 };
