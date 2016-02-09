@@ -7,6 +7,7 @@ var config = require('../../src/ie8/js/config');
 
 describe('Config tests', function() {
   it('should be ok to request external resources', function(done) {
+    this.timeout(10000);
     async.each(config.catImages, function(url, callback) {
       request.head(url).end(function(err, data) {
         if (200 !== data.status) { err = url; }
