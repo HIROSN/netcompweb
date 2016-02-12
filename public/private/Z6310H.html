@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>var ua = navigator.userAgent.toLowerCase();
+  var android = ua.indexOf("android") > -1;
+  var windows = ua.indexOf("windows") > -1;</script><style>body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+  }
+  div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    transition: left 0.5s;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .red {
+    background-color: red;
+  }
+  .green {
+    background-color: green;
+  }
+  .log {
+    position: relative;
+    height: 2em;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    font-family: "Open Sans", "Segoe UI", "Helvetica Neue", sans-serif;
+    font-size: 18pt;
+    padding: 1em;
+    box-sizing: border-box;
+  }
+  .shifted {
+    left: 100%;
+    transition: left 0.5s;
+  }</style></head><body><div class="red"></div><div class="green" id="shift"></div><div class="log" id="windows"></div><div class="log" id="android"></div><script>function Z6310H(a) {
+    if (windows) {
+      try {
+        if (a.button !== 0) {
+          a.preventDefault(); // bug
+            return
+        }
+      } catch (ex) {}
+    }
+    var element = document.getElementById('shift');
+    element.classList.toggle('shifted');
+  }
+  if (android) {
+    document.addEventListener("touchstart", Z6310H, false);
+  } else {
+    document.addEventListener("mousedown", Z6310H, false);
+  }
+  document.getElementById('windows').innerText = "windows: " + windows;
+  document.getElementById('android').innerText = "android: " + android;</script></body></html>
