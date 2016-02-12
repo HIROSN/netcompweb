@@ -18,6 +18,9 @@
     -ms-user-select: none;
     user-select: none;
   }
+  input[type=checkbox] {
+    margin-right: 8px;
+  }
   .red {
     background-color: red;
   }
@@ -26,23 +29,25 @@
   }
   .log {
     position: relative;
-    height: 2em;
+    height: 1em;
     background-color: rgba(0, 0, 0, 0);
     color: white;
     font-family: "Open Sans", "Segoe UI", "Helvetica Neue", sans-serif;
     font-size: 18pt;
-    padding: 1em;
-    box-sizing: border-box;
+    padding: 1em 0 0 1em;
   }
   .shifted {
     left: 100%;
     transition: left 0.5s;
-  }</style></head><body><div class="red"></div><div class="green" id="shift"></div><div class="log" id="windows"></div><div class="log" id="android"></div><script>function Z6310H(a) {
+  }</style></head><body><div class="red"></div><div class="green" id="shift"></div><div class="log" id="windows"></div><div class="log" id="android"></div><div class="log"><input type="checkbox" id="fix"><label for="fix">fix</label></div><script>function Z6310H(a) {
+    if (a.target.tagName !== "DIV") { return; }
     if (windows) {
       try {
-        if (a.button !== 0) { // bug
-          a.preventDefault();
-            return
+        if (document.getElementById('fix').checked) {
+          if (a.button > 0) { return a.preventDefault(); }
+        }
+         else {
+          if (a.button !== 0) { return a.preventDefault(); } // bug
         }
       } catch (ex) {}
     }
