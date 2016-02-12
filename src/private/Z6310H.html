@@ -58,8 +58,8 @@
   function Z6310H(a) {
     if (windows) {
       try {
-        if (a.button !== 0) {
-          a.preventDefault(); // bug
+        if (a.button !== 0) { // bug
+          a.preventDefault();
             return
         }
       } catch (ex) {}

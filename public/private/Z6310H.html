@@ -40,8 +40,8 @@
   }</style></head><body><div class="red"></div><div class="green" id="shift"></div><div class="log" id="windows"></div><div class="log" id="android"></div><script>function Z6310H(a) {
     if (windows) {
       try {
-        if (a.button !== 0) {
-          a.preventDefault(); // bug
+        if (a.button !== 0) { // bug
+          a.preventDefault();
             return
         }
       } catch (ex) {}
