@@ -57,7 +57,7 @@
     height: 1em;
     color: white;
     font-size: 18pt;
-    padding: 1em 0 0 1em;
+    padding: 0.5em 0 0 1em;
   }
   .button {
     cursor: pointer;
@@ -116,6 +116,10 @@
     <input type="checkbox" id="fix">
     <label for="fix">fix</label>
   </div>
+  <div class="log">
+    <input type="checkbox" id="cancel">
+    <label for="cancel">cancel</label>
+  </div>
   <script>
   function Z6310H(a) {
     if (!a.target.classList.contains("button")) { return; }
@@ -131,6 +135,7 @@
     }
     var element = document.getElementById('shift');
     element.classList.toggle('shifted');
+    if (document.getElementById('cancel').checked) { a.preventDefault(); }
   }
   if (android) {
     document.addEventListener("touchstart", Z6310H, false);

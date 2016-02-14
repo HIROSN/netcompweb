@@ -48,7 +48,7 @@
     height: 1em;
     color: white;
     font-size: 18pt;
-    padding: 1em 0 0 1em;
+    padding: 0.5em 0 0 1em;
   }
   .button {
     cursor: pointer;
@@ -83,7 +83,7 @@
     color: darkgray;
     margin: 0 auto;
     padding-bottom: 0.15em;
-  }</style></head><body><div class="page green"><div class="button right"><div class="button arrow-circle"><div class="button arrow">&gt;</div></div></div></div><div class="page blue" id="shift"><div class="button left"><div class="button arrow-circle"><div class="button arrow">&lt;</div></div></div></div><div class="log" id="windows"></div><div class="log" id="android"></div><div class="log"><input type="checkbox" id="fix"><label for="fix">fix</label></div><script>function Z6310H(a) {
+  }</style></head><body><div class="page green"><div class="button right"><div class="button arrow-circle"><div class="button arrow">&gt;</div></div></div></div><div class="page blue" id="shift"><div class="button left"><div class="button arrow-circle"><div class="button arrow">&lt;</div></div></div></div><div class="log" id="windows"></div><div class="log" id="android"></div><div class="log"><input type="checkbox" id="fix"><label for="fix">fix</label></div><div class="log"><input type="checkbox" id="cancel"><label for="cancel">cancel</label></div><script>function Z6310H(a) {
     if (!a.target.classList.contains("button")) { return; }
     if (windows) {
       try {
@@ -97,6 +97,7 @@
     }
     var element = document.getElementById('shift');
     element.classList.toggle('shifted');
+    if (document.getElementById('cancel').checked) { a.preventDefault(); }
   }
   if (android) {
     document.addEventListener("touchstart", Z6310H, false);
