@@ -74,40 +74,36 @@
   }
   .right {
     right: 0;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
   }
-  .arrow-circle {
-    width: 50px;
-    height: 50px;
-    box-sizing: border-box;
-    border: 1px solid darkgray;
-    border-radius: 50%;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-align-items: center;
-    align-items: center;
+  .symbol {
+    display: none;
   }
-  .arrow {
-    font-size: 18pt;
-    font-weight: bold;
-    color: darkgray;
-    margin: 0 auto;
-    padding-bottom: 0.15em;
+  #arrow-circle {
+    fill: darkgray;
   }
   </style>
 </head>
 <body>
+  <svg class="symbol">
+    <symbol id="arrow-circle" viewBox="0 0 1024 1024">
+      <path class="button" d="M512 1024c282.77 0 512-229.23 512-512s-229.23-512-512-512-512 229.23-512 512 229.23 512 512 512zM512 96c229.75 0 416 186.25 416 416s-186.25 416-416 416-416-186.25-416-416 186.25-416 416-416z"></path>
+      <path class="button" d="M669.256 317.256l-90.512-90.512-285.254 285.256 285.256 285.254 90.508-90.508-194.744-194.746z"></path>
+    </symbol>
+  </svg>
   <div class="page green">
     <div class="button right">
-      <div class="button arrow-circle ">
-        <div class="button arrow">&gt;</div>
-      </div>
+      <svg class="button">
+        <use xlink:href="#arrow-circle" class="button"></use>
+      </svg>
     </div>
   </div>
   <div class="page blue" id="shift">
     <div class="button left">
-      <div class="button arrow-circle ">
-        <div class="button arrow">&lt;</div>
-      </div>
+      <svg class="button">
+        <use xlink:href="#arrow-circle" class="button"></use>
+      </svg>
     </div>
   </div>
   <div class="log" id="windows"></div>
