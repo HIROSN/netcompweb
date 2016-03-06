@@ -14,8 +14,7 @@ module.exports = function() {
 
     if (window.getComputedStyle) {
       width = parseInt(window.getComputedStyle(list, null).width);
-    }
-    else {
+    } else {
       width = list.clientWidth;
     }
 

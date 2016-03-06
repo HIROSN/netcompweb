@@ -13,8 +13,7 @@ module.exports = function($element, rgb, msec) {
     for (i = 0; i < 3; i++) {
       if (rgb[i]) {
         color += hex + hex;
-      }
-      else {
+      } else {
         color += 'FF';
       }
     }
@@ -23,8 +22,7 @@ module.exports = function($element, rgb, msec) {
 
     if (level++ < 15) {
       setTimeout(step, msec);
-    }
-    else {
+    } else {
       $element.removeAttr('style')
       .css('display', 'inline-block');
     }

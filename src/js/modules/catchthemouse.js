@@ -125,8 +125,7 @@ module.exports = function() {
       setImage('win', imageName);
       $playButton.removeClass('disabled');
       event.stopPropagation();
-    }
-    else {
+    } else {
       leftOrRight = current('left') > xMax / 2 ? 'left' : 'right';
       setImage(leftOrRight, imageName);
     }

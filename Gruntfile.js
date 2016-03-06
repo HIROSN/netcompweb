@@ -215,7 +215,7 @@ module.exports = function(grunt) {
         frameworks: ['jasmine'],
         browsers: ['PhantomJS'],
         logLevel: 'INFO',
-        plugins : [
+        plugins: [
           'karma-jasmine',
           'karma-phantomjs-launcher'
         ],

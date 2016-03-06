@@ -27,8 +27,7 @@ module.exports = function($element) {
         fade($element, [false, false, true]);
       }
     });
-  }
-  else {
+  } else {
     $element.addClass('disabled');
   }
 

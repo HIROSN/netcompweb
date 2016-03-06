@@ -27,8 +27,7 @@ $(function() {
   var showHideFilters = function() {
     if ($showFilters.is(':checked')) {
       $filters.removeClass('hidden');
-    }
-    else {
+    } else {
       $filters.addClass('hidden');
     }
   };
@@ -36,8 +35,7 @@ $(function() {
   var showHideColumn = function() {
     if ($showColumn.is(':checked')) {
       $myColumns.removeClass('hidden');
-    }
-    else {
+    } else {
       $myColumns.addClass('hidden');
     }
   };
@@ -81,8 +79,7 @@ $(function() {
   $showAnimation.on('click', function() {
     if ($showAnimation.is(':checked')) {
       showAnimation();
-    }
-    else {
+    } else {
       removeAnimation();
     }
   });
@@ -102,8 +99,7 @@ $(function() {
     if ($fixed.is(':checked')) {
       $headerImage.css('background-attachment', 'fixed');
       $theme.removeClass('hidden');
-    }
-    else {
+    } else {
       $headerImage.css('background-attachment', 'scroll');
       $theme.addClass('hidden');
     }

@@ -15,7 +15,7 @@ describe('Config tests', function() {
       });
     },
     function(err) {
-      expect(err).to.equal(undefined);
+      expect(err).to.equal(null);
       done();
     });
   });

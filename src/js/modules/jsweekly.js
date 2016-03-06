@@ -40,8 +40,7 @@ module.exports = function() {
           $('<li></li>').html($link).appendTo($('#jsweekly-links'));
         }
       });
-    }
-    else {
+    } else {
       $message.text(results.responseDetails);
     }
   }).fail(function(results) {

@@ -9,7 +9,7 @@ module.exports = function() {
       this.unit = '';
     }
 
-      // Public method
+    // Public method
     Counter.prototype.increment = function() {
       ++count;
       update();
