@@ -18,29 +18,22 @@
   h1 {
     font-size: 49px;
   }
-  .title-desc-wrapper.has-main-image {
-    overflow: hidden
-  }
   .title-desc-wrapper {
     position: relative;
-    z-index: 10
-  }
-  .mobile-parallax .title-desc-image {
-    position: fixed;
+    z-index: 0;
+    overflow: hidden;
   }
   .title-desc-image {
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
   }
-  .mobile-parallax .title-desc-inner {
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-  }
   .title-desc-inner {
     position: relative;
-    z-index: 100;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
     height: 100vh;
     padding: 20px;
   }
@@ -54,9 +47,9 @@
   }
   </style>
 </head>
-<body class="mobile-parallax">
-  <div class="parallax-item">
-    <div class="title-desc-wrapper has-main-image">
+<body>
+  <div>
+    <div class="title-desc-wrapper">
       <div class="title-desc-image">
         <img src="bg.jpg">
       </div>
@@ -66,8 +59,8 @@
       </div>
     </div>
   </div>
-  <div class="parallax-item">
-    <div class="title-desc-wrapper has-main-image">
+  <div>
+    <div class="title-desc-wrapper">
       <div class="title-desc-image">
         <img src="bg.jpg" class="grayscale">
       </div>
@@ -77,8 +70,8 @@
       </div>
     </div>
   </div>
-  <div class="parallax-item">
-    <div class="title-desc-wrapper has-main-image">
+  <div>
+    <div class="title-desc-wrapper">
       <div class="title-desc-image">
         <img src="bg.jpg" class="sepia">
       </div>
