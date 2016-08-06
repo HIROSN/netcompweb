@@ -12,12 +12,12 @@ module.exports = function() {
     name = child.tagName || child.nodeName;
 
     switch (name) {
-    case '#text':
-      $('#nodes').append('<div class="text">&nbsp;</div>');
-      break;
-    case 'LI':
-      $('#nodes').append('<div class="item">li</div>');
-      break;
+      case '#text':
+        $('#nodes').append('<div class="text">&nbsp;</div>');
+        break;
+      case 'LI':
+        $('#nodes').append('<div class="item">li</div>');
+        break;
     }
 
     child = child.nextSibling;
