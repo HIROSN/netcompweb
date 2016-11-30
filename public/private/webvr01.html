@@ -6,6 +6,7 @@
       height: 100%;
     }
     #log {
+      position: absolute;
       width: 100%;
       height: 140px;
       line-height: 140px;
@@ -13,8 +14,9 @@
       text-align: center;
       font-family: Helvetica, Arial;
       font-size: 24pt;
-      border: 1px solid lightgray;
-    }</style></head><body><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script><script></script><script>(function() {
+      color: white;
+      border: 1px solid lightgray;      
+    }</style></head><body><div id="log"></div><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script><script></script><script>(function() {
 			var scene = new THREE.Scene();
 			var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
 			var renderer = new THREE.WebGLRenderer();
@@ -54,6 +56,7 @@
 
       function onAnimationFrame() {
         if (count++ < 600) {
+          log(count);
           cube.rotation.x += 0.1;
           cube.rotation.y += 0.1;
           renderer.render(scene, camera);
@@ -72,4 +75,9 @@
           }
         }
       }
-    })();</script></body></html>
+    })();
+
+    function log(comment) { 
+      var logger = document.getElementById("log"); 
+      logger.textContent = comment; 
+    }</script></body></html>

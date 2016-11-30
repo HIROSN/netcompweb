@@ -12,6 +12,7 @@
       height: 100%;
     }
     #log {
+      position: absolute;
       width: 100%;
       height: 140px;
       line-height: 140px;
@@ -19,11 +20,13 @@
       text-align: center;
       font-family: Helvetica, Arial;
       font-size: 24pt;
-      border: 1px solid lightgray;
+      color: white;
+      border: 1px solid lightgray;      
     }
     </style>
   </head>
   <body>
+    <div id="log"></div>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
 		<script>
 		</script>
@@ -68,6 +71,7 @@
 
       function onAnimationFrame() {
         if (count++ < 600) {
+          log(count);
           cube.rotation.x += 0.1;
           cube.rotation.y += 0.1;
           renderer.render(scene, camera);
@@ -87,6 +91,11 @@
         }
       }
     })();
+
+    function log(comment) { 
+      var logger = document.getElementById("log"); 
+      logger.textContent = comment; 
+    } 
     </script>
   </body>
 </html>
