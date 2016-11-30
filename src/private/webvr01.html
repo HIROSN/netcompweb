@@ -38,6 +38,7 @@
 			var geometry = new THREE.BoxGeometry( 1, 1, 1 );
 			var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 			var cube = new THREE.Mesh( geometry, material );
+      var webglCanvas = null;
       var vrDisplay = null;
       var count = 0;
 
@@ -45,6 +46,8 @@
 			document.body.appendChild(renderer.domElement);
 			scene.add( cube );
 			camera.position.z = 5;
+      renderer.render(scene, camera);
+      webglCanvas = renderer.domElement;
 
       if (navigator.getVRDisplays) {
         navigator.getVRDisplays()
@@ -53,7 +56,7 @@
             vrDisplay = displays[displays.length - 1];
             vrDisplay.requestAnimationFrame(onAnimationFrame);
             if (vrDisplay.capabilities.canPresent) {
-              vrDisplay.requestPresent([{source: renderer.domElement}])
+              vrDisplay.requestPresent([{source: webglCanvas}])
               .then(function () {
               }, function () {
                 log("requestPresent failed");
