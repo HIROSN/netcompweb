@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+    #webgl-canvas {
+      box-sizing: border-box;
+      height: 100%;
+      left: 0;
+      margin: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+    #log {
+      width: 100%;
+      height: 140px;
+      line-height: 140px;
+      vertical-align: middle;
+      text-align: center;
+      font-family: Helvetica, Arial;
+      font-size: 24pt;
+      border: 1px solid lightgray;
+    }
+    </style>
+  </head>
+  <body>
+    <canvas id="webgl-canvas"></canvas>
+    <div id="log"></div>
+    <script>
+    (function() {
+      var webglCanvas = document.getElementById("webgl-canvas");
+      var vrDisplay = null;
+      var count = 0;
+      if (navigator.getVRDisplays) {
+        navigator.getVRDisplays()
+        .then(function(displays) {
+          if (displays.length > 0) {
+            vrDisplay = displays[displays.length - 1];
+            vrDisplay.requestAnimationFrame(onAnimationFrame);
+            if (vrDisplay.capabilities.canPresent) {
+              vrDisplay.requestPresent([{source: webglCanvas}])
+              .then(function () {
+              }, function () {
+                log("requestPresent failed");
+              });
+            } else {
+              log("!canPresent");
+            }
+          }
+        }, function () {
+          log("getVRDisplays failed");
+        });
+      } else {
+        log("No VR displays found");
+      }
+      function onAnimationFrame() {
+        if (vrDisplay) {
+          if (count++ < 600) {
+            log(count);
+            vrDisplay.requestAnimationFrame(onAnimationFrame);
+          } else {
+            vrDisplay.exitPresent()
+            .then(function () {
+            }, function () {
+              log("exitPresent failed");
+            });
+          }
+        }
+      }
+      function log(comment) {
+        var logger = document.getElementById("log");
+        logger.textContent = comment;
+      }
+    })();
+    </script>
+  </body>
+</html>
