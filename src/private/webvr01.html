@@ -21,7 +21,8 @@
       font-family: Helvetica, Arial;
       font-size: 24pt;
       color: white;
-      border: 1px solid lightgray;      
+      border: 1px solid lightgray;
+      cursor: pointer;
     }
     </style>
   </head>
@@ -41,6 +42,7 @@
       var webglCanvas = null;
       var vrDisplay = null;
       var count = 0;
+      var logger = document.getElementById("log"); 
 
 			renderer.setSize(window.innerWidth, window.innerHeight);
 			document.body.appendChild(renderer.domElement);
@@ -48,28 +50,39 @@
 			camera.position.z = 5;
       renderer.render(scene, camera);
       webglCanvas = renderer.domElement;
+      window.addEventListener("click", requestPresent, false);
 
       if (navigator.getVRDisplays) {
         navigator.getVRDisplays()
         .then(function(displays) {
           if (displays.length > 0) {
             vrDisplay = displays[displays.length - 1];
-            vrDisplay.requestAnimationFrame(onAnimationFrame);
-            if (vrDisplay.capabilities.canPresent) {
-              vrDisplay.requestPresent([{source: webglCanvas}])
-              .then(function () {
-              }, function () {
-                log("requestPresent failed");
-              });
-            } else {
-              log("!canPresent");
-            }
+            log("Enter VR");
+          } else {
+            log("No VR display");
           }
         }, function () {
           log("getVRDisplays failed");
         });
       } else {
-        window.requestAnimationFrame(onAnimationFrame);
+        log("VR not supported");
+      }
+
+      function requestPresent() {
+        if (vrDisplay) {
+          if (vrDisplay.capabilities.canPresent) {
+            vrDisplay.requestPresent([{source: webglCanvas}])
+            .then(function () {
+              vrDisplay.requestAnimationFrame(onAnimationFrame);
+            }, function () {
+              log("requestPresent failed");
+            });
+          } else {
+            log("!canPresent");
+          }
+        } else {
+          window.requestAnimationFrame(onAnimationFrame);
+        }
       }
 
       function onAnimationFrame() {
@@ -93,12 +106,11 @@
           }
         }
       }
-    })();
 
-    function log(comment) { 
-      var logger = document.getElementById("log"); 
-      logger.textContent = comment; 
-    } 
+      function log(comment) {
+        logger.textContent = comment; 
+      } 
+    })();
     </script>
   </body>
 </html>
