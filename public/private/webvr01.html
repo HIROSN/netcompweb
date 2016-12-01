@@ -58,6 +58,7 @@
       renderer.render(scene, camera);
       webglCanvas = renderer.domElement;
       logger.addEventListener('click', requestPresent, false);
+      window.addEventListener('resize', onResize, false);
 
       if (navigator.getVRDisplays) {
         navigator.getVRDisplays()
@@ -114,6 +115,13 @@
             });
           }
         }
+      }
+
+      function onResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.render(scene, camera);
       }
 
       function log(comment) {
