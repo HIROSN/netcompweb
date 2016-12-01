@@ -23,22 +23,22 @@
     }
     #counter {
       width: 280px;
-    }</style></head><body><div id="logger" class="output"></div><div id="counter" class="output" contenteditable>300</div><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script><script></script><script>(function() {
-			var scene = new THREE.Scene();
-			var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-			var renderer = new THREE.WebGLRenderer();
-			var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-			var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-			var cube = new THREE.Mesh( geometry, material );
+    }</style></head><body><div id="logger" class="output"></div><div id="counter" class="output" contenteditable>300</div><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script><script>(function() {
+      var scene = new THREE.Scene();
+      var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+      var renderer = new THREE.WebGLRenderer();
+      var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+      var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+      var cube = new THREE.Mesh( geometry, material );
       var webglCanvas = null;
       var vrDisplay = null;
       var logger = document.getElementById("logger");
       var counter = document.getElementById("counter");
 
-			renderer.setSize(window.innerWidth, window.innerHeight);
-			document.body.appendChild(renderer.domElement);
-			scene.add( cube );
-			camera.position.z = 5;
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+      scene.add( cube );
+      camera.position.z = 5;
       renderer.render(scene, camera);
       webglCanvas = renderer.domElement;
       logger.addEventListener("click", requestPresent, false);
