@@ -30,6 +30,16 @@
     #counter {
       width: 280px;
     }
+    @media (max-width: 800px) {
+      .output {
+        height: 50px;
+        line-height: 50px;
+        font-size: 13pt;
+      }
+      #counter {
+        width: 100px;
+      }
+    }
     </style>
   </head>
   <body>
@@ -38,52 +48,55 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
     <script>
     (function() {
+      'use strict';
+
       var scene = new THREE.Scene();
-      var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+      var camera = new THREE.PerspectiveCamera(
+        75, window.innerWidth / window.innerHeight, 0.1, 1000);
       var renderer = new THREE.WebGLRenderer();
-      var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-      var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-      var cube = new THREE.Mesh( geometry, material );
+      var geometry = new THREE.BoxGeometry(1, 1, 1);
+      var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+      var cube = new THREE.Mesh(geometry, material);
       var webglCanvas = null;
       var vrDisplay = null;
-      var logger = document.getElementById("logger");
-      var counter = document.getElementById("counter");
+      var logger = document.getElementById('logger');
+      var counter = document.getElementById('counter');
 
       renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
-      scene.add( cube );
+      scene.add(cube);
       camera.position.z = 5;
       renderer.render(scene, camera);
       webglCanvas = renderer.domElement;
-      logger.addEventListener("click", requestPresent, false);
+      logger.addEventListener('click', requestPresent, false);
 
       if (navigator.getVRDisplays) {
         navigator.getVRDisplays()
         .then(function(displays) {
           if (displays.length > 0) {
             vrDisplay = displays[displays.length - 1];
-            log("Enter VR");
+            log('Enter VR');
           } else {
-            log("No VR display");
+            log('No VR display');
           }
-        }, function () {
-          log("getVRDisplays failed");
+        }, function() {
+          log('getVRDisplays failed');
         });
       } else {
-        log("VR not supported");
+        log('VR not supported');
       }
 
       function requestPresent() {
         if (vrDisplay) {
           if (vrDisplay.capabilities.canPresent) {
             vrDisplay.requestPresent([{source: webglCanvas}])
-            .then(function () {
+            .then(function() {
               vrDisplay.requestAnimationFrame(onAnimationFrame);
-            }, function () {
-              log("requestPresent failed");
+            }, function() {
+              log('requestPresent failed');
             });
           } else {
-            log("!canPresent");
+            log('!canPresent');
           }
         } else {
           window.requestAnimationFrame(onAnimationFrame);
@@ -106,9 +119,9 @@
         } else {
           if (vrDisplay) {
             vrDisplay.exitPresent()
-            .then(function () {
-            }, function () {
-              log("exitPresent failed");
+            .then(function() {
+            }, function() {
+              log('exitPresent failed');
             });
           }
         }
