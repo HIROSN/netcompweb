@@ -40,9 +40,12 @@
       var camera = new THREE.PerspectiveCamera(
         75, window.innerWidth / window.innerHeight, 0.1, 1000);
       var renderer = new THREE.WebGLRenderer();
-      var geometry = new THREE.BoxGeometry(1, 1, 1);
-      var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
-      var cube = new THREE.Mesh(geometry, material);
+      var geometry = new THREE.CylinderGeometry(2, 2, 2, 64);
+      var material = new THREE.MeshBasicMaterial({
+        color: 0x00ff00,
+        wireframe: true
+      });
+      var cylinder = new THREE.Mesh(geometry, material);
       var webglCanvas = null;
       var vrDisplay = null;
       var logger = document.getElementById('logger');
@@ -50,7 +53,7 @@
 
       renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
-      scene.add(cube);
+      scene.add(cylinder);
       camera.position.z = 5;
       renderer.render(scene, camera);
       webglCanvas = renderer.domElement;
@@ -91,8 +94,8 @@
 
       function onAnimationFrame() {
         if (countDown()) {
-          cube.rotation.x += 0.1;
-          cube.rotation.y += 0.1;
+          cylinder.rotation.x += 0.03;
+          cylinder.rotation.y += 0.03;
           renderer.render(scene, camera);
           if (vrDisplay) {
             vrDisplay.requestAnimationFrame(onAnimationFrame);
