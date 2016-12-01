@@ -78,6 +78,9 @@
           renderer.render(scene, camera);
           if (vrDisplay) {
             vrDisplay.requestAnimationFrame(onAnimationFrame);
+            if (vrDisplay.isPresenting) {
+              vrDisplay.submitFrame();
+            }
           } else {
             window.requestAnimationFrame(onAnimationFrame);
           }
