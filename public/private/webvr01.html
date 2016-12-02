@@ -54,10 +54,10 @@
       document.body.appendChild(renderer.domElement);
       scene.add(cylinder);
       camera.position.z = 5;
-      onResize();
+      resize();
       webglCanvas = renderer.domElement;
       logger.addEventListener('click', requestPresent, false);
-      window.addEventListener('resize', onResize, false);
+      window.addEventListener('resize', resize, false);
 
       if (navigator.getVRDisplays) {
         navigator.getVRDisplays()
@@ -80,7 +80,7 @@
           if (vrDisplay.capabilities.canPresent) {
             vrDisplay.requestPresent([{source: webglCanvas}])
             .then(function() {
-              onResize();
+              resize();
               vrDisplay.requestAnimationFrame(onAnimationFrame);
             }, function() {
               log('requestPresent failed');
@@ -101,6 +101,15 @@
           if (vrDisplay) {
             vrDisplay.requestAnimationFrame(onAnimationFrame);
             if (vrDisplay.isPresenting) {
+              var frameData;
+              vrDisplay.getFrameData(frameData);
+              var pose = frameData.pose;
+              if (pose.orientation !== null) {
+                camera.quaternion.fromArray(pose.orientation);
+              }
+              if (pose.position !== null) {
+                camera.position.fromArray(pose.position);
+              }
               vrDisplay.submitFrame();
             }
           } else {
@@ -117,7 +126,7 @@
         }
       }
 
-      function onResize() {
+      function resize() {
         var width = window.innerWidth;
         var height = window.innerHeight;
         if (vrDisplay && vrDisplay.isPresenting) {
