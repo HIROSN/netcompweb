@@ -80,6 +80,13 @@ module.exports = function(grunt) {
         expand: true,
         src: ['**/*.*'],
         dest: 'public/fonts/'
+      },
+
+      webvr_polyfill: {
+        cwd: 'node_modules/webvr-polyfill/build/',
+        expand: true,
+        src: ['webvr-polyfill.min.js'],
+        dest: 'public/private/'
       }
     },
 

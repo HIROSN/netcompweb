@@ -21,7 +21,8 @@
     "angular": "^1.5.9",
     "express": "^4.14.0",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.1.1"
+    "jquery": "^3.1.1",
+    "webvr-polyfill": "^0.9.24"
   },
   "devDependencies": {
     "async": "^2.1.4",

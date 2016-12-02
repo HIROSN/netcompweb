@@ -30,7 +30,7 @@
       #counter {
         width: 100px;
       }
-    }</style></head><body><div id="logger" class="output"></div><div id="counter" class="output" contenteditable>300</div><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script><script>(function() {
+    }</style><script>var WebVRConfig = {DEFER_INITIALIZATION: true};</script><script src="webvr-polyfill.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script></head><body><div id="logger" class="output"></div><div id="counter" class="output" contenteditable>300</div><script>(function() {
       'use strict';
 
       var scene = new THREE.Scene();
@@ -53,24 +53,28 @@
       scene.add(cylinder);
       camera.position.z = 5;
       resize();
+      initVR();
 
       logger.addEventListener('click', requestPresent, false);
       window.addEventListener('resize', resize, false);
+      window.addEventListener('keydown', onKeyDown, false);
 
-      if (navigator.getVRDisplays) {
-        navigator.getVRDisplays()
-        .then(function(displays) {
-          if (displays.length > 0) {
-            vrDisplay = displays[displays.length - 1];
-            log('Enter VR');
-          } else {
-            log('No VR display');
-          }
-        }, function() {
-          log('getVRDisplays failed');
-        });
-      } else {
-        log('VR not supported');
+      function initVR() {
+        if (navigator.getVRDisplays) {
+          navigator.getVRDisplays()
+          .then(function(displays) {
+            if (displays.length > 0) {
+              vrDisplay = displays[displays.length - 1];
+              log('Enter VR');
+            } else {
+              log('No VR display');
+            }
+          }, function() {
+            log('getVRDisplays failed');
+          });
+        } else {
+          log('VR not supported');
+        }
       }
 
       function requestPresent() {
@@ -122,6 +126,13 @@
         camera.updateProjectionMatrix();
         renderer.setSize(width, height);
         renderer.render(scene, camera);
+      }
+
+      function onKeyDown(args) {
+        if (args.code === "Space" && !vrDisplay) {
+          InitializeWebVRPolyfill();
+          initVR();
+        }
       }
 
       function log(comment) {
