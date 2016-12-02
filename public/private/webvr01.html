@@ -1,9 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body {
       margin: 0;
-    }
-    canvas {
-      width: 100%;
-      height: 100%;
+      overflow: hidden;
     }
     .output {
       position: absolute;
@@ -51,11 +48,12 @@
       var logger = document.getElementById('logger');
       var counter = document.getElementById('counter');
 
-      document.body.appendChild(renderer.domElement);
+      webglCanvas = renderer.domElement;
+      document.body.appendChild(webglCanvas);
       scene.add(cylinder);
       camera.position.z = 5;
       resize();
-      webglCanvas = renderer.domElement;
+
       logger.addEventListener('click', requestPresent, false);
       window.addEventListener('resize', resize, false);
 
@@ -80,7 +78,6 @@
           if (vrDisplay.capabilities.canPresent) {
             vrDisplay.requestPresent([{source: webglCanvas}])
             .then(function() {
-              resize();
               vrDisplay.requestAnimationFrame(onAnimationFrame);
             }, function() {
               log('requestPresent failed');
@@ -97,27 +94,20 @@
         if (countDown()) {
           cylinder.rotation.x += 0.03;
           cylinder.rotation.y += 0.03;
+          renderer.render(scene, camera);
           if (vrDisplay) {
             if (vrDisplay.isPresenting) {
-              var pose = vrDisplay.getPose();
-              if (pose.orientation !== null) {
-                camera.quaternion.fromArray(pose.orientation);
-              }
-              if (pose.position !== null) {
-                camera.position.fromArray(pose.position);
-              }
-              renderer.render(scene, camera);
               vrDisplay.submitFrame();
             }
             vrDisplay.requestAnimationFrame(onAnimationFrame);
           } else {
-            renderer.render(scene, camera);
             window.requestAnimationFrame(onAnimationFrame);
           }
         } else {
           if (vrDisplay) {
             vrDisplay.exitPresent()
             .then(function() {
+              log('Enter VR');
             }, function() {
               log('exitPresent failed');
             });
