@@ -141,11 +141,7 @@
       function resize() {
         var width = window.innerWidth;
         var height = window.innerHeight;
-        if (vrDisplay && vrDisplay.isPresenting) {
-          var leftEye = vrDisplay.getEyeParameters('left');
-          var rightEye = vrDisplay.getEyeParameters('right');
-          width = Math.max(leftEye.renderWidth, rightEye.renderWidth) * 2;
-          height = Math.max(leftEye.renderHeight, rightEye.renderHeight);
+        if (vrDisplay) {
           camera.position.x -= width / 2;
         }
         camera.aspect = width / height;
