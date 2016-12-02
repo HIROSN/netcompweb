@@ -65,11 +65,10 @@
       var logger = document.getElementById('logger');
       var counter = document.getElementById('counter');
 
-      renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
       scene.add(cylinder);
       camera.position.z = 5;
-      renderer.render(scene, camera);
+      onResize();
       webglCanvas = renderer.domElement;
       logger.addEventListener('click', requestPresent, false);
       window.addEventListener('resize', onResize, false);
@@ -95,6 +94,7 @@
           if (vrDisplay.capabilities.canPresent) {
             vrDisplay.requestPresent([{source: webglCanvas}])
             .then(function() {
+              onResize();
               vrDisplay.requestAnimationFrame(onAnimationFrame);
             }, function() {
               log('requestPresent failed');
@@ -132,9 +132,17 @@
       }
 
       function onResize() {
-        camera.aspect = window.innerWidth / window.innerHeight;
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+        if (vrDisplay && vrDisplay.isPresenting) {
+          var leftEye = vrDisplay.getEyeParameters('left');
+          var rightEye = vrDisplay.getEyeParameters('right');
+          width = Math.max(leftEye.renderWidth, rightEye.renderWidth) * 2;
+          height = Math.max(leftEye.renderHeight, rightEye.renderHeight);
+        }
+        camera.aspect = width / height;
         camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setSize(width, height);
         renderer.render(scene, camera);
       }
 
