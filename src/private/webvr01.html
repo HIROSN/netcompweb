@@ -92,6 +92,7 @@
           if (vrDisplay.capabilities.canPresent) {
             vrDisplay.requestPresent([{source: webglCanvas}])
             .then(function() {
+              resize();
               vrDisplay.requestAnimationFrame(onAnimationFrame);
             }, function() {
               log('requestPresent failed');
