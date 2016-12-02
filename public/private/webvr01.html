@@ -101,9 +101,7 @@
           if (vrDisplay) {
             vrDisplay.requestAnimationFrame(onAnimationFrame);
             if (vrDisplay.isPresenting) {
-              var frameData;
-              vrDisplay.getFrameData(frameData);
-              var pose = frameData.pose;
+              var pose = vrDisplay.getPose();
               if (pose.orientation !== null) {
                 camera.quaternion.fromArray(pose.orientation);
               }
@@ -134,6 +132,7 @@
           var rightEye = vrDisplay.getEyeParameters('right');
           width = Math.max(leftEye.renderWidth, rightEye.renderWidth) * 2;
           height = Math.max(leftEye.renderHeight, rightEye.renderHeight);
+          camera.position.x -= width / 2;
         }
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
