@@ -37,7 +37,7 @@
       FORCE_ENABLE_VR: true,
       MOUSE_KEYBOARD_CONTROLS_DISABLED: true,
       DEFER_INITIALIZATION: true
-    };</script><script src="webvr-polyfill.min.js"></script><script src="three/three.min.js"></script></head><body><div id="logger" class="output">Animate</div><div id="counter" class="output" contenteditable>300</div><script>(function() {
+    };</script><script src="webvr-polyfill.min.js"></script><script src="three/three.min.js"></script></head><body><div id="logger" class="output">Animate</div><div id="counter" class="output" contenteditable>Infinity</div><script>(function() {
       'use strict';
 
       var scene = new THREE.Scene();
@@ -177,11 +177,16 @@
       }
 
       function onKeyDown(args) {
-        if (args.code === "Space") {
-          usePolyfill = false;
-          vrDisplay = null;
-          requestPresent();
-          log('Animate');
+        switch (args.code) {
+          case "Escape":
+            counter.textContent = countDown() ? 0 : 'Infinity';
+            break;
+          case "Space":
+            usePolyfill = false;
+            vrDisplay = null;
+            requestPresent();
+            log('Animate');
+            break;
         }
       }
 

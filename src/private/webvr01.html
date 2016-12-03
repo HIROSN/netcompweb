@@ -53,7 +53,7 @@
   </head>
   <body>
     <div id="logger" class="output">Animate</div>
-    <div id="counter" class="output" contenteditable>300</div>
+    <div id="counter" class="output" contenteditable>Infinity</div>
     <script>
     (function() {
       'use strict';
@@ -195,11 +195,16 @@
       }
 
       function onKeyDown(args) {
-        if (args.code === "Space") {
-          usePolyfill = false;
-          vrDisplay = null;
-          requestPresent();
-          log('Animate');
+        switch (args.code) {
+          case "Escape":
+            counter.textContent = countDown() ? 0 : 'Infinity';
+            break;
+          case "Space":
+            usePolyfill = false;
+            vrDisplay = null;
+            requestPresent();
+            log('Animate');
+            break;
         }
       }
 
