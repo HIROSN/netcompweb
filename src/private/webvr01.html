@@ -8,7 +8,7 @@
       margin: 0;
       overflow: hidden;
     }
-    .output {
+    .output, .fail {
       position: absolute;
       height: 100px;
       line-height: 100px;
@@ -19,6 +19,9 @@
       color: white;
       border: 1px solid lightgray;
       box-sizing: border-box;
+    }
+    .fail {
+      color: red;
     }
     #logger {
       width: 100%;
@@ -49,7 +52,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
   </head>
   <body>
-    <div id="logger" class="output"></div>
+    <div id="logger" class="output">Animate</div>
     <div id="counter" class="output" contenteditable>300</div>
     <script>
     (function() {
@@ -98,7 +101,7 @@
                 log('Enter VR');
               }
             } else {
-              log('No VR display');
+              log('Fail: No VR display');
             }
           }, function() {
             log('getVRDisplays failed');
@@ -118,7 +121,7 @@
               log('requestPresent failed');
             });
           } else {
-            log('!canPresent');
+            log('Fail: !canPresent');
           }
         } else {
           window.requestAnimationFrame(onAnimationFrame);
@@ -168,6 +171,11 @@
 
       function log(comment) {
         logger.textContent = comment;
+        if (comment.toLowerCase().indexOf('fail') > -1) {
+          logger.className = 'fail';
+        } else {
+          logger.className = 'output';
+        }
       }
 
       function countDown() {
