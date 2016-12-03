@@ -73,14 +73,14 @@ module.exports = function(grunt) {
         cwd: 'node_modules/font-awesome/css/',
         expand: true,
         src: ['**/*.*'],
-        dest: 'public/css/'
+        dest: 'public/private/fa/css/'
       },
 
       font_awesome_fonts: {
         cwd: 'node_modules/font-awesome/fonts/',
         expand: true,
         src: ['**/*.*'],
-        dest: 'public/fonts/'
+        dest: 'public/private/fa/fonts/'
       },
 
       webvr_polyfill: {
