@@ -67,6 +67,7 @@
       var cylinder = new THREE.Mesh(geometry, material);
       var webglCanvas = null;
       var vrDisplay = null;
+      var usePolyfill = !navigator.getVRDisplays;
       var logger = document.getElementById('logger');
       var counter = document.getElementById('counter');
 
@@ -80,7 +81,7 @@
       window.addEventListener('resize', resize, false);
       window.addEventListener('keydown', onKeyDown, false);
 
-      if (!navigator.getVRDisplays) {
+      if (usePolyfill) {
         InitializeWebVRPolyfill();
       }
       initVR();
@@ -91,7 +92,11 @@
           .then(function(displays) {
             if (displays.length > 0) {
               vrDisplay = displays[displays.length - 1];
-              log('Enter VR');
+              if (usePolyfill) {
+                log('Enter VR (Polyfill)');
+              } else {
+                log('Enter VR');
+              }
             } else {
               log('No VR display');
             }
@@ -137,7 +142,6 @@
           if (vrDisplay) {
             vrDisplay.exitPresent()
             .then(function() {
-              log('Enter VR');
             }, function() {
               log('exitPresent failed');
             });
