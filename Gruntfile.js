@@ -6,7 +6,8 @@ module.exports = function(grunt) {
     '!node_modules/**/*',
     '!build/**/*',
     '!public/**/*',
-    '!test/browser/**/*'
+    '!test/browser/**/*',
+    '!src/private/three/**/*'
   ];
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -87,6 +88,13 @@ module.exports = function(grunt) {
         expand: true,
         src: ['webvr-polyfill.min.js'],
         dest: 'public/private/'
+      },
+
+      three: {
+        cwd: 'src/private/three/',
+        expand: true,
+        src: ['**/*.*'],
+        dest: 'public/private/three/'
       }
     },
 
