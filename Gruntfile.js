@@ -91,6 +91,13 @@ module.exports = function(grunt) {
       },
 
       three: {
+        cwd: 'node_modules/three/build/',
+        expand: true,
+        src: ['**/*.*'],
+        dest: 'public/private/three/'
+      },
+
+      three_webvr: {
         cwd: 'src/private/three/',
         expand: true,
         src: ['**/*.*'],
