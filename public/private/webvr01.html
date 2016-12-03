@@ -25,7 +25,7 @@
       width: 280px;
     }
     @media (max-width: 800px) {
-      .output {
+      .output, .fail {
         height: 50px;
         line-height: 50px;
         font-size: 13pt;
@@ -34,10 +34,14 @@
         width: 100px;
       }
     }</style><script>var WebVRConfig = {
-      FORCE_ENABLE_VR: true,
-      MOUSE_KEYBOARD_CONTROLS_DISABLED: true,
+      FORCE_ENABLE_VR: !isMobile(),
+      MOUSE_KEYBOARD_CONTROLS_DISABLED: !isMobile(),
       DEFER_INITIALIZATION: true
-    };</script><script src="webvr-polyfill.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script></head><body><div id="logger" class="output">Animate</div><div id="counter" class="output" contenteditable>300</div><script>(function() {
+    };
+    function isMobile() {
+      var ua = navigator.userAgent;
+      return /Android/i.test(ua) || /iPhone|iPad|iPod/i.test(ua);
+    }</script><script src="webvr-polyfill.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script></head><body><div id="logger" class="output">Animate</div><div id="counter" class="output" contenteditable>300</div><script>(function() {
       'use strict';
 
       var scene = new THREE.Scene();
@@ -59,8 +63,8 @@
       webglCanvas = renderer.domElement;
       document.body.appendChild(webglCanvas);
       scene.add(cylinder);
-      camera.position.z = 5;
       resize();
+      render();
 
       logger.addEventListener('click', requestPresent, false);
       window.addEventListener('resize', resize, false);
@@ -114,7 +118,7 @@
         if (countDown()) {
           cylinder.rotation.x += 0.03;
           cylinder.rotation.y += 0.03;
-          renderer.render(scene, camera);
+          render();
           if (vrDisplay) {
             if (vrDisplay.isPresenting) {
               vrDisplay.submitFrame();
@@ -134,13 +138,40 @@
         }
       }
 
+      function position() {
+        var pose = {};
+        if (vrDisplay) {
+          var frameData = null;
+          if (vrDisplay.getFrameData) {
+            vrDisplay.getFrameData(frameData);
+          }
+          if (frameData) {
+            pose = frameData.pose;
+          } else if (vrDisplay.getPose) {
+            pose = vrDisplay.getPose();
+          }
+        }
+        if (pose.orientation) {
+          camera.quaternion.fromArray(pose.orientation);
+        }
+        if (pose.position) {
+          camera.position.fromArray(pose.position);
+        } else {
+          camera.position.set(0, 0, 5);
+        }
+      }
+
+      function render() {
+        position();
+        renderer.render(scene, camera);
+      }
+
       function resize() {
         var width = window.innerWidth;
         var height = window.innerHeight;
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
         renderer.setSize(width, height);
-        renderer.render(scene, camera);
       }
 
       function onKeyDown(args) {
