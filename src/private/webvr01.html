@@ -43,14 +43,10 @@
     </style>
     <script>
     var WebVRConfig = {
-      FORCE_ENABLE_VR: !isMobile(),
-      MOUSE_KEYBOARD_CONTROLS_DISABLED: !isMobile(),
+      FORCE_ENABLE_VR: true,
+      MOUSE_KEYBOARD_CONTROLS_DISABLED: true,
       DEFER_INITIALIZATION: true
     };
-    function isMobile() {
-      var ua = navigator.userAgent;
-      return /Android/i.test(ua) || /iPhone|iPad|iPod/i.test(ua);
-    }
     </script>
     <script src="webvr-polyfill.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
@@ -157,26 +153,7 @@
       }
 
       function position() {
-        var pose = {};
-        if (vrDisplay) {
-          var frameData = null;
-          if (vrDisplay.getFrameData) {
-            vrDisplay.getFrameData(frameData);
-          }
-          if (frameData) {
-            pose = frameData.pose;
-          } else if (vrDisplay.getPose) {
-            pose = vrDisplay.getPose();
-          }
-        }
-        if (pose.orientation) {
-          camera.quaternion.fromArray(pose.orientation);
-        }
-        if (pose.position) {
-          camera.position.fromArray(pose.position);
-        } else {
-          camera.position.set(0, 0, 5);
-        }
+        camera.position.set(0, 0, 5);
       }
 
       function render() {
