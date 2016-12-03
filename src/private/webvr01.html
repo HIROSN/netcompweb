@@ -38,7 +38,13 @@
       }
     }
     </style>
-    <script>var WebVRConfig = {DEFER_INITIALIZATION: true};</script>
+    <script>
+    var WebVRConfig = {
+      FORCE_ENABLE_VR: true,
+      MOUSE_KEYBOARD_CONTROLS_DISABLED: true,
+      DEFER_INITIALIZATION: true
+    };
+    </script>
     <script src="webvr-polyfill.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
   </head>
@@ -69,11 +75,15 @@
       scene.add(cylinder);
       camera.position.z = 5;
       resize();
-      initVR();
 
       logger.addEventListener('click', requestPresent, false);
       window.addEventListener('resize', resize, false);
       window.addEventListener('keydown', onKeyDown, false);
+
+      if (!navigator.getVRDisplays) {
+        InitializeWebVRPolyfill();
+      }
+      initVR();
 
       function initVR() {
         if (navigator.getVRDisplays) {
@@ -89,7 +99,7 @@
             log('getVRDisplays failed');
           });
         } else {
-          log('VR not supported');
+          log('Failed to initialize polyfill');
         }
       }
 
@@ -145,9 +155,10 @@
       }
 
       function onKeyDown(args) {
-        if (args.code === "Space" && !vrDisplay) {
-          InitializeWebVRPolyfill();
-          initVR();
+        if (args.code === "Space") {
+          log('Animate');
+          vrDisplay = null;
+          requestPresent();
         }
       }
 
