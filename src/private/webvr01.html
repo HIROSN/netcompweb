@@ -135,8 +135,8 @@
 
       function onAnimationFrame() {
         if (countDown()) {
-          cylinder.rotation.x += 0.03;
-          cylinder.rotation.y += 0.03;
+          cylinder.rotation.x += 0.01;
+          cylinder.rotation.y += 0.01;
           render();
           if (vrDisplay) {
             if (vrDisplay.isPresenting) {
@@ -196,9 +196,10 @@
 
       function onKeyDown(args) {
         if (args.code === "Space") {
-          log('Animate');
+          usePolyfill = false;
           vrDisplay = null;
           requestPresent();
+          log('Animate');
         }
       }
 
