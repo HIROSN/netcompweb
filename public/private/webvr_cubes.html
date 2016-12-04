@@ -7,13 +7,27 @@
   }
   a {
     color: #f00;
+  }
+  #counter {
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    vertical-align: middle;
+    text-align: center;
+    font-family: Helvetica, Arial;
+    font-size: 13pt;
+    color: white;
+    border: 1px solid lightgray;
+    box-sizing: border-box;
+    z-index: 1000;
   }</style><script>var WebVRConfig = {
     FORCE_ENABLE_VR: true,
     DEFER_INITIALIZATION: true,
     ALWAYS_APPEND_POLYFILL_DISPLAY: true,
     DIRTY_SUBMIT_FRAME_BINDINGS: true,
     BUFFER_SCALE: 0.75,
-  };</script><script src="webvr-polyfill.min.js"></script><script src="three/three.min.js"></script><script src="three/VRControls.js"></script><script src="three/VREffect.js"></script><script src="three/WebVR.js"></script></head><body><script>if (WEBVR.isLatestAvailable() === false) {
+  };</script><script src="webvr-polyfill.min.js"></script><script src="three/three.min.js"></script><script src="three/VRControls.js"></script><script src="three/VREffect.js"></script><script src="three/WebVR.js"></script></head><body><div id="counter" class="output" contenteditable>Infinity</div><script>if (WEBVR.isLatestAvailable() === false) {
     document.body.appendChild(WEBVR.getMessage());
     InitializeWebVRPolyfill();
   }
@@ -29,6 +43,8 @@
 
   var INTERSECTED;
   var crosshair;
+
+  var counter = document.getElementById('counter');
 
   init();
   animate();
@@ -150,6 +166,10 @@
   }
 
   function animate() {
+    if (effect.isPresenting && !countDown()) {
+      effect.exitPresent();
+    }
+
     effect.requestAnimationFrame(animate);
     render();
   }
@@ -224,4 +244,14 @@
 
     controls.update();
     effect.render(scene, camera);
+  }
+
+  function countDown() {
+    var count = +counter.textContent;
+    if (count > 0) {
+      counter.textContent = --count;
+      return true;
+    }
+    counter.textContent = 0;
+    return false;
   }</script></body></html>
