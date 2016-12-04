@@ -27,7 +27,7 @@
     ALWAYS_APPEND_POLYFILL_DISPLAY: true,
     DIRTY_SUBMIT_FRAME_BINDINGS: true,
     BUFFER_SCALE: 0.75,
-  };</script><script src="webvr-polyfill.min.js"></script><script src="three/three.min.js"></script><script src="three/VRControls.js"></script><script src="three/VREffect.js"></script><script src="three/WebVR.js"></script></head><body><div id="counter" class="output" contenteditable>Infinity</div><script>if (WEBVR.isLatestAvailable() === false) {
+  };</script><script src="webvr-polyfill.min.js"></script><script src="three/three.min.js"></script><script src="three/VRControls.js"></script><script src="three/VREffect.js"></script><script src="three/WebVR.js"></script></head><body><div id="counter" contenteditable>Infinity</div><script>if (WEBVR.isLatestAvailable() === false) {
     document.body.appendChild(WEBVR.getMessage());
     InitializeWebVRPolyfill();
   }
