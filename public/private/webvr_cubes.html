@@ -53,16 +53,7 @@
     ALWAYS_APPEND_POLYFILL_DISPLAY: true,
     DIRTY_SUBMIT_FRAME_BINDINGS: true,
     BUFFER_SCALE: 0.75,
-  };</script><script src="webvr-polyfill.min.js"></script><script src="three/three.min.js"></script><script src="three/VRControls.js"></script><script src="three/VREffect.js"></script><script src="three/WebVR.js"></script></head><body><div id="log" class="hidden"></div><div id="counter" contenteditable>Infinity</div><div id="showLog">Log</div><script>console.warn = override('warn');
-  console.error = override('error');
-
-  if (!WEBVR.isAvailable()) {
-    document.body.appendChild(WEBVR.getMessage());
-    InitializeWebVRPolyfill();
-    console.warn('Using Polyfill');
-  }
-
-  var clock = new THREE.Clock();
+  };</script><script src="webvr-polyfill.min.js"></script><script src="three/three.min.js"></script><script src="three/VRControls.js"></script><script src="three/VREffect.js"></script><script src="three/WebVR.js"></script></head><body><div id="log" class="hidden"></div><div id="counter" contenteditable>Infinity</div><div id="showLog">Log</div><script>var clock = new THREE.Clock();
 
   var container;
   var camera, scene, raycaster, renderer;
@@ -75,6 +66,18 @@
   var crosshair;
 
   var counter = document.getElementById('counter');
+
+  document.getElementById('showLog')
+  .addEventListener('click', showHideLog, false);
+
+  console.warn = override('warn');
+  console.error = override('error');
+
+  if (!WEBVR.isAvailable()) {
+    document.body.appendChild(WEBVR.getMessage());
+    InitializeWebVRPolyfill();
+    console.warn('Using Polyfill');
+  }
 
   init();
   animate();
@@ -191,8 +194,6 @@
     renderer.domElement.addEventListener('touchend', onMouseUp, false);
 
     window.addEventListener('resize', onWindowResize, false);
-    document.getElementById('showLog')
-    .addEventListener('click', showHideLog, false);
   }
 
   function onMouseDown() {

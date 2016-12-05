@@ -76,15 +76,6 @@
   <div id="counter" contenteditable>Infinity</div>
   <div id="showLog">Log</div>
   <script>
-  console.warn = override('warn');
-  console.error = override('error');
-
-  if (!WEBVR.isAvailable()) {
-    document.body.appendChild(WEBVR.getMessage());
-    InitializeWebVRPolyfill();
-    console.warn('Using Polyfill');
-  }
-
   var clock = new THREE.Clock();
 
   var container;
@@ -98,6 +89,18 @@
   var crosshair;
 
   var counter = document.getElementById('counter');
+
+  document.getElementById('showLog')
+  .addEventListener('click', showHideLog, false);
+
+  console.warn = override('warn');
+  console.error = override('error');
+
+  if (!WEBVR.isAvailable()) {
+    document.body.appendChild(WEBVR.getMessage());
+    InitializeWebVRPolyfill();
+    console.warn('Using Polyfill');
+  }
 
   init();
   animate();
@@ -214,8 +217,6 @@
     renderer.domElement.addEventListener('touchend', onMouseUp, false);
 
     window.addEventListener('resize', onWindowResize, false);
-    document.getElementById('showLog')
-    .addEventListener('click', showHideLog, false);
   }
 
   function onMouseDown() {
