@@ -34,9 +34,8 @@
     overflow: scroll;
     padding: 104px 8px 8px 8px;
   }
-  #counter {
+  #counter, #showLog {
     position: absolute;
-    width: 100px;
     height: 50px;
     line-height: 50px;
     vertical-align: middle;
@@ -47,6 +46,14 @@
     border: 1px solid lightgray;
     box-sizing: border-box;
     z-index: 1000;
+  }
+  #counter {
+    width: 100px;
+  }
+  #showLog {
+    left: 100px;
+    width: 50px;
+    cursor: pointer;
   }
   </style>
   <script>
@@ -67,6 +74,7 @@
 <body>
   <div id="log" class="hidden"></div>
   <div id="counter" contenteditable>Infinity</div>
+  <div id="showLog">Log</div>
   <script>
   console.warn = override('warn');
   console.error = override('error');
@@ -206,7 +214,8 @@
     renderer.domElement.addEventListener('touchend', onMouseUp, false);
 
     window.addEventListener('resize', onWindowResize, false);
-    window.addEventListener('keydown', showHideLog, false);
+    document.getElementById('showLog')
+    .addEventListener('click', showHideLog, false);
   }
 
   function onMouseDown() {
@@ -304,14 +313,12 @@
     effect.render(scene, camera);
   }
 
-  function showHideLog(args) {
-    if (args.code === 'Space') {
-      var log = document.getElementById('log');
-      if (log.className === 'hidden') {
-        log.className = null;
-      } else {
-        log.className = 'hidden';
-      }
+  function showHideLog() {
+    var log = document.getElementById('log');
+    if (log.className === 'hidden') {
+      log.className = null;
+    } else {
+      log.className = 'hidden';
     }
   }
 
