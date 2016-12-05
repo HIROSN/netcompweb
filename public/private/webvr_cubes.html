@@ -8,6 +8,25 @@
   a {
     color: #f00;
   }
+  .hidden {
+    display: none;
+  }
+  .warn {
+    color: gray;
+  }
+  .error {
+    color: red;
+  }
+  #log {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-family: Helvetica, Arial;
+    font-size: 11pt;
+    box-sizing: border-box;
+    overflow: scroll;
+    padding: 104px 8px 8px 8px;
+  }
   #counter {
     position: absolute;
     width: 100px;
@@ -27,9 +46,13 @@
     ALWAYS_APPEND_POLYFILL_DISPLAY: true,
     DIRTY_SUBMIT_FRAME_BINDINGS: true,
     BUFFER_SCALE: 0.75,
-  };</script><script src="webvr-polyfill.min.js"></script><script src="three/three.min.js"></script><script src="three/VRControls.js"></script><script src="three/VREffect.js"></script><script src="three/WebVR.js"></script></head><body><div id="counter" contenteditable>Infinity</div><script>if (WEBVR.isLatestAvailable() === false) {
+  };</script><script src="webvr-polyfill.min.js"></script><script src="three/three.min.js"></script><script src="three/VRControls.js"></script><script src="three/VREffect.js"></script><script src="three/WebVR.js"></script></head><body><div id="log" class="hidden"></div><div id="counter" contenteditable>Infinity</div><script>console.warn = override('warn');
+  console.error = override('error');
+
+  if (!WEBVR.isAvailable()) {
     document.body.appendChild(WEBVR.getMessage());
     InitializeWebVRPolyfill();
+    console.warn('Using Polyfill');
   }
 
   var clock = new THREE.Clock();
@@ -137,9 +160,21 @@
       .then(function(displays) {
         effect.setVRDisplay(displays[0]);
         controls.setVRDisplay(displays[0]);
-        document.body.appendChild(WEBVR.getButton(effect));
+        var button = WEBVR.getButton(effect);
+        button.onclick = function() {
+          if (!effect.isPresenting) {
+            effect.requestPresent()
+            .catch(function(err) {
+              console.error(err);
+            });
+          }
+        };
+        document.body.appendChild(button);
+      }, function() {
+        console.error('navigator.getVRDisplays() was rejected');
       })
-      .catch(function() {
+      .catch(function(err) {
+        console.error(err);
       });
     }
 
@@ -149,6 +184,7 @@
     renderer.domElement.addEventListener('touchend', onMouseUp, false);
 
     window.addEventListener('resize', onWindowResize, false);
+    window.addEventListener('keydown', showHideLog, false);
   }
 
   function onMouseDown() {
@@ -244,6 +280,32 @@
 
     controls.update();
     effect.render(scene, camera);
+  }
+
+  function showHideLog(args) {
+    if (args.code === 'Space') {
+      var log = document.getElementById('log');
+      if (log.className === 'hidden') {
+        log.className = null;
+      } else {
+        log.className = 'hidden';
+      }
+    }
+  }
+
+  function override(name) {
+    return function() {
+      var comment = '';
+      for (var i = 0; i < arguments.length; i++) {
+        comment += arguments[i] + ' ';
+      }
+      var node = document.createElement('div');
+      node.appendChild(document.createTextNode(comment));
+      node.className = name;
+      var log = document.getElementById('log');
+      log.appendChild(node);
+      log.scrollTop = log.scrollHeight;
+    };
   }
 
   function countDown() {
