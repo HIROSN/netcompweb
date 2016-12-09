@@ -27,25 +27,22 @@
     overflow: scroll;
     padding: 10em 8px 8px 8px;
   }
-  #counter, #showLog {
+  #container {
     position: absolute;
-    height: 50px;
-    line-height: 50px;
+    z-index: 1000;
+    display: flex;
+  }
+  #counter, #showLog {
     vertical-align: middle;
     text-align: center;
     font-family: Helvetica, Arial;
-    font-size: 13pt;
+    font-size: 11pt;
+    padding: 1em;
     color: white;
     border: 1px solid lightgray;
     box-sizing: border-box;
-    z-index: 1000;
-  }
-  #counter {
-    width: 100px;
   }
   #showLog {
-    left: 100px;
-    width: 50px;
     cursor: pointer;
     user-select: none;
   }</style><script>var WebVRConfig = {
@@ -54,7 +51,7 @@
     ALWAYS_APPEND_POLYFILL_DISPLAY: true,
     DIRTY_SUBMIT_FRAME_BINDINGS: true,
     BUFFER_SCALE: 0.75,
-  };</script><script src="webvr-polyfill.min.js"></script><script src="three/three.min.js"></script><script src="three/VRControls.js"></script><script src="three/VREffect.js"></script><script src="three/WebVR.js"></script></head><body><div id="log" class="hidden"></div><div id="counter" contenteditable>Infinity</div><div id="showLog">Log</div><script>var clock = new THREE.Clock();
+  };</script><script src="webvr-polyfill.min.js"></script><script src="three/three.min.js"></script><script src="three/VRControls.js"></script><script src="three/VREffect.js"></script><script src="three/WebVR.js"></script></head><body><div id="log" class="hidden"></div><div id="container"><div id="counter" contenteditable>Infinity</div><div id="showLog">Log</div></div><script>var clock = new THREE.Clock();
 
   var container;
   var camera, scene, raycaster, renderer;

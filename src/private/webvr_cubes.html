@@ -34,25 +34,22 @@
     overflow: scroll;
     padding: 10em 8px 8px 8px;
   }
-  #counter, #showLog {
+  #container {
     position: absolute;
-    height: 50px;
-    line-height: 50px;
+    z-index: 1000;
+    display: flex;
+  }
+  #counter, #showLog {
     vertical-align: middle;
     text-align: center;
     font-family: Helvetica, Arial;
-    font-size: 13pt;
+    font-size: 11pt;
+    padding: 1em;
     color: white;
     border: 1px solid lightgray;
     box-sizing: border-box;
-    z-index: 1000;
-  }
-  #counter {
-    width: 100px;
   }
   #showLog {
-    left: 100px;
-    width: 50px;
     cursor: pointer;
     user-select: none;
   }
@@ -74,8 +71,10 @@
 </head>
 <body>
   <div id="log" class="hidden"></div>
-  <div id="counter" contenteditable>Infinity</div>
-  <div id="showLog">Log</div>
+  <div id="container">
+    <div id="counter" contenteditable>Infinity</div>
+    <div id="showLog">Log</div>
+  </div>
   <script>
   var clock = new THREE.Clock();
 
