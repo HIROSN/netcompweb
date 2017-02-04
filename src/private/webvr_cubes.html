@@ -31,7 +31,7 @@
     font-family: Helvetica, Arial;
     font-size: 11pt;
     box-sizing: border-box;
-    overflow: scroll;
+    overflow: auto;
     padding: 10em 8px 8px 8px;
   }
   #container {
@@ -198,7 +198,20 @@
           if (!effect.isPresenting) {
             effect.requestPresent()
             .catch(function(err) {
-              console.error(err);
+              console.warn(err);
+              InitializeWebVRPolyfill();
+              console.warn('Using Polyfill');
+              navigator.getVRDisplays()
+              .then(function(displays) {
+                effect.setVRDisplay(displays[0]);
+                controls.setVRDisplay(displays[0]);
+                button.textContent = "ENTER VR (Polyfill)"
+              }, function() {
+                console.error('navigator.getVRDisplays() was rejected');
+              })
+              .catch(function(err) {
+                console.error(err);
+              });
             });
           }
         };
