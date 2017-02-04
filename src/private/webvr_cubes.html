@@ -205,7 +205,10 @@
               .then(function(displays) {
                 effect.setVRDisplay(displays[0]);
                 controls.setVRDisplay(displays[0]);
-                button.textContent = "ENTER VR (Polyfill)"
+                effect.requestPresent()
+                .catch(function(err) {
+                  console.error(err);
+                });
               }, function() {
                 console.error('navigator.getVRDisplays() was rejected');
               })
