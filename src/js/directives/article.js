@@ -3,14 +3,6 @@
 var $ = require('jquery');
 
 module.exports = function(app) {
-  app.directive('articleJsWeekly', function() {
-    return {
-      restrict: 'A',
-      templateUrl: 'article-js-weekly.html',
-      controller: require('../modules/jsweekly')
-    };
-  });
-
   app.directive('articleInnovationsSpa', function() {
     return {
       restrict: 'A',
