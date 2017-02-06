@@ -363,6 +363,9 @@
         background-size: cover;
         background-position: 50% 50%;
     }
+    .fullscreen_post_bg img {
+        display: none;
+    }
     .fullscreen_post_footer {
         position: fixed;
         top: auto;
@@ -529,6 +532,7 @@
         <div class="showcase">
             <div class="login-section active" style="z-index: 6;">
                 <div class="fullscreen_post_bg" style="background-image:url('bg.jpg');">
+                    <img id="fullscreen_post_image" src="bg.jpg">
                 </div>
                 <div class="fullscreen_post_footer">
                     <div>
