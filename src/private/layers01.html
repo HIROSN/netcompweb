@@ -55,54 +55,64 @@
     .fg {
       z-index: 2;
     }
+    .hidden {
+      display: none;
+    }
     </style>
   </head>
   <body>
     <ul id="nav">
-      <li>unset</li>
-      <li>blur</li>
-      <li>brightness</li>
-      <li>contrast</li>
-      <li>drop-shadow</li>
-      <li>grayscale</li>
-      <li>hue-rotate</li>
-      <li>invert</li>
-      <li>opacity</li>
-      <li>saturate</li>
-      <li>sepia</li>
+      <li class="hidden">unset</li>
+      <li class="hidden">blur</li>
+      <li class="hidden">brightness</li>
+      <li class="hidden">contrast</li>
+      <li class="hidden">drop-shadow</li>
+      <li class="hidden">grayscale</li>
+      <li class="hidden">hue-rotate</li>
+      <li class="hidden">invert</li>
+      <li class="hidden">opacity</li>
+      <li class="hidden">saturate</li>
+      <li class="hidden">sepia</li>
     </ul>
-    <div id="unset"></div>
-    <div id="blur"></div>
-    <div id="brightness"></div>
-    <div id="contrast"></div>
-    <div id="drop-shadow"></div>
-    <div id="grayscale"></div>
-    <div id="hue-rotate"></div>
-    <div id="invert"></div>
-    <div id="opacity"></div>
-    <div id="saturate"></div>
-    <div id="sepia"></div>
+    <div class="hidden" id="unset"></div>
+    <div class="hidden" id="blur"></div>
+    <div class="hidden" id="brightness"></div>
+    <div class="hidden" id="contrast"></div>
+    <div class="hidden" id="drop-shadow"></div>
+    <div class="hidden" id="grayscale"></div>
+    <div class="hidden" id="hue-rotate"></div>
+    <div class="hidden" id="invert"></div>
+    <div class="hidden" id="opacity"></div>
+    <div class="hidden" id="saturate"></div>
+    <div class="hidden" id="sepia"></div>
     <script>
     (function() {
-      var selected;
+      var params, show, selected;
       var setSelected = function(id) {
         var lis = document.getElementsByTagName('li');
         var divs = document.getElementsByTagName('div');
         var i, li, div;
         selected = id;
         // Set 'selected' class on the li.
-        for (i = 0; i < lis.length; i++) {
+        for (i = 0; i < show; i++) {
           li = lis[i];
           li.className = li.textContent == selected ? 'selected' : '';
         }
         // Set '<filter name> bg' class on div's.
-        for (i = 0; i < divs.length; i++) {
+        for (i = 0; i < show; i++) {
           div = divs[i];
           div.className = div.id + ' bg';
         }
         // Set '<filter name> fg' class on the selected div.
         document.getElementById(selected).className = selected + ' fg';
       };
+      params = new RegExp('[?&]show(=([^&#]*)|&|#|$)')
+      .exec(window.location.href);
+      if (params && params[2]) {
+        show = +decodeURIComponent(params[2].replace(/\+/g, ' '));
+      } else {
+        show = document.getElementsByTagName('div').length;
+      }
       setSelected('unset');
       document.getElementById('nav').addEventListener('click', function(evt) {
         var id = evt.target.textContent;
