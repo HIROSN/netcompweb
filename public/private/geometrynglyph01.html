@@ -1,0 +1,25 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body {
+      margin: 0;
+      padding: 0 8px 8px 0;
+      font-family: Helvetica, Arial;
+      font-size: 14pt;
+    }
+    div {
+      display: inline-block;
+      margin: 8px 0 0 8px;
+      padding: 8px;
+      border: 1px solid lightgray;
+      box-shadow: 1px 1px 5px gray;
+    }</style></head><body><div id="first">The quick brown fox jumps over the lazy dog.</div><script>(function() {
+      var i, div, first, cs, n;
+      first = document.getElementById("first");
+      cs = getComputedStyle(first, null);
+      n = window.innerWidth * window.innerHeight;
+      n /= parseInt(cs.width) * parseInt(cs.height);
+      n = parseInt(n);
+      for (i = 0; i < n; i++) {
+        div = document.createElement('DIV');
+        div.appendChild(document.createTextNode('The quick brown fox jumps over the lazy dog.'));
+        document.body.appendChild(div);
+      }
+    })();</script></body></html>
