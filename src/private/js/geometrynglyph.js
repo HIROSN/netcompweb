@@ -3,7 +3,7 @@
 (function() {
   var recreateDIVs = function() {
     var container = document.getElementById('container');
-    var first = document.getElementById('first');
+    var first = container.firstChild;
     var text = first.textContent;
     var cs = window.getComputedStyle(first, null);
     var bcs = window.getComputedStyle(document.body, null);
@@ -15,13 +15,9 @@
     wy -= parseInt(bcs.paddingTop);
 
     var x = parseInt(cs.width);
-    x += parseInt(cs.paddingLeft) + parseInt(cs.paddingRight);
-    x += parseInt(cs.borderLeftWidth) + parseInt(cs.borderRightWidth);
     x += parseInt(cs.marginLeft) + parseInt(cs.marginRight);
 
     var y = parseInt(cs.height);
-    y += parseInt(cs.paddingTop) + parseInt(cs.paddingBottom);
-    y += parseInt(cs.borderTopWidth) + parseInt(cs.borderBottomWidth);
     y += parseInt(cs.marginTop) + parseInt(cs.marginBottom);
 
     var n = Math.floor(wx / x) * Math.floor(wy / y);
@@ -32,7 +28,6 @@
 
     for (var i = 0; i < n; i++) {
       var div = document.createElement('DIV');
-      if (i === 0) { div.id = 'first'; }
       div.appendChild(document.createTextNode(text));
       container.appendChild(div);
     }
