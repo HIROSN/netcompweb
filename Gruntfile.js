@@ -167,7 +167,9 @@ module.exports = function(grunt) {
 
       private: {
         files: {
-          'public/private/script.js': ['src/private/js/script.js']
+          'public/private/script.js': ['src/private/js/script.js'],
+          'public/private/geometrynglyph.js':
+            ['src/private/js/geometrynglyph.js']
         }
       }
     },

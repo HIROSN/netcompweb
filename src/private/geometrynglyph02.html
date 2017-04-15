@@ -18,21 +18,9 @@
     </style>
   </head>
   <body>
-    <div id="first">The quick brown fox jumps over the lazy dog.</div>
-    <script>
-    (function() {
-      var i, div, first, cs, n;
-      first = document.getElementById("first");
-      cs = getComputedStyle(first, null);
-      n = window.innerWidth * window.innerHeight;
-      n /= parseInt(cs.width) * parseInt(cs.height);
-      n = parseInt(n);
-      for (i = 0; i < n; i++) {
-        div = document.createElement('DIV');
-        div.appendChild(document.createTextNode('The quick brown fox jumps over the lazy dog.'));
-        document.body.appendChild(div);
-      }
-    })();
-    </script>
+    <section id="container">
+      <div id="first">The quick brown fox jumps over the lazy dog.</div>
+    </section>
+    <script src="geometrynglyph.js"></script>
   </body>
 </html>
