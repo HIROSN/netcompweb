@@ -16,12 +16,12 @@
 
     var x = parseInt(cs.width);
     x += parseInt(cs.paddingLeft) + parseInt(cs.paddingRight);
-    x += parseInt(cs.borderLeft) + parseInt(cs.borderRight);
+    x += parseInt(cs.borderLeftWidth) + parseInt(cs.borderRightWidth);
     x += parseInt(cs.marginLeft) + parseInt(cs.marginRight);
 
     var y = parseInt(cs.height);
     y += parseInt(cs.paddingTop) + parseInt(cs.paddingBottom);
-    y += parseInt(cs.borderTop) + parseInt(cs.borderBottom);
+    y += parseInt(cs.borderTopWidth) + parseInt(cs.borderBottomWidth);
     y += parseInt(cs.marginTop) + parseInt(cs.marginBottom);
 
     var n = Math.floor(wx / x) * Math.floor(wy / y);
