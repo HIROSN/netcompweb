@@ -22,8 +22,8 @@
     "express": "^4.15.2",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
-    "three": "^0.84.0",
-    "webvr-polyfill": "^0.9.26"
+    "three": "^0.85.2",
+    "webvr-polyfill": "^0.9.27"
   },
   "devDependencies": {
     "async": "^2.3.0",
@@ -31,7 +31,7 @@
     "grunt": "^1.0.1",
     "grunt-browserify": "^5.0.0",
     "grunt-cli": "^1.2.0",
-    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-htmlmin": "^2.3.0",
     "grunt-contrib-jshint": "^1.1.0",
@@ -42,7 +42,7 @@
     "grunt-karma": "^2.0.0",
     "grunt-sass": "^2.0.0",
     "grunt-simple-mocha": "^0.4.1",
-    "jasmine-core": "^2.5.2",
+    "jasmine-core": "^2.6.1",
     "karma": "^1.6.0",
     "karma-jasmine": "^1.1.0",
     "karma-phantomjs-launcher": "^1.0.4",
