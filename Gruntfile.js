@@ -265,7 +265,7 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('default', [
+  grunt.registerTask('build', [
     'jshint',
     'jscs',
     'simplemocha',
@@ -276,7 +276,11 @@ module.exports = function(grunt) {
     'uglify',
     'htmlmin',
     'sass',
-    'cssmin',
+    'cssmin'
+  ]);
+
+  grunt.registerTask('default', [
+    'build',
     'karma'
   ]);
 };
