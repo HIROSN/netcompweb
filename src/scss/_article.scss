@@ -14,17 +14,19 @@ article {
 
   > section {
     > p, table {
-      padding-left: 10px;
-      padding-right: 10px;
+      padding: 0 10px 0 10px;
     }
 
     > h3 {
       position: sticky;
-      top: 0;
+      top: 1px;
       z-index: 1;
-      background: $backgroundHeader;
-      margin: 1px 0 0.5em 0;
+      background: $backgroundArticle;
+      margin: 1px;
       padding: 0.5em 1em 0.5em 1em !important;
+      outline-width: 1px;
+      outline-style: solid;
+      outline-color: invert;
     }
   }
 }
