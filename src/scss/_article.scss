@@ -8,3 +8,23 @@
   background-size: 1em;
   padding-left: 1em;
 }
+
+article {
+  padding: 0 !important;
+
+  > section {
+    > p, table {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    > h3 {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: $backgroundHeader;
+      margin: 1px 0 0.5em 0;
+      padding: 0.5em 1em 0.5em 1em !important;
+    }
+  }
+}
