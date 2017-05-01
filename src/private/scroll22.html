@@ -4,17 +4,18 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <style>
+    * {
+      cursor: pointer;
+    }
     section {
       margin: 50px;
     }
     h1, footer {
-      position: -webkit-sticky;
-      position: sticky;
       font-family: Helvetica, Arial;
       padding: 1em;
     }
     h1 {
-      top: 0px;
+      top: -3em;
       z-index: 2;
       background: gray;
       color: white;
@@ -24,10 +25,22 @@
       padding: 25%;
     }
     footer {
-      bottom: 0px;
+      bottom: -3em;
       z-index: 1;
       background: lightgray;
       text-align: right;
+    }
+    .top, .bottom {
+      position: -webkit-sticky;
+      position: sticky;
+    }
+    .top {
+      top: 0px;
+      transition: top 0.4s;
+    }
+    .bottom {
+      bottom: 0px;
+      transition: bottom 0.4s;
     }
     </style>
   </head>
@@ -42,5 +55,21 @@
     <section><h1>8</h1><div></div><footer>8</footer></section>
     <section><h1>9</h1><div></div><footer>9</footer></section>
     <section><h1>10</h1><div></div><footer>10</footer></section>
+    <script>
+    (function() {
+      var toggle = function(tagName, className) {
+        var h1s = document.getElementsByTagName(tagName);
+        for (var i = 0; i < h1s.length; i++) {
+          h1s[i].classList.toggle(className);
+        }
+      };
+      var toggleBoth = function() {
+        toggle('h1', 'top');
+        toggle('footer', 'bottom');
+      }
+      toggleBoth();
+      window.addEventListener('click', toggleBoth);
+    })();
+    </script>
   </body>
 </html>

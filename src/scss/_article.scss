@@ -9,6 +9,16 @@
   padding-left: 1em;
 }
 
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 1px;
+  z-index: 1;
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: invert;
+}
+
 article {
   padding: 0 !important;
 
@@ -17,17 +27,14 @@ article {
       padding: 0 10px 0 10px;
     }
 
+    > ul, ol {
+      padding-left: 34px;
+    }
     > h3 {
-      position: -webkit-sticky;
-      position: sticky;
-      top: 1px;
-      z-index: 1;
       background: $backgroundArticle;
       margin: 1px;
-      padding: 0.5em 1em 0.5em 1em !important;
-      outline-width: 1px;
-      outline-style: solid;
-      outline-color: invert;
+      padding: 1em 10px 1em 10px !important;
+      cursor: pointer;
     }
   }
 }
