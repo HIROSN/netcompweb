@@ -34,6 +34,11 @@
   flex-wrap: nowrap;
   justify-content: flex-end;
 }
+.buttons {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+}
 button {
   margin: 0 0 1em 1em;
   padding: 1em;
@@ -65,8 +70,10 @@ video {
       <video id="video" src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
     </div>
     <div id="bar">
-      <button id="play">Play | Pause</button>
-      <button id="fullscreen">Fullscreen</button>
+      <div class="buttons">
+        <button id="play">Play | Pause</button>
+        <button id="fullscreen">Fullscreen</button>
+      </div>
     </div>
   </div>
 </section>
