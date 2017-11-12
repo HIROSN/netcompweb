@@ -1,17 +1,26 @@
 <!DOCTYPE html><html lang="en"><head><style>.container {
   background-color: black;
   width: 600px;
+  height: 330px;
   padding: 1em;
 }
 #player {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  z-index: 1;
+  width: 600px;
+  overflow: hidden;
   background: transparent;
 }
 #bar {
+  position: absolute;
+  z-index: 2;
+  top: 0;
   width: 100%;
   height: 4em;
   background: transparent;
+}
+#bar:hover {
+  top: 0 !important;
 }
 button {
   margin: 0 0 1em 1em;
@@ -21,17 +30,17 @@ button {
 }
 button:hover {
   cursor: pointer;
-  opacity: 1 !important;
 }
-.hide-button {
-  opacity: 0;
-  transition: opacity 0.4s;
+.hide-bar {
+  top: -3em !important;
+  transition: top 0.4s;
 }
 .hide-cursor {
   cursor: none;
 }
 video {
   width: 100%;
+  height: 100%;
 }</style></head><body><section class="container"><div id="player"><div id="bar"><button id="fullscreen">Fullscreen</button> <button id="play">Play | Pause</button></div><video id="video" src="https://www.w3schools.com/html/mov_bbb.mp4"></video></div></section><script>(() => {
   var player = document.getElementById('player');
   var bar = document.getElementById('bar');
@@ -42,8 +51,7 @@ video {
 
   var setTimer = () => {
     player.className = '';
-    fullscreen.className = '';
-    play.className = '';
+    bar.className = '';
 
     if (timer) {
       window.clearInterval(timer);
@@ -53,28 +61,12 @@ video {
     timer = window.setInterval(() => {
       window.clearInterval(timer);
       timer = null;
-      if (document.webkitIsFullScreen || document.mozFullScreen) {
-        player.className = 'hide-cursor';
-        fullscreen.className = 'hide-button';
-        play.className = 'hide-button';
-      }
+      player.className = 'hide-cursor';
+      bar.className = 'hide-bar';
     }, 2000);
   };
 
-  var setBarHeight = () => {
-    var fullscreenElement = document.webkitFullscreenElement;
-    fullscreenElement |= document.mozFullScreenElement;
-    bar.style = '';
-    if (fullscreenElement && fullscreenElement.id == 'player') {
-      var y = window.screen.height;
-      y -= parseInt(getComputedStyle(video, null).height);
-      bar.style = 'height:' + (y / 2) + 'px;';
-    }
-  };
-
   window.addEventListener('mousemove', setTimer);
-  document.onwebkitfullscreenchange = setBarHeight;
-  document.onmozfullscreenchange = setBarHeight;
 
   fullscreen.addEventListener('click', () => {
     if (document.webkitIsFullScreen || document.mozFullScreen) {
@@ -104,6 +96,5 @@ video {
     }
   });
 
-  setBarHeight();
   setTimer();
 })();</script></body></html>
