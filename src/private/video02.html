@@ -3,29 +3,40 @@
 
 <head>
 <style>
-.container {
+.frame {
   background-color: black;
   width: 600px;
   height: 330px;
   padding: 1em;
 }
 #player {
-  position: absolute;
-  z-index: 1;
-  width: 600px;
+  position: relative;
+  width: 100%;
+  height: 100%;
   background: transparent;
+  background-color: #000;
+  overflow: hidden;
+}
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
 }
 #bar {
   position: absolute;
   z-index: 2;
+  top: 0;
   width: 100%;
   height: 4em;
   background: transparent;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
 }
 button {
   margin: 0 0 1em 1em;
   padding: 1em;
-  float: right;
   opacity: 0.9;
 }
 button:hover {
@@ -40,6 +51,7 @@ button:hover {
   cursor: none;
 }
 video {
+  position: relative;
   width: 100%;
   height: 100%;
 }
@@ -47,14 +59,15 @@ video {
 </head>
 
 <body>
-<section class="container">
+<section class="frame">
   <div id="player">
-    <div id="bar">
-      <button id="fullscreen">Fullscreen</button>
-      <button id="play">Play | Pause</button>
+    <div class="container">
+      <video id="video" src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
     </div>
-    <video id="video" src="https://www.w3schools.com/html/mov_bbb.mp4">
-    </video>
+    <div id="bar">
+      <button id="play">Play | Pause</button>
+      <button id="fullscreen">Fullscreen</button>
+    </div>
   </div>
 </section>
 
