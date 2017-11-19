@@ -205,6 +205,19 @@ module.exports = function(grunt) {
           removeComments: true,
           collapseWhitespace: true
         }
+      },
+
+      private_svg: {
+        files: [{
+          expand: true,
+          cwd: 'src/private/svg/',
+          src: '*.svg',
+          dest: 'public/private/'
+        }],
+        options: {
+          removeComments: true,
+          collapseWhitespace: true
+        }
       }
     },
 
