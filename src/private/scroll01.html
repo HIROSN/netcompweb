@@ -5,6 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" type="text/css" href="animate.css"/>
     <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+    <style>
+      body {
+        padding: 0 !important;
+      }
+      span {
+        color: gray !important;
+      }
+      #hdnav, #header-image {
+        display: none !important;
+      }
+      .myColumn {
+        width: 100% !important;
+      }
+      .filter {
+        margin: 0 0 8px 8px !important;
+        display: inline-block !important;
+        vertical-align: top !important;
+      }
+      .had-fixed-pos {
+        padding: 0 !important;
+      }
+      .fixed-pos {
+        left: 8px !important;
+        top: 8px !important;
+      }
+      .react {
+        filter: drop-shadow(0 0 4px rgba(0,0,0,0.3));
+      }
+    </style>
   </head>
   <body>
     <img id="theme" src="transparent-95031.png" class="hidden"
@@ -133,6 +162,7 @@
               </div>
             </div>
             <div class="filter">
+              <span>hue-rotate() on canvas</span>
               <div><canvas class="target hue-rotate" id="hue-rotate-canvas"></div>
               <div class="pos-bg">
                 <input id="anim-hue-rotate-canvas" data="anim-hue-rotate" type="checkbox" class="anim-box">
@@ -190,6 +220,7 @@
               </div>
             </div>
             <div class="filter">
+              <span>sepia() on video</span>
               <div>
                 <a href="http://www.w3schools.com/html/html5_video.asp" target="_blank">
                   <video class="target sepia" controls title="Courtesy of W3Schools.">
@@ -227,6 +258,26 @@
                   <rect width="100%" height="100%" filter="url(#turbulence)" />
                 </svg>
               </div>
+              <div class="pos-bg">
+                <input id="pos-svg" type="checkbox" class="pos-box">
+                <label for="pos-svg">pos</label>
+              </div>
+            </div>
+            <div class="filter">
+              <span>SVG filter (drop-shadow)</span>
+              <div>
+                <div>
+                  <img src="react.svg">
+                </div>
+              </div>
+              <div class="pos-bg">
+                <input id="pos-svg" type="checkbox" class="pos-box">
+                <label for="pos-svg">pos</label>
+              </div>
+            </div>
+            <div class="filter">
+              <span>CSS filter drop-shadow()</span>
+              <div><img class="target react" src="react-no-filter.svg"></div>
               <div class="pos-bg">
                 <input id="pos-svg" type="checkbox" class="pos-box">
                 <label for="pos-svg">pos</label>
