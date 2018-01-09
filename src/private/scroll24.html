@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+  * {
+    font-family: Helvetica, Arial;
+  }
+  body {
+    margin: 0;
+    height: 300vh;
+  }
+  section {
+    margin: 0 25%;
+  }
+  #sticky {
+    width: 100%;
+    background: #bfa79b;
+    padding: 2em;
+  }
+  .fixed {
+    position: fixed;
+    top: 0;
+  }
+  </style>
+</head>
+
+<body>
+  <header id="header">
+    <div id="sticky"></div>
+  </header>
+  <section>
+    <h1>Section 1</h1>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+  </section>
+  <script src="http://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+  <script>
+  window.addEventListener('scroll', function() {
+    if ($(window).scrollTop() <= $('#header').offset().top) {
+      $('#sticky').removeClass('fixed');
+    } else {
+      $('#sticky').addClass('fixed');
+    }
+  });
+  </script>
+</body>
+
+</html>
