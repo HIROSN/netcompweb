@@ -18,12 +18,12 @@
   },
   "homepage": "https://github.com/HIROSN/netcompweb",
   "dependencies": {
-    "angular": "^1.6.6",
+    "angular": "^1.6.8",
     "express": "^4.16.2",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
-    "three": "^0.88.0",
-    "webvr-polyfill": "^0.9.40"
+    "three": "^0.89.0",
+    "webvr-polyfill": "^0.10.2"
   },
   "devDependencies": {
     "async": "^2.6.0",
@@ -35,7 +35,7 @@
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-htmlmin": "^2.4.0",
     "grunt-contrib-jshint": "^1.1.0",
-    "grunt-contrib-uglify": "^3.1.0",
+    "grunt-contrib-uglify": "^3.3.0",
     "grunt-css": "^0.5.4",
     "grunt-html2js": "^0.5.1",
     "grunt-jscs": "^3.0.1",
@@ -43,10 +43,10 @@
     "grunt-sass": "^2.0.0",
     "grunt-simple-mocha": "^0.4.1",
     "jasmine-core": "^2.8.0",
-    "karma": "^1.7.1",
-    "karma-jasmine": "^1.1.0",
+    "karma": "^2.0.0",
+    "karma-jasmine": "^1.1.1",
     "karma-phantomjs-launcher": "^1.0.4",
     "phantomjs-prebuilt": "^2.1.16",
-    "superagent": "^3.8.1"
+    "superagent": "^3.8.2"
   }
 }
