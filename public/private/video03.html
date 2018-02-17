@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>* {
+  font-family: "Open Sans", "Segoe UI", "Helvetica Neue", sans-serif;
+}
+.frame {
+  background-color: black;
+  width: 600px;
+  height: 330px;
+  max-width: 100%;
+}
+#player {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  background-color: #000;
+  overflow: hidden;
+}
+#bar:before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 10em;
+}
+#bar {
+  position: absolute;
+  z-index: 2;
+  transform: none;
+  width: 100%;
+  height: 4em;
+  bottom: 0;
+  background: transparent;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+}
+#bar:hover {
+  transform: none !important;
+}
+.buttons {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+}
+button {
+  margin: 1em 0 0 1em;
+  padding: 1em;
+  opacity: 0.9;
+}
+button:hover {
+  cursor: pointer;
+}
+.hide-bar {
+  transform: translateY(100%) !important;
+  transition: transform 0.4s;
+}
+.hide-cursor {
+  cursor: none;
+}
+video {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}</style></head><body><section class="frame"><div id="player"><div id="bar"><div class="buttons"><button id="play">Play | Pause</button> <button id="fullscreen">Fullscreen</button></div></div><video id="video" src="https://www.w3schools.com/html/mov_bbb.mp4"></video></div></section><script>(() => {
+  var player = document.getElementById('player');
+  var bar = document.getElementById('bar');
+  var fullscreen = document.getElementById('fullscreen');
+  var play = document.getElementById('play');
+  var video = document.getElementById('video');
+  var timer = null;
+
+  var setTimer = () => {
+    player.className = '';
+    bar.className = '';
+
+    if (timer) {
+      window.clearInterval(timer);
+      timer = null;
+    }
+
+    timer = window.setInterval(() => {
+      window.clearInterval(timer);
+      timer = null;
+      player.className = 'hide-cursor';
+      bar.className = 'hide-bar';
+    }, 2000);
+  };
+
+  window.addEventListener('mousemove', setTimer);
+
+  fullscreen.addEventListener('click', () => {
+    if (document.webkitIsFullScreen || document.mozFullScreen) {
+      if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+      if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      }
+      fullscreen.textContent = 'Fullscreen';
+    } else {
+      if (player.webkitRequestFullscreen) {
+        player.webkitRequestFullscreen();
+      }
+      if (player.mozRequestFullScreen) {
+        player.mozRequestFullScreen();
+      }
+      fullscreen.textContent = 'Exit Fullscreen';
+    }
+  });
+
+  play.addEventListener('click', () => {
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
+    }
+  });
+
+  setTimer();
+})();</script></body></html>
