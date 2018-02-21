@@ -22,18 +22,14 @@
   background-color: #000;
   overflow: hidden;
 }
-#bar:before {
-  content: '';
+.layer {
   position: absolute;
-  z-index: -1;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 10em;
+  width: 100%;
+  height: 100%;
 }
 #bar {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   transform: none;
   width: 100%;
   height: 4em;
@@ -67,19 +63,42 @@ video {
   width: 100%;
   height: 100%;
 }
+#seek {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  opacity: 0.6;
+  transition: opacity 0.4s;
+}
+.preview {
+  background-image: url('img_psm-red-155x220.png');
+  background-size: 104px 60px;
+  background-position-x: -2px;
+  width: 100px;
+  height: 60px;
+}
 </style>
 </head>
 
 <body>
 <section class="frame">
   <div id="player">
-    <div id="bar">
-      <div class="buttons">
-        <button id="play">Play | Pause</button>
-        <button id="fullscreen">Fullscreen</button>
+    <div class="layer">
+      <video id="video" src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
+    </div>
+    <div class="layer">
+      <div id="bar">
+        <div class="buttons">
+          <button id="play">Play | Pause</button>
+          <button id="fullscreen">Fullscreen</button>
+        </div>
       </div>
     </div>
-    <video id="video" src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
+    <div class="layer">
+      <div id="seek">
+        <div class="preview"></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -87,6 +106,7 @@ video {
 (() => {
   var player = document.getElementById('player');
   var bar = document.getElementById('bar');
+  var seek = document.getElementById('seek');
   var fullscreen = document.getElementById('fullscreen');
   var play = document.getElementById('play');
   var video = document.getElementById('video');
@@ -95,6 +115,7 @@ video {
   var setTimer = () => {
     player.className = '';
     bar.className = '';
+    seek.style = '';
 
     if (timer) {
       window.clearInterval(timer);
@@ -106,6 +127,7 @@ video {
       timer = null;
       player.className = 'hide-cursor';
       bar.className = 'hide-bar';
+      seek.style = 'opacity: 0;';
     }, 2000);
   };
 
