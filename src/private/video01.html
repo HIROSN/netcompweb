@@ -8,6 +8,24 @@
 * {
   font-family: "Open Sans", "Segoe UI", "Helvetica Neue", sans-serif;
 }
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+}
+main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
 .frame {
   background-color: black;
   width: 600px;
@@ -65,17 +83,19 @@ video {
 </head>
 
 <body>
-<section class="frame">
-  <div id="player">
-    <div id="bar">
-      <div class="buttons">
-        <button id="play">Play | Pause</button>
-        <button id="fullscreen">Fullscreen</button>
+<main>
+  <section class="frame">
+    <div id="player">
+      <div id="bar">
+        <div class="buttons">
+          <button id="play">Play | Pause</button>
+          <button id="fullscreen">Fullscreen</button>
+        </div>
       </div>
+      <video id="video" src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
     </div>
-    <video id="video" src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
-  </div>
-</section>
+  </section>
+</main>
 
 <script>
   var player = document.getElementById('player');
