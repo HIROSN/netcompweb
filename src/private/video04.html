@@ -57,6 +57,9 @@ button:hover {
 .hide-cursor {
   cursor: none;
 }
+.hide-seek {
+  opacity: 0 !important;
+}
 video {
   position: relative;
   z-index: 0;
@@ -114,7 +117,7 @@ video {
   var setTimer = function() {
     player.className = '';
     bar.className = '';
-    seek.style = '';
+    seek.className = '';
 
     if (timer) {
       window.clearInterval(timer);
@@ -126,7 +129,7 @@ video {
       timer = null;
       player.className = 'hide-cursor';
       bar.className = 'hide-bar';
-      seek.style = 'opacity: 0;';
+      seek.className = 'hide-seek';
     }, 2000);
   };
 
