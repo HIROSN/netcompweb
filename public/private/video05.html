@@ -8,15 +8,10 @@
   max-width: 100%;
   background-color: black;
 }
-#player {
+#player,
+.container,
+video {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-.container {
-  position: absolute;
-  z-index: 1;
   width: 100%;
   height: 100%;
 }
@@ -45,11 +40,6 @@ button {
 }
 .hide-cursor {
   cursor: none;
-}
-video {
-  position: absolute;
-  width: 100%;
-  height: 100%;
 }</style></head><body><section class="frame"><div id="player"><div class="container"><video id="video" src="https://www.w3schools.com/html/mov_bbb.mp4"></video></div><div class="container"><div id="bar"><button id="play">Play | Pause</button> <button id="fullscreen">Fullscreen</button></div></div></div></section><script>var player = document.getElementById('player');
   var bar = document.getElementById('bar');
   var fullscreen = document.getElementById('fullscreen');
