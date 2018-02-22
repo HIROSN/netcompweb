@@ -59,15 +59,14 @@ video {
   z-index: 0;
   width: 100%;
   height: 100%;
-}</style></head><body><section class="frame"><div id="player"><div id="bar"><div class="buttons"><button id="play">Play | Pause</button> <button id="fullscreen">Fullscreen</button></div></div><video id="video" src="https://www.w3schools.com/html/mov_bbb.mp4"></video></div></section><script>(() => {
-  var player = document.getElementById('player');
+}</style></head><body><section class="frame"><div id="player"><div id="bar"><div class="buttons"><button id="play">Play | Pause</button> <button id="fullscreen">Fullscreen</button></div></div><video id="video" src="https://www.w3schools.com/html/mov_bbb.mp4"></video></div></section><script>var player = document.getElementById('player');
   var bar = document.getElementById('bar');
   var fullscreen = document.getElementById('fullscreen');
   var play = document.getElementById('play');
   var video = document.getElementById('video');
   var timer = null;
 
-  var setTimer = () => {
+  var setTimer = function() {
     player.className = '';
     bar.className = '';
 
@@ -76,7 +75,7 @@ video {
       timer = null;
     }
 
-    timer = window.setInterval(() => {
+    timer = window.setInterval(function() {
       window.clearInterval(timer);
       timer = null;
       player.className = 'hide-cursor';
@@ -86,13 +85,16 @@ video {
 
   window.addEventListener('mousemove', setTimer);
 
-  fullscreen.addEventListener('click', () => {
-    if (document.webkitIsFullScreen || document.mozFullScreen) {
+  fullscreen.addEventListener('click', function() {
+    if (document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement) {
       if (document.webkitExitFullscreen) {
         document.webkitExitFullscreen();
       }
       if (document.mozCancelFullScreen) {
         document.mozCancelFullScreen();
+      }
+      if (document.msExitFullscreen) {
+        document.msExitFullscreen();
       }
       fullscreen.textContent = 'Fullscreen';
     } else {
@@ -102,11 +104,14 @@ video {
       if (player.mozRequestFullScreen) {
         player.mozRequestFullScreen();
       }
+      if (player.msRequestFullscreen) {
+        player.msRequestFullscreen();
+      }
       fullscreen.textContent = 'Exit Fullscreen';
     }
   });
 
-  play.addEventListener('click', () => {
+  play.addEventListener('click', function() {
     if (video.paused) {
       video.play();
     } else {
@@ -114,5 +119,4 @@ video {
     }
   });
 
-  setTimer();
-})();</script></body></html>
+  setTimer();</script></body></html>
