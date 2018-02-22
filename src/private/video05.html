@@ -9,21 +9,20 @@
   font-family: "Open Sans", "Segoe UI", "Helvetica Neue", sans-serif;
 }
 .frame {
-  background-color: black;
+  position: absolute;
   width: 600px;
   height: 330px;
   max-width: 100%;
+  background-color: black;
 }
 #player {
-  position: relative;
+  position: absolute;
   width: 100%;
   height: 100%;
-  background: transparent;
-  background-color: #000;
   overflow: hidden;
 }
 .container {
-  position: relative;
+  position: absolute;
   z-index: 1;
   width: 100%;
   height: 100%;
@@ -31,29 +30,23 @@
 #bar {
   position: absolute;
   z-index: 2;
-  top: 0;
+  bottom: 0;
   width: 100%;
   height: 4em;
-  background: transparent;
   display: flex;
   flex-wrap: nowrap;
   justify-content: flex-end;
 }
-.buttons {
-  background: transparent;
-  border: 1px solid transparent;
-  border-radius: 8px;
-}
 button {
-  margin: 0 0 1em 1em;
+  margin: 1em 0 0 1em;
   padding: 1em;
   opacity: 0.9;
 }
-button:hover {
+#bar:hover {
   cursor: pointer;
   opacity: 1 !important;
 }
-.hide-button {
+.hide-bar {
   opacity: 0;
   transition: opacity 0.4s;
 }
@@ -61,7 +54,7 @@ button:hover {
   cursor: none;
 }
 video {
-  position: relative;
+  position: absolute;
   width: 100%;
   height: 100%;
 }
@@ -74,8 +67,8 @@ video {
     <div class="container">
       <video id="video" src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
     </div>
-    <div id="bar">
-      <div class="buttons">
+    <div class="container">
+      <div id="bar">
         <button id="play">Play | Pause</button>
         <button id="fullscreen">Fullscreen</button>
       </div>
@@ -93,8 +86,7 @@ video {
 
   var setTimer = function() {
     player.className = '';
-    fullscreen.className = '';
-    play.className = '';
+    bar.className = '';
 
     if (timer) {
       window.clearInterval(timer);
@@ -105,8 +97,7 @@ video {
       window.clearInterval(timer);
       timer = null;
       player.className = 'hide-cursor';
-      fullscreen.className = 'hide-button';
-      play.className = 'hide-button';
+      bar.className = 'hide-bar';
     }, 2000);
   };
 

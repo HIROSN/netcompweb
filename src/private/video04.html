@@ -103,7 +103,6 @@ video {
 </section>
 
 <script>
-(() => {
   var player = document.getElementById('player');
   var bar = document.getElementById('bar');
   var seek = document.getElementById('seek');
@@ -112,7 +111,7 @@ video {
   var video = document.getElementById('video');
   var timer = null;
 
-  var setTimer = () => {
+  var setTimer = function() {
     player.className = '';
     bar.className = '';
     seek.style = '';
@@ -122,7 +121,7 @@ video {
       timer = null;
     }
 
-    timer = window.setInterval(() => {
+    timer = window.setInterval(function() {
       window.clearInterval(timer);
       timer = null;
       player.className = 'hide-cursor';
@@ -133,13 +132,16 @@ video {
 
   window.addEventListener('mousemove', setTimer);
 
-  fullscreen.addEventListener('click', () => {
-    if (document.webkitIsFullScreen || document.mozFullScreen) {
+  fullscreen.addEventListener('click', function() {
+    if (document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement) {
       if (document.webkitExitFullscreen) {
         document.webkitExitFullscreen();
       }
       if (document.mozCancelFullScreen) {
         document.mozCancelFullScreen();
+      }
+      if (document.msExitFullscreen) {
+        document.msExitFullscreen();
       }
       fullscreen.textContent = 'Fullscreen';
     } else {
@@ -149,11 +151,14 @@ video {
       if (player.mozRequestFullScreen) {
         player.mozRequestFullScreen();
       }
+      if (player.msRequestFullscreen) {
+        player.msRequestFullscreen();
+      }
       fullscreen.textContent = 'Exit Fullscreen';
     }
   });
 
-  play.addEventListener('click', () => {
+  play.addEventListener('click', function() {
     if (video.paused) {
       video.play();
     } else {
@@ -162,7 +167,6 @@ video {
   });
 
   setTimer();
-})();
 </script>
 </body>
 
