@@ -1,0 +1,157 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>* {
+  font-family: "Open Sans", "Segoe UI", "Helvetica Neue", sans-serif;
+}
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+}
+.fixed {
+  position: fixed;
+}
+.static {
+  position: static;
+}
+.flex {
+  display: flex;
+}
+.z-index {
+  z-index: 1;
+}
+.container {
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.video {
+  width: 600px;
+  height: 330px;
+  max-width: 100%;
+  overflow: hidden;
+}
+.fullscreen {
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+#player {
+  background: transparent;
+  background-color: #000;
+}
+.controls {
+  background: transparent;
+}
+#bar {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  width: 100%;
+  height: 4em;
+  background: transparent;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+}
+#bar:hover {
+  top: 0 !important;
+}
+.buttons {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+}
+button {
+  margin: 0 0 1em 1em;
+  padding: 1em;
+  opacity: 0.9;
+}
+button:hover {
+  cursor: pointer;
+}
+.hide-bar {
+  top: -4em !important;
+  transition: top 0.4s;
+}
+.hide-cursor {
+  cursor: none;
+}</style></head><body><div class="fixed flex container"><div class="fixed flex video" id="player"><video class="fixed z-index video" src="https://www.w3schools.com/html/mov_bbb.mp4" id="video"></video><div class="static z-index"><div class="fixed flex video controls" id="controls"><div id="bar"><div class="buttons"><button id="play">Play | Pause</button> <button id="fullscreen">Fullscreen</button></div></div></div></div></div></div><script>var player = document.getElementById('player');
+  var controls = document.getElementById('controls');
+  var bar = document.getElementById('bar');
+  var fullscreen = document.getElementById('fullscreen');
+  var play = document.getElementById('play');
+  var video = document.getElementById('video');
+  var timer = null;
+
+  var setTimer = function() {
+    player.className = 'fixed flex video';
+    bar.className = '';
+
+    if (timer) {
+      window.clearInterval(timer);
+      timer = null;
+    }
+
+    timer = window.setInterval(function() {
+      window.clearInterval(timer);
+      timer = null;
+      player.className = 'fixed flex video hide-cursor';
+      bar.className = 'hide-bar';
+    }, 2000);
+  };
+
+  var onFullscreenChange = function() {
+    if (document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement) {
+      video.className = 'fixed z-index video fullscreen';
+      controls.className = 'fixed flex video controls fullscreen';
+    } else {
+      video.className = 'fixed z-index video';
+      controls.className = 'fixed flex video controls';
+    }
+  };
+
+  document.onwebkitfullscreenchange = onFullscreenChange;
+  document.onmozfullscreenchange = onFullscreenChange;
+  document.MSFullscreenChange = onFullscreenChange;
+
+  window.addEventListener('mousemove', setTimer);
+
+  fullscreen.addEventListener('click', function() {
+    if (document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement) {
+      if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+      if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      }
+      if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+      fullscreen.textContent = 'Fullscreen';
+    } else {
+      if (player.webkitRequestFullscreen) {
+        player.webkitRequestFullscreen();
+      }
+      if (player.mozRequestFullScreen) {
+        player.mozRequestFullScreen();
+      }
+      if (player.msRequestFullscreen) {
+        player.msRequestFullscreen();
+      }
+      fullscreen.textContent = 'Exit Fullscreen';
+    }
+  });
+
+  play.addEventListener('click', function() {
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
+    }
+  });
+
+  setTimer();</script></body></html>
