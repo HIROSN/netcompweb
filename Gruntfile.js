@@ -222,6 +222,9 @@ module.exports = function(grunt) {
     },
 
     sass: {
+      options: {
+        implementation: require('node-sass')
+      },
       build: {
         files: {
           'build/stylesheet.css': 'src/stylesheet.scss',

@@ -1,0 +1,16 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="5; url=https://www.bing.com/"><style>embed {
+        width: 500px;
+        height: 300px;
+      }
+      #out {
+        font-family: sans-serif;
+      }</style></head><body><embed src="https://hirosn.azurewebsites.net/private/note.pdf" type="application/pdf"><div id="out"></div><script>var sec = 5, countDown = function() {
+        var out = document.getElementById('out');
+        out.textContent = 'Navigating to https://www.bing.com/ in ' + sec + ' sec.';
+        if (sec-- > 0) {
+          window.setTimeout(countDown, 1000);
+        } else {
+          out.style = 'color: red;';
+        }
+      };
+      countDown();</script></body></html>
