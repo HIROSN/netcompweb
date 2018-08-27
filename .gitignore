@@ -1,3 +1,4 @@
 node_modules/
 build/
 test/browser/browser_unit_tests.js
+package-lock.json
