@@ -37,11 +37,6 @@ article {
         background: $backgroundArticle;
         margin: 1px;
         padding: 1em 10px 1em 10px !important;
-
-        @media screen and (prefers-color-scheme: dark) {
-          background: darken($backgroundArticle, $darken);
-          color: $darkModeText;
-        }
       }
     }
   }

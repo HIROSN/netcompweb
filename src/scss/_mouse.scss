@@ -1,11 +1,5 @@
-$floorColor: #eee;
-
 #floor {
-  background-color: $floorColor;
-
-  @media screen and (prefers-color-scheme: dark) {
-    background-color: darken($floorColor, $darken);
-  }
+  background-color: $floorBackground;
 }
 
 #mouse {

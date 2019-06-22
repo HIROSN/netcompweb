@@ -10,16 +10,8 @@ a {
   text-decoration: none;
   color: $linkDefault;
 
-  @media screen and (prefers-color-scheme: dark) {
-    color: $darkModeText;
-  }
-
   &:hover {
     color: $linkHover;
-
-    @media screen and (prefers-color-scheme: dark) {
-      color: white;
-    }
   }
 }
 
@@ -29,11 +21,6 @@ em {
 
 input {
   font-size: 12pt;
-
-  @media screen and (prefers-color-scheme: dark) {
-    background-color: transparent;
-    color: $darkModeText;
-  }
 }
 
 ol {

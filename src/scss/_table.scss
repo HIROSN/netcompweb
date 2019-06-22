@@ -5,25 +5,13 @@ td {
 
   &.data {
     background: $tableData;
-
-    @media screen and (prefers-color-scheme: dark) {
-      background: darken($tableData, $darken);
-    }
   }
 
   &.default {
     background: $tableDefault;
-
-    @media screen and (prefers-color-scheme: dark) {
-      background: darken($tableDefault, $darken);
-    }
   }
 
   &.head {
     background: $tableHead;
-
-    @media screen and (prefers-color-scheme: dark) {
-      background: darken($tableHead, $darken);
-    }
   }
 }

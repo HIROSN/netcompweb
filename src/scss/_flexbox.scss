@@ -15,11 +15,6 @@
 
 .header {
   background: $backgroundHeader;
-
-  @media screen and (prefers-color-scheme: dark) {
-    background: darken($backgroundHeader, $darken);
-    color: $darkModeText;
-  }
 }
 
 .aside-1 {
@@ -29,11 +24,6 @@
     -webkit-order: 1;
 
     order: 1;
-  }
-
-  @media screen and (prefers-color-scheme: dark) {
-    background: darken($backgroundAsideLeft, $darken);
-    color: $darkModeText;
   }
 }
 
@@ -48,11 +38,6 @@
     order: 2;
     flex: 3 0px;
   }
-
-  @media screen and (prefers-color-scheme: dark) {
-    background: darken($backgroundArticle, $darken);
-    color: $darkModeText;
-  }
 }
 
 .aside-2 {
@@ -63,11 +48,6 @@
 
     order: 3;
   }
-
-  @media screen and (prefers-color-scheme: dark) {
-    background: darken($backgroundAsideRight, $darken);
-    color: $darkModeText;
-  }
 }
 
 .footer {
@@ -77,11 +57,6 @@
     -webkit-order: 4;
 
     order: 4;
-  }
-
-  @media screen and (prefers-color-scheme: dark) {
-    background: darken($backgroundFooter, $darken);
-    color: $darkModeText;
   }
 }
 
