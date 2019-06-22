@@ -4,6 +4,10 @@
 
 body {
   margin: 0px;
+
+  @media screen and (prefers-color-scheme: dark) {
+    background-color: $darkModeBackground;
+  }
 }
 
 a {
