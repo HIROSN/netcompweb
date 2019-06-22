@@ -26,10 +26,6 @@ $activeColor: #BCD2EE;
 .disabled {
   color: lightgray;
   cursor: not-allowed;
-
-  @media screen and (prefers-color-scheme: dark) {
-    color: darkgray;
-  }
 }
 
 .listener {
