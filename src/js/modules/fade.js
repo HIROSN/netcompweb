@@ -19,6 +19,7 @@ module.exports = function($element, rgb, msec) {
     }
 
     $element.css('background-color', color);
+    $element.css('color', 'black');
 
     if (level++ < 15) {
       setTimeout(step, msec);
