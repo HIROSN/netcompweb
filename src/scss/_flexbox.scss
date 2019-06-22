@@ -14,11 +14,11 @@
 }
 
 .header {
-  background: $backgroundHeader;
+  background: var(--background-header);
 }
 
 .aside-1 {
-  background: $backgroundAsideLeft;
+  background: var(--background-aside-left);
 
   @media all and (min-width: 1000px) {
     -webkit-order: 1;
@@ -29,7 +29,7 @@
 
 .main {
   text-align: left;
-  background: $backgroundArticle;
+  background: var(--background-article);
 
   @media all and (min-width: 1000px) {
     -webkit-order: 2;
@@ -41,7 +41,7 @@
 }
 
 .aside-2 {
-  background: $backgroundAsideRight;
+  background: var(--background-aside-right);
 
   @media all and (min-width: 1000px) {
     -webkit-order: 3;
@@ -51,7 +51,7 @@
 }
 
 .footer {
-  background: $backgroundFooter;
+  background: var(--background-footer);
 
   @media all and (min-width: 1000px) {
     -webkit-order: 4;

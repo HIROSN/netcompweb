@@ -13,11 +13,11 @@
 }
 
 .active {
-  background-color: $activeBlockBackground;
+  background-color: var(--active-block-background);
 }
 
 .disabled {
-  color: $disabledBlockText;
+  color: var(--disabled-block-text);
   cursor: not-allowed;
 }
 

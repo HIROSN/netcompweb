@@ -30,3 +30,23 @@ $disabledBlockText: lightgray;
 $floorBackground: #eee;
 
 $catImage: url('/images/cat.svg');
+
+:root {
+  --background-header: #{$backgroundHeader};
+  --background-aside-left: #{$backgroundAsideLeft};
+  --background-article: #{$backgroundArticle};
+  --background-aside-right: #{$backgroundAsideRight};
+  --background-footer: #{$backgroundFooter};
+
+  --link-default: #{$linkDefault};
+  --link-hover: #{$linkHover};
+
+  --table-default: #{$tableDefault};
+  --table-head: #{$tableHead};
+  --table-data: #{$tableData};
+
+  --active-block-background: #{$activeBlockBackground};
+  --disabled-block-text: #{$disabledBlockText};
+
+  --floor-background: #{$floorBackground};
+}

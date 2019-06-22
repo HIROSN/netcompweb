@@ -4,14 +4,14 @@ td {
   vertical-align: text-top;
 
   &.data {
-    background: $tableData;
+    background: var(--table-data);
   }
 
   &.default {
-    background: $tableDefault;
+    background: var(--table-default);
   }
 
   &.head {
-    background: $tableHead;
+    background: var(--table-head);
   }
 }

@@ -34,7 +34,7 @@ article {
         outline-width: 1px;
         outline-style: solid;
         outline-color: invert;
-        background: $backgroundArticle;
+        background: var(--background-article);
         margin: 1px;
         padding: 1em 10px 1em 10px !important;
       }
