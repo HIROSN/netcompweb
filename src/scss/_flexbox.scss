@@ -15,10 +15,12 @@
 
 .header {
   background: var(--background-header);
+  color: var(--text);
 }
 
 .aside-1 {
   background: var(--background-aside-left);
+  color: var(--text);
 
   @media all and (min-width: 1000px) {
     -webkit-order: 1;
@@ -30,6 +32,7 @@
 .main {
   text-align: left;
   background: var(--background-article);
+  color: var(--text);
 
   @media all and (min-width: 1000px) {
     -webkit-order: 2;
@@ -42,6 +45,7 @@
 
 .aside-2 {
   background: var(--background-aside-right);
+  color: var(--text);
 
   @media all and (min-width: 1000px) {
     -webkit-order: 3;
@@ -52,6 +56,7 @@
 
 .footer {
   background: var(--background-footer);
+  color: var(--text);
 
   @media all and (min-width: 1000px) {
     -webkit-order: 4;

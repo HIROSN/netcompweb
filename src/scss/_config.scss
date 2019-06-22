@@ -29,6 +29,8 @@ $disabledBlockText: lightgray;
 
 $floorBackground: #eee;
 
+$text: black;
+
 $catImage: url('/images/cat.svg');
 
 :root {
@@ -49,4 +51,6 @@ $catImage: url('/images/cat.svg');
   --disabled-block-text: #{$disabledBlockText};
 
   --floor-background: #{$floorBackground};
+
+  --text: #{$text};
 }
