@@ -4,6 +4,7 @@
 
 body {
   margin: 0px;
+  background-color: var(--background);
 }
 
 a {
@@ -21,6 +22,7 @@ em {
 
 input {
   font-size: 12pt;
+  background-color: var(--background);
   color: var(--text);
 }
 

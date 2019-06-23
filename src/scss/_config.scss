@@ -1,6 +1,7 @@
 $articleFonts: Helvetica, Arial;
 $codeFonts: Monaco, Consolas;
 $text: black;
+$background: white;
 
 $textConsole: lightgray;
 $backgroundConsole: black;
@@ -34,6 +35,7 @@ $catImage: url('/images/cat.svg');
 
 :root {
   --text: #{$text};
+  --background: #{$background};
 
   --background-code: #{$backgroundCode};
 
