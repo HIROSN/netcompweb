@@ -33,6 +33,12 @@ $floorBackground: #eee;
 
 $catImage: url('/images/cat.svg');
 
+$darken: 75%;
+$darkModeText: lightgray;
+$darkModeBackground: #2D2D2D;
+$darkModelinkHover: white;
+$darkModeDisabledBlockText: darkgray;
+
 :root {
   --text: #{$text};
   --background: #{$background};
@@ -56,4 +62,29 @@ $catImage: url('/images/cat.svg');
   --disabled-block-text: #{$disabledBlockText};
 
   --floor-background: #{$floorBackground};
+
+  @media screen and (prefers-color-scheme: dark) {
+    --text: #{$darkModeText};
+    --background: #{$darkModeBackground};
+
+    --background-code: #{darken($backgroundCode, $darken)};
+
+    --background-header: #{darken($backgroundHeader, $darken)};
+    --background-aside-left: #{darken($backgroundAsideLeft, $darken)};
+    --background-article: #{darken($backgroundArticle, $darken)};
+    --background-aside-right: #{darken($backgroundAsideRight, $darken)};
+    --background-footer: #{darken($backgroundFooter, $darken)};
+
+    --link-default: #{$darkModeText};
+    --link-hover: #{$darkModelinkHover};
+
+    --table-default: #{darken($tableDefault, $darken)};
+    --table-head: #{darken($tableHead, $darken)};
+    --table-data: #{darken($tableData, $darken)};
+
+    --active-block-background: #{darken($activeBlockBackground, $darken)};
+    --disabled-block-text: #{$darkModeDisabledBlockText};
+
+    --floor-background: #{darken($floorBackground, $darken)};
+  }
 }
