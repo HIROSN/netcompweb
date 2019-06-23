@@ -1,5 +1,6 @@
 $articleFonts: Helvetica, Arial;
 $codeFonts: Monaco, Consolas;
+$text: black;
 
 $textConsole: lightgray;
 $backgroundConsole: black;
@@ -29,11 +30,13 @@ $disabledBlockText: lightgray;
 
 $floorBackground: #eee;
 
-$text: black;
-
 $catImage: url('/images/cat.svg');
 
 :root {
+  --text: #{$text};
+
+  --background-code: #{$backgroundCode};
+
   --background-header: #{$backgroundHeader};
   --background-aside-left: #{$backgroundAsideLeft};
   --background-article: #{$backgroundArticle};
@@ -51,6 +54,4 @@ $catImage: url('/images/cat.svg');
   --disabled-block-text: #{$disabledBlockText};
 
   --floor-background: #{$floorBackground};
-
-  --text: #{$text};
 }
